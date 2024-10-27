@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  Clock,
+  Award,
+  MapPin,
+  DollarSign,
+  FileText,
+  ChevronRight,
+  Calendar,
+  GraduationCap,
+  CheckCircle
+} from 'lucide-react';
 import generalEnglish from '../assets/general-english.jpg';
 
-// Example course data
 const courseData = {
   'general-english': {
     title: 'ELICOS (General English)',
@@ -19,12 +29,13 @@ const courseData = {
     admissionRequirements: 'All students must be 18 years of age or over at the time of applying for admission at RIC.',
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
+    startDates: ['January 2025', 'April 2025', 'July 2025', 'October 2025'],
     proficiencyLevels: [
-      { level: 'Elementary', duration: '10 Weeks' },
-      { level: 'Pre-Intermediate', duration: '10 Weeks' },
-      { level: 'Intermediate', duration: '10 Weeks' },
-      { level: 'Upper-Intermediate', duration: '10 Weeks' },
-      { level: 'Advanced', duration: '10 Weeks' },
+      { level: 'Elementary', duration: '10 Weeks', skills: ['Basic Communication', 'Essential Grammar', 'Vocabulary Building'] },
+      { level: 'Pre-Intermediate', duration: '10 Weeks', skills: ['Daily Conversations', 'Writing Skills', 'Reading Comprehension'] },
+      { level: 'Intermediate', duration: '10 Weeks', skills: ['Complex Grammar', 'Academic Writing', 'Presentation Skills'] },
+      { level: 'Upper-Intermediate', duration: '10 Weeks', skills: ['Advanced Communication', 'Business English', 'IELTS Preparation'] },
+      { level: 'Advanced', duration: '10 Weeks', skills: ['Fluent Communication', 'Academic Research', 'Professional Writing'] },
     ],
     assessmentMethods: [
       'Written/Oral questions',
@@ -33,117 +44,187 @@ const courseData = {
       'Speaking and class activities',
       'Listening activities',
     ],
-    image: generalEnglish, // Replace with actual image path
+    highlights: [
+      'Native English-speaking teachers',
+      'Small class sizes (max 18 students)',
+      'Modern campus facilities',
+      'Regular progress assessments',
+      'Pathway to further studies'
+    ]
   },
-  // Add more courses here as needed
 };
 
 const CourseDetailPage = () => {
-  const { courseName } = useParams(); // Get the course name from URL
-  const course = courseData[courseName]; // Fetch course data
+  const { courseName } = useParams();
+  const course = courseData[courseName];
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // State declarations must be at the top level of the component
-  const [showProficiency, setShowProficiency] = useState(false);
-  const [showAssessment, setShowAssessment] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (!course) {
-    return <div>Course not found!</div>; // Handle non-existent courses
+    return <div className="text-center text-red-500">Course not found!</div>;
   }
 
-  const toggleProficiency = () => setShowProficiency((prev) => !prev);
-  const toggleAssessment = () => setShowAssessment((prev) => !prev);
+
+  const HighlightCard = ({ icon: Icon, title, value }) => (
+    <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+      <div className="flex items-center gap-4">
+        <div className="p-3 bg-[#3554a5]/10 rounded-lg">
+          <Icon className="w-6 h-6 text-[#3554a5]" />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-gray-500">{title}</p>
+          <p className="text-lg font-semibold text-gray-900 mt-1">{value}</p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <h1 className="text-4xl font-bold text-[#F26722] mb-4">{course.title}</h1>
-        <h2 className="text-2xl font-semibold text-gray-700 mb-6">{course.subtitle}</h2>
-        
-        {/* Adjusted image styling */}
-        <img 
-          src={course.image} 
-          alt={course.title} 
-          className="w-full h-90 object-cover rounded-lg mb-6" // Increased height to 80
+      
+      {/* Hero Section */}
+      <div className="relative h-[500px] bg-gradient-to-r from-[#3554a5] to-[#1e3a8a]">
+        <div className="absolute inset-0 bg-black/30" />
+        <img
+          src={generalEnglish}
+          alt="Course cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-
-        <p className="text-gray-600 mb-6">{course.description}</p>
-
-        <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mt-10 mb-2">Course Key Information</h3>
-          <table className="min-w-full border-collapse border border-gray-300">
-            <tbody>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Tuition Fee</td>
-                <td className="border border-gray-300 px-4 py-2">{course.tuitionFee}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">CRICOS Code</td>
-                <td className="border border-gray-300 px-4 py-2">{course.cricosCode}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Duration</td>
-                <td className="border border-gray-300 px-4 py-2">{course.duration}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Delivery Method</td>
-                <td className="border border-gray-300 px-4 py-2">{course.deliveryMethod}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Pre-requisites</td>
-                <td className="border border-gray-300 px-4 py-2">{course.prerequisites}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Admission Requirements</td>
-                <td className="border border-gray-300 px-4 py-2">{course.admissionRequirements}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Application Fee</td>
-                <td className="border border-gray-300 px-4 py-2">{course.applicationFee}</td>
-              </tr>
-              <tr>
-                <td className="border border-gray-300 px-4 py-2 font-semibold">Resource Fee</td>
-                <td className="border border-gray-300 px-4 py-2">{course.resourceFee}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-16">
+          <div className="flex items-center text-white/80 text-sm mb-4">
+            <span>Courses</span>
+            <ChevronRight className="w-4 h-4 mx-2" />
+            <span>English Programs</span>
+            <ChevronRight className="w-4 h-4 mx-2" />
+            <span className="text-white">{course.title}</span>
+          </div>
+          <h1 className="text-6xl font-bold text-white mb-4">{course.title}</h1>
+          <p className="text-2xl text-white/90 max-w-2xl">{course.subtitle}</p>
         </div>
+      </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mt-10 mb-2">Course Proficiency Level and Duration</h3>
-          <button onClick={toggleProficiency} className="bg-[#3554a5] text-white px-4 py-2 rounded-md mb-4">
-            {showProficiency ? 'Hide Proficiency Levels' : 'Show Proficiency Levels'}
-          </button>
-          {showProficiency && (
-            <ul className="list-disc list-inside text-gray-600">
-              {course.proficiencyLevels.map((item, index) => (
-                <li key={index}>
-                  {item.level}: {item.duration}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+      {/* Quick Stats */}
+      <div className="max-w-7xl mx-auto px-4 -mt-20 mb-12 relative z-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8"> {/* Added mt-8 for margin-top */}
+    <HighlightCard icon={Clock} title="Duration" value={course.duration} />
+    <HighlightCard icon={DollarSign} title="Tuition Fee" value={course.tuitionFee} />
+    <HighlightCard icon={Award} title="CRICOS Code" value={course.cricosCode} />
+    <HighlightCard icon={MapPin} title="Location" value="Melbourne Campus" />
+    </div>
+    </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h3 className="text-xl font-bold text-gray-800 mt-10 mb-2">Assessment Methods</h3>
-          <button onClick={toggleAssessment} className="bg-[#3554a5] text-white px-4 py-2 rounded-md mb-4">
-            {showAssessment ? 'Hide Assessment Methods' : 'Show Assessment Methods'}
-          </button>
-          {showAssessment && (
-            <ul className="list-disc list-inside text-gray-600">
-              {course.assessmentMethods.map((method, index) => (
-                <li key={index}>{method}</li>
-              ))}
-            </ul>
-          )}
-        </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Content */}
+          <div className="lg:col-span-2">
+            {/* Course Description */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Course Overview</h2>
+              <p className="text-gray-600 leading-relaxed mb-8">{course.description}</p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {course.highlights.map((highlight, index) => (
+                  <div key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-[#F26722]" />
+                    <span className="text-gray-700">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-        {/* Call to Action Button */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-[#F26722] mb-4">Ready to Apply?</h2>
-          <button className="bg-[#3554a5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300">
-            Apply Now
-          </button>
+            {/* Course Structure */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Course Structure</h2>
+              <div className="space-y-6">
+                {course.proficiencyLevels.map((level, index) => (
+                  <div key={index} className="border rounded-xl p-6 hover:border-[#3554a5] transition-colors">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="p-2 bg-[#3554a5]/10 rounded-lg">
+                          <GraduationCap className="w-6 h-6 text-[#3554a5]" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800">{level.level}</h3>
+                      </div>
+                      <span className="text-[#F26722] font-medium">{level.duration}</span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {level.skills.map((skill, skillIndex) => (
+                        <div key={skillIndex} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span className="text-sm text-gray-600">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Assessment Methods */}
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">Assessment Methods</h2>
+              <div className="grid gap-4">
+                {course.assessmentMethods.map((method, index) => (
+                  <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                    <FileText className="w-5 h-5 text-[#3554a5]" />
+                    <span className="text-gray-700">{method}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24">
+              {/* Application Card */}
+              <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Course Fees</h3>
+                <div className="space-y-4 mb-8">
+                  <div className="flex justify-between items-center py-3 border-b">
+                    <span className="text-gray-600">Application Fee</span>
+                    <span className="font-semibold text-gray-900">{course.applicationFee}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b">
+                    <span className="text-gray-600">Resource Fee</span>
+                    <span className="font-semibold text-gray-900">{course.resourceFee}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="text-gray-600">Weekly Tuition</span>
+                    <span className="font-semibold text-gray-900">{course.tuitionFee}</span>
+                  </div>
+                </div>
+                <button className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4">
+                  Apply Now
+                </button>
+                <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors">
+                  Download Brochure
+                </button>
+              </div>
+
+              {/* Intake Dates */}
+              <div className="bg-white rounded-2xl shadow-lg p-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-6">Upcoming Intakes</h3>
+                <div className="space-y-4">
+                  {course.startDates.map((date, index) => (
+                    <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+                      <Calendar className="w-5 h-5 text-[#3554a5]" />
+                      <span className="text-gray-700">{date}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

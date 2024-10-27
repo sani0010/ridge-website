@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import generalEnglish from '../assets/general-english.jpg';
 import it from '../assets/it.jpg';
 import leadership from '../assets/leadership.jpg';
@@ -15,7 +16,8 @@ const courses = [
     title: 'General English',
     description: 'Learn essential English language skills for everyday communication.',
     image: generalEnglish,
-    bgColor: 'bg-red-600'
+    bgColor: 'bg-red-600',
+    slug: 'general-english'
   },
   {
     title: 'Information Technology',
@@ -62,7 +64,8 @@ const courses = [
 ];
 
 const CourseCard = ({ course }) => (
-  <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+  <Link to={`/course/${course.slug}`} className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="relative">
     <div className="relative">
       <img
         src={course.image}
@@ -75,14 +78,15 @@ const CourseCard = ({ course }) => (
       <h3 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h3>
       <p className="text-gray-600">{course.description}</p>
     </div>
-  </div>
+    </div>
+  </Link>
 );
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-white py-12 mb-12">
+      <div className="bg-white py-24 mb-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
@@ -106,7 +110,7 @@ At our institute, only the most up-to-date knowledge and skills will be brought 
               <img
                 src={heroBg1} // Using the hero-bg1 image
                 alt="Campus"
-                className="rounded-lg shadow-lg h-80 w-full object-cover"
+                className="rounded-lg shadow-lg h-96 w-full object-cover"
               />
             </div>
           </div>

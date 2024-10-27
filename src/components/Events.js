@@ -17,7 +17,7 @@ const courses = [
 
 const CourseHighlights = () => {
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-semibold mb-6 text-orange-700">Explore the Areas of Study</h2>
         <p className="mb-12 text-lg text-gray-600 max-w-2xl mx-auto">
