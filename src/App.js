@@ -6,6 +6,7 @@ import CoursesPage from './pages/CoursesPage';
 import AboutPage from './pages/AboutPage';  // Example pages
 import AdmissionsPage from './pages/AdmissionsPage';
 import ContactPage from './pages/ContactPage';
+import CourseDetailPage from './pages/CourseDetailPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/courses" element={<CoursesPage />} />
+        <Route path="/course/:courseName" element={<CourseDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/contact" element={<ContactPage />} />

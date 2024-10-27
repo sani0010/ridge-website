@@ -72,7 +72,8 @@ const Testimonials = () => {
           </p>
 
           {/* Read More Button */}
-          <button className="text-red-500 border border-red-500 px-6 py-2 rounded hover:bg-red-500 hover:text-white transition-colors">
+          <button className="text-orange-500 border border-orange-500 px-6 py-2 rounded hover:bg-orange-500 hover:text-white transition-colors">
+
             Read More
           </button>
         </div>

@@ -5,6 +5,7 @@ import NewsAndEvents from '../components/NewsAndEvents.js'; // Ensure this is Pa
 import WhyChooseUs from '../components/WhyChooseUs';
 import LandingPage from '../components/LandingPage';
 import Testimonials from '../components/Testimonials.js';
+import Footer from '../components/Footer.js';
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <NewsAndEvents />
       <Testimonials />
       <WhyChooseUs />
+      <Footer />
     </div>
   );
 };
