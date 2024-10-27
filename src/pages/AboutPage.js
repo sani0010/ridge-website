@@ -69,7 +69,7 @@ const AboutUsPage = () => {
       {/* Hero Section with Background Image */}
       <div className="relative h-[600px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-orange-600/90"></div>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg1})` }}></div>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg1})`, filter: 'brightness(0.7)' }}></div>
         <div className="relative h-full flex items-center justify-center text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h1 className="text-5xl font-bold mb-6 text-shadow">Shaping Future Leaders</h1>

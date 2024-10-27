@@ -95,7 +95,8 @@ const CourseDetailPage = () => {
         <img
           src={generalEnglish}
           alt="Course cover"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover "
+          style={{ filter: 'brightness(0.7)' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-16">
