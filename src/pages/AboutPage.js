@@ -201,8 +201,6 @@ const AboutUsPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Campus Location */}
     </div>
   );
 };
