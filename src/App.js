@@ -9,6 +9,7 @@ import AdmissionsPage from './pages/AdmissionsPage';
 import ContactPage from './pages/ContactPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import Footer from './components/Footer';
+import EventDetail from './components/EventDetail';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/course/:courseName" element={<CourseDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

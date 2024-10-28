@@ -101,7 +101,7 @@ We also have an exceptional teaching team, trainers with excellent academic skil
 
 At our institute, only the most up-to-date knowledge and skills will be brought into our training and we ensure that we deliver quality outcomes for students, industry and the Australian economy.
               </p>
-              <button className="bg-[#3554a5] text-white px-6 py-3 rounded-lg hover:bg-blue-700 
+              <button  className="bg-[#3554a5] text-white px-6 py-3 rounded-lg hover:bg-blue-700 
                 transition-colors duration-300">
                 Learn More
               </button>
