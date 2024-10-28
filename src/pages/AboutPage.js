@@ -1,41 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Globe2, 
-  Users, 
-  Award, 
-  BookOpen, 
-  GraduationCap,
-  Building2
+  Globe2, Users, Award, BookOpen, 
+  GraduationCap, Building2, ChevronRight 
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-// Import images
-import heroBg1 from '../assets/hero-bg1.jpg';
-import heroBg2 from '../assets/hero-bg2.jpg';
-import ceoImage from '../assets/ceo.png'
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
+  const [isVisible, setIsVisible] = useState({});
+  const [activeFeature, setActiveFeature] = useState(null);
 
   useEffect(() => {
-    // Function to animate counting
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setIsVisible(prev => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting
+          }));
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Counter Animation
     const animateCounter = (target, setValue) => {
       let count = 0;
-      const increment = Math.ceil(target / 100); // Increment value
+      const increment = Math.ceil(target / 100);
       const interval = setInterval(() => {
         count += increment;
         if (count >= target) {
           clearInterval(interval);
-          setValue(target); // Ensure it sets to exact target
+          setValue(target);
         } else {
           setValue(count);
         }
-      }, 25); // Adjust time for smoother animation
+      }, 25);
     };
 
-    animateCounter(5000, setStudents);
-    animateCounter(4000, setGraduates);
-  }, []);
+    if (isVisible.stats) {
+      animateCounter(5000, setStudents);
+      animateCounter(4000, setGraduates);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible.stats]);
 
   const stats = [
     { icon: Users, label: "Students", value: `${students}+` },
@@ -64,143 +79,153 @@ const AboutUsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section with Background Image */}
-      <div className="relative h-[600px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-orange-600/90"></div>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg1})`, filter: 'brightness(0.7)' }}></div>
-        <div className="relative h-full flex items-center justify-center text-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-5xl font-bold mb-6 text-shadow">Shaping Future Leaders</h1>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Ridge International College is a premier institution dedicated to delivering world-class education and fostering global excellence.
-            </p>
-            <div className="flex gap-4 justify-center">
-              <Link to="/courses" className="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition duration-300">
-                Explore Courses
-              </Link>
-              <Link to="/virtual-tour" className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition duration-300">
-                Virtual Tour
-              </Link>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      {/* Hero Section */}
+      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900">
+          <div className="absolute inset-0 opacity-10 bg-repeat"></div>
         </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-6xl font-bold mb-6 text-white leading-tight"
+          >
+            Shaping Future Leaders at
+            <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
+              Ridge International College
+            </span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-blue-100 mb-12"
+          >
+            A premier institution dedicated to delivering world-class education and fostering global excellence
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex gap-6 justify-center"
+          >
+            <Link to="/courses" className="group relative px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden">
+              <span className="relative z-10">Explore Courses</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+            </Link>
+            <Link to="/virtual-tour" className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
+              Virtual Tour
+            </Link>
+          </motion.div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </div>
 
       {/* Stats Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section id="stats" className="py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <stat.icon className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-                <div className="text-3xl font-bold text-blue-900 mb-2">{stat.value}</div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible.stats ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <stat.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
                 <div className="text-gray-600">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
-            {/* Message from CEO Section */}
-            <div className="bg-white py-28">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold text-blue-900 mb-6">Message from CEO</h2>
-            <p className="text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
-            <p className="text-gray-700 mb-6">
-              Dear Student, A very warm welcome to Ridge International College!
-              We are excited to see you on-campus and achieve your academic goals. 
-              Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, 
-              explore new interests, and fully realize your potential. Our friendly staff is always ready to help you and guide you during your study here. 
-              Our courses are structured and designed to meet industry standards to cater to individual needs.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Producing skilled and career-ready graduates is central to our mission. 
-              Our programs connect you with career paths and foster the skills and mindset needed for professional advancement. 
-              You will make strong connections and friendships that last a lifetime, supported by a team dedicated to your success.
-            </p>
-            <p className="text-gray-700">
-              With best wishes,<br />
-              Kishor Raj Aryal<br />
-              Chief Executive Officer
-            </p>
-          </div>
-          <div>
-            <img
-              src={ceoImage}
-              alt="CEO Kishor Raj Aryal"
-              className="rounded-lg h-90 w-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
+      </section>
 
-      {/* About Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* CEO Message Section */}
+      <section id="ceo" className="py-24 bg-white">
+        <div className="container mx-auto max-w-6xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible.ceo ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="grid md:grid-cols-2 gap-12 items-center"
+          >
             <div>
-              <h2 className="text-3xl font-bold text-blue-900 mb-6">
-                Excellence in Education
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+                Message from CEO
               </h2>
-              <div className="space-y-4">
-                <p className="text-gray-600">
-                  As a registered CRICOS provider (03747K), Ridge International College delivers progressive and flexible courses benchmarked against global standards.
+              <p className="text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
+              <div className="space-y-6 text-gray-600">
+                <p>
+                  Dear Student, A very warm welcome to Ridge International College! We are excited to see you on-campus and achieve your academic goals.
                 </p>
-                <p className="text-gray-600">
-                  Our distinguished faculty includes PhD and Master's degree holders with extensive teaching experience and industry expertise.
+                <p>
+                  Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential.
                 </p>
-                <div className="flex flex-col space-y-4 mt-8">
-                  <div className="flex items-center space-x-3">
-                    <Award className="w-6 h-6 text-orange-500" />
-                    <span className="text-gray-700">Internationally Recognized Qualifications</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <BookOpen className="w-6 h-6 text-orange-500" />
-                    <span className="text-gray-700">Industry-Aligned Curriculum</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Users className="w-6 h-6 text-orange-500" />
-                    <span className="text-gray-700">Expert Teaching Staff</span>
-                  </div>
-                </div>
+                <p>
+                  With best wishes,<br />
+                  Kishor Raj Aryal<br />
+                  Chief Executive Officer
+                </p>
               </div>
             </div>
             <div className="relative">
-              <div className="relative rounded-lg overflow-hidden shadow-xl">
-              <img
-                src={heroBg2} // Using the hero-bg1 image
-                alt="Campus"
-                className="rounded-lg shadow-lg h-80 w-full object-cover"
-              />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <img
+
+                  alt="CEO Kishor Raj Aryal"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-orange-500 rounded-lg -z-10"></div>
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-blue-900 rounded-lg -z-10"></div>
+              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-blue-100 rounded-2xl -z-10"></div>
+              <div className="absolute -top-6 -right-6 w-48 h-48 bg-indigo-100 rounded-2xl -z-10"></div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Facilities Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-blue-900 text-center mb-12">
-            World-Class Facilities
-          </h2>
+      <section id="facilities" className="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="container mx-auto max-w-6xl px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-4">World-Class Facilities</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Experience learning in our state-of-the-art facilities designed for academic excellence
+            </p>
+          </motion.div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {facilities.map((facility, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition duration-300">
-                <Building2 className="w-12 h-12 text-orange-500 mb-4" />
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">
-                  {facility.title}
-                </h3>
-                <p className="text-gray-600">{facility.description}</p>
-              </div>
+            {facilities.map((facility, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: idx * 0.2 }}
+                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                onMouseEnter={() => setActiveFeature(idx)}
+                onMouseLeave={() => setActiveFeature(null)}
+              >
+                <Building2 className="w-12 h-12 text-blue-600 mb-6" />
+                <h3 className="text-xl font-semibold mb-4">{facility.title}</h3>
+                <p className="text-gray-600 mb-6">{facility.description}</p>
+                <div className="flex items-center text-blue-600 font-medium">
+                  <span className="mr-2">Learn More</span>
+                  <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
