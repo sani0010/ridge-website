@@ -6,7 +6,7 @@ import {
 
 const AdmissionsPage = () => {
   const [activeTab, setActiveTab] = useState('onshore');
-  const [setActiveFeature] = useState(null);
+  const [activeFeature, setActiveFeature] = useState(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
@@ -39,9 +39,9 @@ const AdmissionsPage = () => {
         {/* Key Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {[
-            { icon: Globe, title: "Global Recognition", desc: "Internationally accredited programs" },
-            { icon: Clock, title: "Flexible Schedule", desc: "Multiple intake dates throughout the year" },
-            { icon: Users, title: "Expert Faculty", desc: "Learn from industry professionals" }
+            { icon: Globe, title: "Global Recognition", desc: "Internationally accredited programs", details: "Study anywhere in the world." },
+            { icon: Clock, title: "Flexible Schedule", desc: "Multiple intake dates throughout the year", details: "Start your studies at your convenience." },
+            { icon: Users, title: "Expert Faculty", desc: "Learn from industry professionals", details: "Gain insights from the best in the industry." }
           ].map((feature, idx) => (
             <div 
               key={idx}
@@ -56,6 +56,9 @@ const AdmissionsPage = () => {
                 <h3 className="text-xl font-semibold">{feature.title}</h3>
               </div>
               <p className="text-gray-600">{feature.desc}</p>
+              {activeFeature === idx && (
+                <p className="text-blue-600 mt-2">{feature.details}</p> // Display additional details on hover
+              )}
             </div>
           ))}
         </div>
@@ -161,10 +164,6 @@ const AdmissionsPage = () => {
                   <div className="grid grid-cols-2 items-center">
                     <span className="font-medium">Account Number:</span>
                     <span className="font-mono">14663058</span>
-                  </div>
-                  <div className="grid grid-cols-2 items-center">
-                    <span className="font-medium">Swift Code:</span>
-                    <span className="font-mono">CTBAAU2S</span>
                   </div>
                 </div>
               )}

@@ -34,14 +34,14 @@ const AboutUsPage = () => {
     };
 
     animateCounter(5000, setStudents);
-    animateCounter(1000, setGraduates);
+    animateCounter(4000, setGraduates);
   }, []);
 
   const stats = [
     { icon: Users, label: "Students", value: `${students}+` },
     { icon: GraduationCap, label: "Graduates", value: `${graduates}+` },
-    { icon: Award, label: "Years of Excellence", value: "15+" },
-    { icon: Globe2, label: "International Partners", value: "50+" }
+    { icon: Award, label: "Years of Excellence", value: "10+" },
+    { icon: Globe2, label: "International Partners", value: "20+" }
   ];
 
   const facilities = [

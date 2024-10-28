@@ -11,6 +11,7 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import Footer from './components/Footer';
 import EventDetail from './components/EventDetail';
 
+
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+
       </Routes>
       <Footer />
     </Router>

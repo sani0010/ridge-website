@@ -1,28 +1,90 @@
 import React from 'react';
 
 const benefits = [
-  { title: 'Experienced Faculty', description: 'Our instructors are industry professionals with years of experience.', icon: '👩‍🏫' },
-  { title: 'Flexible Learning', description: 'We offer a variety of learning modes to suit your schedule.', icon: '🕒' },
-  { title: 'Modern Facilities', description: 'Our campuses are equipped with state-of-the-art facilities.', icon: '🏢' },
-  { title: 'Industry Connections', description: 'We help you build a network with top companies in the industry.', icon: '🔗' }
+  {
+    title: 'Experienced Faculty',
+    description: 'Our instructors are industry professionals with years of experience, bringing real-world expertise directly to your learning journey.',
+    icon: '👩‍🏫',
+    bgColor: 'bg-orange-50'
+  },
+  {
+    title: 'Flexible Learning',
+    description: 'We offer a variety of learning modes to suit your schedule, including online, hybrid, and in-person options.',
+    icon: '🕒',
+    bgColor: 'bg-blue-50'
+  },
+  {
+    title: 'Modern Facilities',
+    description: 'Our campuses are equipped with state-of-the-art facilities, providing you with the best learning environment possible.',
+    icon: '🏢',
+    bgColor: 'bg-green-50'
+  },
+  {
+    title: 'Industry Connections',
+    description: 'We help you build a network with top companies in the industry, opening doors to exciting career opportunities.',
+    icon: '🔗',
+    bgColor: 'bg-purple-50'
+  }
 ];
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-8 text-[#F26722]">Why Choose Us</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-5xl font-bold mb-6 text-[#F26722] relative inline-block">
+            Why Choose Us
+            <span className="absolute -bottom-2 left-0 w-full h-1 bg-[#F26722] opacity-20"></span>
+          </h2>
+          <p className="text-xl text-gray-600">
+            Discover the unique advantages that set us apart and make your educational journey exceptional
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {benefits.map((benefit, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl" // Animation on hover
+            <div
+              key={index}
+              className={`${benefit.bgColor} p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group min-h-[360px] flex flex-col justify-between`}
             >
-              <div className="text-5xl mb-4">{benefit.icon}</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800 hover:text-[#F26722] transition-colors">{benefit.title}</h3>
-              <p className="text-gray-600">{benefit.description}</p>
+              <div>
+                <div className="text-6xl mb-6 transform transition-transform group-hover:scale-110 duration-300">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-[#F26722] transition-colors">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+              
+              <div className="mt-6 flex justify-center">
+                <button className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#F26722] font-semibold hover:text-orange-700 flex items-center gap-2">
+                  Learn More
+                  <svg 
+                    className="w-5 h-5 transform transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <button className="bg-[#F26722] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Start Your Journey With Us
+          </button>
         </div>
       </div>
     </section>

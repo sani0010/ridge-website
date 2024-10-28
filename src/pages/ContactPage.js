@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   MapPin, Phone, Mail, Calendar, ArrowRight, 
   Facebook, Instagram, Twitter, Linkedin,
   Clock, User, BookOpen, MessageCircle
 } from 'lucide-react';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const HomePage = () => {
+  const [selectedDates, setSelectedDates] = useState([null, null, null, null]); // Individual selected dates for each section
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null); // Track the index of the selected date
+
+  const handleScheduleAppointment = (index) => {
+    if (selectedDates[index]) {
+      setCurrentIndex(index);
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setCurrentIndex(null); // Reset the index
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Hero Section */}
@@ -22,6 +40,7 @@ const HomePage = () => {
       {/* Campus Locations */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {/* Campus Info */}
           {[
             {
               title: "Melbourne Campus",
@@ -75,6 +94,7 @@ const HomePage = () => {
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-12">Schedule your Appointment</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Appointment Details */}
             {[
               {
                 title: "Academic",
@@ -100,8 +120,8 @@ const HomePage = () => {
                 hours: "Monday/Tuesday/Wednesday/Thursday/Friday (1.00-3.00PM)",
                 icon: MessageCircle
               }
-            ].map((dept, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            ].map((dept, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
                 <div className="p-3 bg-blue-100 rounded-full w-fit mb-4">
                   {React.createElement(dept.icon, { className: "w-6 h-6 text-blue-600" })}
                 </div>
@@ -111,10 +131,25 @@ const HomePage = () => {
                   <Clock className="w-4 h-4" />
                   <span className="text-sm">{dept.hours}</span>
                 </div>
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
-                  Schedule an Appointment
-                  <Calendar className="w-4 h-4" />
-                </button>
+                <div className="relative">
+                  <DatePicker
+                    selected={selectedDates[index]}
+                    onChange={(date) => {
+                      const updatedDates = [...selectedDates]; // Create a copy of the current state
+                      updatedDates[index] = date; // Update the specific index
+                      setSelectedDates(updatedDates); // Set the new state
+                    }}
+                    className="w-full border border-gray-300 rounded-lg py-2 px-4 mb-2 focus:outline-none focus:ring focus:ring-blue-300"
+                    placeholderText="Select a date"
+                  />
+                  <button 
+                    onClick={() => handleScheduleAppointment(index)} // Use the current index
+                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                  >
+                    Schedule an Appointment
+                    <Calendar className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -179,6 +214,22 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal for Appointment Confirmation */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg p-8 w-96 text-center">
+            <h3 className="text-xl font-semibold mb-4">Meeting Scheduled!</h3>
+            <p className="text-gray-600 mb-4">Your appointment has been scheduled for {selectedDates[currentIndex]?.toLocaleDateString()}.</p>
+            <button 
+              onClick={closeModal} 
+              className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

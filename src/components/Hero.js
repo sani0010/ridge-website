@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 // Import your images
 import heroBg1 from '../assets/hero-bg1.jpg';
 import heroBg2 from '../assets/hero-bg2.jpg';
+import eventImage from '../assets/orientation.jpg'; // Replace with your event image
 
 const images = [heroBg1, heroBg2]; // Array of images
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(true); // Initially set to true to show the modal on mount
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -25,6 +27,10 @@ const Hero = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -55,6 +61,29 @@ const Hero = () => {
           &gt;
         </button>
       </div>
+
+      {/* Modal for Event Image */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+          <div className="bg-white rounded-lg p-4 md:w-1/2 lg:w-1/3 text-center relative shadow-lg transition-transform transform scale-100 hover:scale-105">
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+            >
+              &times;
+            </button>
+            <img src={eventImage} alt="Event" className="rounded-lg mb-4 w-full h-auto" />
+            <h2 className="text-lg font-bold">Upcoming Event!</h2>
+            <p className="text-gray-600 mb-4">Join us for our exciting event!</p>
+            <button
+              onClick={closeModal}
+              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"
+            >
+              Got It!
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
