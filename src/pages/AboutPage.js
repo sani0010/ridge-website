@@ -5,7 +5,6 @@ import {
   Users, 
   Award, 
   BookOpen, 
-  MapPin, 
   GraduationCap,
   Building2
 } from 'lucide-react';
@@ -204,31 +203,6 @@ const AboutUsPage = () => {
       </div>
 
       {/* Campus Location */}
-      <div className="bg-blue-900 text-white py-16">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Strategic Locations</h2>
-              <p className="mb-8">
-                Our campuses in Melbourne and Sydney are strategically located for easy access, with Melbourne campus situated within the 'Free Tram Zone'.
-              </p>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-6 h-6 text-orange-500" />
-                <span>Melbourne CBD & Sydney CBD</span>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm">
-                <h3 className="text-xl font-semibold mb-4">Ready to Join Us?</h3>
-                <p className="mb-6">Take the first step towards your future success</p>
-                <Link to="/apply" className="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition duration-300">
-                  Apply Now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

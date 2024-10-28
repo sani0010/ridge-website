@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage';  // Example pages
 import AdmissionsPage from './pages/AdmissionsPage';
 import ContactPage from './pages/ContactPage';
 import CourseDetailPage from './pages/CourseDetailPage';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
