@@ -5,6 +5,7 @@ import {
   GraduationCap, Building2, ChevronRight 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import CEO from '../assets/ceo.png'
 
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
@@ -160,7 +161,17 @@ const AboutUsPage = () => {
               <p className="text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
               <div className="space-y-6 text-gray-600">
                 <p>
-                  Dear Student, A very warm welcome to Ridge International College! We are excited to see you on-campus and achieve your academic goals.
+                Dear Student,
+A very warm welcome to Ridge International College!
+We are excited to see you on-campus and achieve your academic goals. Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential. Our friendly staffs are always ready to help you and guide you during your study here at Ridge International College. Our English, Business, Information technology, and hospitality courses are structured and designed to suit industry standards’ that cater to individual needs.
+
+Producing skilled and career-ready graduates have always been central to our mission. Through a process that includes career exploration and professional preparation, we connect you with career paths and foster the skills and mindset needed for professional advancement. Our team is committed to shaping our students’ skills and as a team, we play a role to connect students with the corporate world or professional world which is achieved through internships in the best organization in the market.
+
+
+
+With best wishes,
+Kishor Raj Aryal
+Chief Executive Officer
                 </p>
                 <p>
                   Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential.
@@ -173,13 +184,13 @@ const AboutUsPage = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative rounded-2xl overflow-hidden ">
                 <img
-
+                  src={CEO}
                   alt="CEO Kishor Raj Aryal"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent"></div>
               </div>
               <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-blue-100 rounded-2xl -z-10"></div>
               <div className="absolute -top-6 -right-6 w-48 h-48 bg-indigo-100 rounded-2xl -z-10"></div>
@@ -197,7 +208,7 @@ const AboutUsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">World-Class Facilities</h2>
+            <h2 className="text-4xl font-bold mb-4">Campus Location and Facilities</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Experience learning in our state-of-the-art facilities designed for academic excellence
             </p>
