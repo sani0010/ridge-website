@@ -17,6 +17,7 @@ const courses = [
     image: generalEnglish,
     bgColor: 'bg-red-600',
     slug: 'general-english' // Added slug for linking
+    
   },
   {
     title: 'Information Technology',

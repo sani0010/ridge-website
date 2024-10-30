@@ -6,7 +6,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="bg-gray-50 shadow sticky top-0 z-10">
+    <header className="bg-gray-50 shadow sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center p-4">
         <Link to="/">
           <img src={logo} alt="Ridge International College Logo" className="h-16" />

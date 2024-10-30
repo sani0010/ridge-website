@@ -5,7 +5,8 @@ import {
   GraduationCap, Building2, ChevronRight 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import CEO from '../assets/ceo.png'
+import CEO from '../assets/ceo.png';
+import heroBg from '../assets/hero-bg1.jpg';
 
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
@@ -82,10 +83,10 @@ const AboutUsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900">
-          <div className="absolute inset-0 opacity-10 bg-repeat"></div>
-        </div>
+      <div 
+        className="relative h-screen flex items-center justify-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -144,8 +145,6 @@ const AboutUsPage = () => {
           </div>
         </div>
       </section>
-
-      {/* CEO Message Section */}
       <section id="ceo" className="py-24 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <motion.div
