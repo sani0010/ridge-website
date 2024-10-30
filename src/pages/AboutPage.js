@@ -7,12 +7,19 @@ import {
 import { motion } from 'framer-motion';
 import CEO from '../assets/ceo.png';
 import heroBg from '../assets/hero-bg1.jpg';
+import campusImg1 from '../assets/campus1.jpg';
+import campusImg2 from '../assets/campus2.jpg';
+import campusImg3 from '../assets/campus3.jpg';
+import campusImg4 from '../assets/campus4.png';
+import campusImg5 from '../assets/campus5.jpg';
+import campusImg6 from '../assets/campus6.jpg';
+import campusImg7 from '../assets/campus7.jpg';
+import campusImg8 from '../assets/campus8.jpg';
 
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
-
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,7 +31,7 @@ const AboutUsPage = () => {
           }));
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.5 }
     );
 
     document.querySelectorAll('section').forEach(section => {
@@ -79,6 +86,51 @@ const AboutUsPage = () => {
       description: "Extensive digital and physical learning materials"
     }
   ];
+
+  const campusImages = [
+    campusImg1,
+    campusImg2,
+    campusImg3,
+    campusImg4,
+    campusImg5,
+    campusImg6,
+    campusImg7,
+    campusImg8
+  ];
+
+  // Animation variants for image grid
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.8,
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -145,6 +197,8 @@ const AboutUsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* CEO Section */}
       <section id="ceo" className="py-24 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <motion.div
@@ -160,20 +214,12 @@ const AboutUsPage = () => {
               <p className="text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
               <div className="space-y-6 text-gray-600">
                 <p>
-                Dear Student,
-A very warm welcome to Ridge International College!
-We are excited to see you on-campus and achieve your academic goals. Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential. Our friendly staffs are always ready to help you and guide you during your study here at Ridge International College. Our English, Business, Information technology, and hospitality courses are structured and designed to suit industry standards’ that cater to individual needs.
-
-Producing skilled and career-ready graduates have always been central to our mission. Through a process that includes career exploration and professional preparation, we connect you with career paths and foster the skills and mindset needed for professional advancement. Our team is committed to shaping our students’ skills and as a team, we play a role to connect students with the corporate world or professional world which is achieved through internships in the best organization in the market.
-
-
-
-With best wishes,
-Kishor Raj Aryal
-Chief Executive Officer
+                  Dear Student,
+                  A very warm welcome to Ridge International College!
+                  We are excited to see you on-campus and achieve your academic goals. Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential. Our friendly staffs are always ready to help you and guide you during your study here at Ridge International College. Our English, Business, Information technology, and hospitality courses are structured and designed to suit industry standards' that cater to individual needs.
                 </p>
                 <p>
-                  Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential.
+                  Producing skilled and career-ready graduates have always been central to our mission. Through a process that includes career exploration and professional preparation, we connect you with career paths and foster the skills and mindset needed for professional advancement. Our team is committed to shaping our students' skills and as a team, we play a role to connect students with the corporate world or professional world which is achieved through internships in the best organization in the market.
                 </p>
                 <p>
                   With best wishes,<br />
@@ -182,18 +228,52 @@ Chief Executive Officer
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden ">
-                <img
-                  src={CEO}
-                  alt="CEO Kishor Raj Aryal"
+            <motion.img 
+              src={CEO} 
+              alt="CEO" 
+              className="w-full h-auto rounded-lg shadow-md"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isVisible.ceo ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Campus Tour Section with Motion */}
+      <section id="campus" className="py-24 bg-gray-50">
+        <div className="container mx-auto max-w-6xl px-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible.campus ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-4xl font-bold mb-12 text-center"
+          >
+            Campus Tour
+          </motion.h2>
+          <motion.div 
+            className="grid md:grid-cols-4 grid-cols-2 gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isVisible.campus ? "visible" : "hidden"}
+          >
+            {campusImages.map((image, index) => (
+              <motion.div
+                key={index}
+                className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                variants={imageVariants}
+                whileHover="hover"
+              >
+                <motion.img 
+                  src={image} 
+                  alt={`Campus Image ${index + 1}`} 
                   className="w-full h-full object-cover"
+                  initial={{ scale: 1.2 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.8 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/0 to-transparent"></div>
-              </div>
-              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-blue-100 rounded-2xl -z-10"></div>
-              <div className="absolute -top-6 -right-6 w-48 h-48 bg-indigo-100 rounded-2xl -z-10"></div>
-            </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -209,7 +289,7 @@ Chief Executive Officer
           >
             <h2 className="text-4xl font-bold mb-4">Campus Location and Facilities</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Experience learning in our state-of-the-art facilities designed for academic excellence
+               Experience learning in our state-of-the-art facilities designed for academic excellence
             </p>
           </motion.div>
 
@@ -220,9 +300,7 @@ Chief Executive Officer
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
-                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-
-              >
+                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
                 <Building2 className="w-12 h-12 text-blue-600 mb-6" />
                 <h3 className="text-xl font-semibold mb-4">{facility.title}</h3>
                 <p className="text-gray-600 mb-6">{facility.description}</p>

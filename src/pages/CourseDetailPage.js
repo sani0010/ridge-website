@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import { useParams } from 'react-router-dom';
 import {
   Clock,
@@ -34,15 +34,8 @@ const courseCategories = {
 const CourseDetailPage = () => {
   const { courseName } = useParams();
   const course = courseData[courseName];
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   if (!course) {
     return <div className="text-center text-red-500">Course not found!</div>;

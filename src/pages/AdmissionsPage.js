@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 
 const AdmissionsPage = () => {
   const [activeTab, setActiveTab] = useState('onshore');
-  const [activeFeature, setActiveFeature] = useState(null);
   const [isVisible, setIsVisible] = useState({});
 
   // Intersection Observer for scroll animations
@@ -120,8 +119,6 @@ const AdmissionsPage = () => {
                 animate={isVisible.features ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 className="group relative bg-white rounded-2xl shadow-lg overflow-hidden"
-                onMouseEnter={() => setActiveFeature(idx)}
-                onMouseLeave={() => setActiveFeature(null)}
               >
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
                 <div className="p-8">
