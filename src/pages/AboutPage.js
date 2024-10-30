@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Globe2, Users, Award, BookOpen, 
+  Globe2, Users, Award,
   GraduationCap, Building2, ChevronRight 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
-  const [activeFeature, setActiveFeature] = useState(null);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -221,8 +221,7 @@ Chief Executive Officer
                 animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-                onMouseEnter={() => setActiveFeature(idx)}
-                onMouseLeave={() => setActiveFeature(null)}
+
               >
                 <Building2 className="w-12 h-12 text-blue-600 mb-6" />
                 <h3 className="text-xl font-semibold mb-4">{facility.title}</h3>
