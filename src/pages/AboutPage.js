@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Globe2, Users, Award,
@@ -20,6 +20,11 @@ const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
+  const campusRef = useRef(null); // Ref for Campus Tour section
+
+  const scrollToCampusTour = () => {
+    campusRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,9 +174,9 @@ const AboutUsPage = () => {
               <span className="relative z-10">Explore Courses</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </Link>
-            <Link to="/virtual-tour" className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
+            <button onClick={scrollToCampusTour} className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
               Virtual Tour
-            </Link>
+            </button>
           </motion.div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
@@ -240,8 +245,10 @@ const AboutUsPage = () => {
         </div>
       </section>
 
+
+
       {/* Campus Tour Section with Motion */}
-      <section id="campus" className="py-24 bg-gray-50">
+      <section id="campus" className="py-24 bg-gray-50" ref={campusRef}>
         <div className="container mx-auto max-w-6xl px-4">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -277,7 +284,7 @@ const AboutUsPage = () => {
           </motion.div>
         </div>
       </section>
-
+      
       {/* Facilities Section */}
       <section id="facilities" className="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="container mx-auto max-w-6xl px-4">

@@ -65,7 +65,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white min-h-screen">
+    <div className="bg-gradient-to-b from-gray-50 to-white ">
       <div className="max-w-4xl mx-auto px-4 py-20">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -73,9 +73,9 @@ const Testimonials = () => {
             STUDENT TESTIMONIALS
           </h2>
           <div className="flex justify-center items-center gap-2">
-            <div className="h-1 w-12 bg-red-500"></div>
-            <div className="h-2 w-2 rounded-full bg-red-500"></div>
-            <div className="h-1 w-12 bg-red-500"></div>
+            <div className="h-1 w-12 bg-[#f26722]"></div>
+            <div className="h-2 w-2 rounded-full bg-[#f26722]"></div>
+            <div className="h-1 w-12 bg-[#f26722]"></div>
           </div>
         </div>
 
@@ -83,7 +83,7 @@ const Testimonials = () => {
         <div className="relative bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
           {/* Decorative Quote Icon */}
           <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-            <div className="bg-red-500 p-3 rounded-full shadow-lg">
+            <div className="bg-[#f26722] p-3 rounded-full shadow-lg">
               <Quote className="w-6 h-6 text-white" />
             </div>
           </div>
@@ -91,7 +91,7 @@ const Testimonials = () => {
           <div className={`transition-all duration-500 ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
             {/* Profile Image */}
             <div className="relative mx-auto w-32 h-32 mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 rounded-full animate-spin-slow"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#f26722] to-blue-500 rounded-full animate-spin-slow"></div>
               <div className="absolute inset-1 bg-white rounded-full"></div>
               <div className="absolute inset-2 rounded-full overflow-hidden">
                 <img
@@ -148,7 +148,7 @@ const Testimonials = () => {
             <div
               key={index}
               className={`transition-all duration-300 h-2 rounded-full ${
-                index === currentIndex ? 'w-8 bg-red-500' : 'w-2 bg-gray-300'
+                index === currentIndex ? 'w-8 bg-[#3554a5]' : 'w-2 bg-gray-300'
               }`}
             />
           ))}

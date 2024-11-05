@@ -9,6 +9,7 @@ import disabilityCare from '../assets/disability-care.jpg';
 import communityService from '../assets/community-service.jpg';
 import earlyChildhood from '../assets/early-childhood.jpg';
 import heroBg1 from '../assets/hero-bg1.jpg';
+import { motion} from 'framer-motion';
 
 // Course data structure
 const courses = [
@@ -117,25 +118,56 @@ const LandingPage = () => {
       <div className="bg-white py-24 mb-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
+          <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <h1 className="text-4xl font-bold text-[#F26722] mb-4">
                 Life at<br />
                 Ridge International<br />
                 College
               </h1>
-              <p className="text-gray-600 mb-6">
-              Ridge International College is one of the best VET college in Australia. It is established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students.
-We also have an exceptional teaching team, trainers with excellent academic skills holding PhD or Masters degrees, along with a great deal of teaching experience and practical knowledge from working in the industry, they are amongst the best in the respective field. 
-
-At our institute, only the most up-to-date knowledge and skills will be brought into our training and we ensure that we deliver quality outcomes for students, industry and the Australian economy.
-              </p>
-              <button className="bg-[#3554a5] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                Learn More
-              </button>
-            </div>
-            <div className="relative">
-              <img src={heroBg1} alt="Campus" className="rounded-lg shadow-lg h-96 w-full object-cover" />
-            </div>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-gray-600 mb-6"
+              >
+                Ridge International College is one of the best VET college in Australia. It is established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students.
+                We also have an exceptional teaching team, trainers with excellent academic skills holding PhD or Masters degrees, along with a great deal of teaching experience and practical knowledge from working in the industry, they are amongst the best in the respective field. 
+                At our institute, only the most up-to-date knowledge and skills will be brought into our training and we ensure that we deliver quality outcomes for students, industry and the Australian economy.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+              >
+                <Link to="/about">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-[#3554a5] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                  >
+                    Learn More
+                  </motion.button>
+                </Link>
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                src={heroBg1}
+                alt="Campus"
+                className="rounded-lg shadow-lg h-96 w-full object-cover"
+              />
+            </motion.div>
           </div>
         </div>
       </div>

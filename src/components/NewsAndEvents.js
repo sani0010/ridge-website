@@ -36,7 +36,7 @@ const NewsAndEvents = () => {
               </div>
               <div className="flex flex-1 flex-col justify-between bg-white p-6">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-indigo-600">
+                  <p className="text-sm font-medium text-[#3554a5]">
                     {item.date}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold text-gray-900">
@@ -47,7 +47,7 @@ const NewsAndEvents = () => {
                   </p>
                 </div>
                 <div className="mt-4">
-                  <button className="text-indigo-600 hover:text-indigo-500">
+                  <button className="text-[#3554a5] hover:text-[#f26722]">
                     Read more →
                   </button>
                 </div>

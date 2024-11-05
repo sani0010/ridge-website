@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import heroBg1 from '../assets/hero-bg1.jpg';
 import heroBg2 from '../assets/hero-bg2.jpg';
 import eventImage from '../assets/orientation.jpg'; // Replace with your event image
+import { Link } from 'react-router-dom';
 
 const images = [heroBg1, heroBg2]; // Array of images
 
@@ -42,9 +43,11 @@ const Hero = () => {
         <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-50 text-white text-center">
           <h1 className="text-4xl font-bold mb-4">Welcome to Ridge International College</h1>
           <p className="text-xl mb-6">Your path to success starts here</p>
+          <Link to="/about">
           <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
             Learn More
           </button>
+          </Link>
         </div>
 
         {/* Left and Right Navigation Buttons */}
