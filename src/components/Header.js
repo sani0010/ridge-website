@@ -32,7 +32,7 @@ const Header = () => {
           ))}
         </ul>
         <a
-          href="https://app.axcelerate.com/auth/user/" // Replace with the actual aXcelerate login URL
+          href="https://app.axcelerate.com/auth/user/" 
           target="_blank"
           rel="noopener noreferrer"
           className="ml-4 px-4 py-2 bg-[#F26722] text-white rounded-full hover:bg-[#d4551f] transition-colors"

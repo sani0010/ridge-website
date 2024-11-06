@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import EventDetail from './components/EventDetail';
 
 
+
 function App() {
   return (
     <Router>
