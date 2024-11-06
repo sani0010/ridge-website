@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // Import your images
 import heroBg1 from '../assets/hero-bg1.jpg';
 import heroBg2 from '../assets/hero-bg2.jpg';
-import eventImage from '../assets/orientation.jpg'; // Replace with your event image
+import eventImage from '../assets/Scholarship.png'; // Replace with your event image
 import { Link } from 'react-router-dom';
 
 const images = [heroBg1, heroBg2]; // Array of images
@@ -44,9 +44,9 @@ const Hero = () => {
           <h1 className="text-4xl font-bold mb-4">Welcome to Ridge International College</h1>
           <p className="text-xl mb-6">Your path to success starts here</p>
           <Link to="/about">
-          <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
-            Learn More
-          </button>
+            <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+              Learn More
+            </button>
           </Link>
         </div>
 
@@ -68,22 +68,21 @@ const Hero = () => {
       {/* Modal for Event Image */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-          <div className="bg-white rounded-lg p-4 md:w-1/2 lg:w-1/3 text-center relative shadow-lg transition-transform transform scale-100 hover:scale-105">
+          <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
+            {/* Close button outside the image, at the top-right of the modal */}
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+              className="absolute top-4 right-4 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-blue-700 focus:outline-none"
             >
-              &times;
+              <span className="text-xl font-bold">×</span>
             </button>
-            <img src={eventImage} alt="Event" className="rounded-lg mb-4 w-full h-auto" />
-            <h2 className="text-lg font-bold">Upcoming Event!</h2>
-            <p className="text-gray-600 mb-4">Join us for our exciting event!</p>
-            <button
-              onClick={closeModal}
-              className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"
-            >
-              Got It!
-            </button>
+
+            {/* Image takes up the full width without any extra space below */}
+            <img
+              src={eventImage}
+              alt="Event"
+              className="rounded-lg w-full h-auto object-cover mb-0"
+            />
           </div>
         </div>
       )}
