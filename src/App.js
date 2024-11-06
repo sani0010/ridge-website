@@ -10,6 +10,8 @@ import ContactPage from './pages/ContactPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import Footer from './components/Footer';
 import EventDetail from './components/EventDetail';
+import EntryRequirements from './pages/EntryRequirements';
+import FeesSchedule from './pages/FeesSchedule';
 
 
 
@@ -26,6 +28,8 @@ function App() {
         <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/admissions" element={<AdmissionsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/requirements" element={<EntryRequirements />} />
+        <Route path="/schedule" element={<FeesSchedule />} />
 
       </Routes>
       <Footer />
