@@ -59,9 +59,10 @@ const Header = () => {
       path: '/resources',
       dropdownItems: [
         { name: 'Forms', path: '/forms' },
-        { name: 'Notices', path: '/resources/notices' },
+        { name: 'Notices', path: '/notice' },
         { name: 'Policies', path: '/resources/policies' },
-        { name: 'Events', path: '/resources/events' },
+        { name: 'Events', path: '/events' },
+        { name: 'Blogs', path: '/blogs' },
       ]
     },
     { name: 'Contact', path: '/contact' },

@@ -15,6 +15,9 @@ import FeesSchedule from './pages/FeesSchedule';
 import LivingAndStudying from './pages/LivingAndStudying';
 import StudentSupportServices from './pages/StudentSupportServices';
 import FormsPage from './pages/FormsPage';
+import HomeNoticePage from './pages/HomeNoticePage';
+import Events from './pages/Events';
+import BlogPage from './pages/BlogPage';
 
 
 
@@ -36,6 +39,9 @@ function App() {
         <Route path="/living" element={<LivingAndStudying />} />
         <Route path="/services" element={<StudentSupportServices />} />
         <Route path="/forms" element={<FormsPage />} />
+        <Route path="/notice" element={<HomeNoticePage />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/blogs" element={<BlogPage />} />
 
       </Routes>
       <Footer />
