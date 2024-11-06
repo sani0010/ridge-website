@@ -64,28 +64,27 @@ const Hero = () => {
           &gt;
         </button>
       </div>
+{/* Modal for Event Image */}
+{isModalOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+    <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
+      {/* Close button positioned higher */}
+      <button
+        onClick={closeModal}
+        className="absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-white ring-2 ring-gray-300 hover:bg-gray-100 focus:outline-none z-10"
+      >
+        <span className="text-gray-800 text-xl font-bold">×</span>
+      </button>
 
-      {/* Modal for Event Image */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-          <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
-            {/* Close button outside the image, at the top-right of the modal */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 bg-blue-600 text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-blue-700 focus:outline-none"
-            >
-              <span className="text-xl font-bold">×</span>
-            </button>
-
-            {/* Image takes up the full width without any extra space below */}
-            <img
-              src={eventImage}
-              alt="Event"
-              className="rounded-lg w-full h-auto object-cover mb-0"
-            />
-          </div>
-        </div>
-      )}
+      {/* Image takes up the full width without any extra space below */}
+      <img
+        src={eventImage}
+        alt="Event"
+        className="rounded-lg w-full h-auto object-cover mb-0"
+      />
+    </div>
+  </div>
+)}
     </section>
   );
 };
