@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react';
-
-// Import your images
 import heroBg1 from '../assets/hero-bg1.jpg';
 import heroBg2 from '../assets/hero-bg2.jpg';
-import eventImage from '../assets/Scholarship.png'; // Replace with your event image
+import eventImage from '../assets/Scholarship.png';
 import { Link } from 'react-router-dom';
 
-const images = [heroBg1, heroBg2]; // Array of images
+const images = [heroBg1, heroBg2];
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(true); // Initially set to true to show the modal on mount
+  const [isModalOpen, setIsModalOpen] = useState(false); // Start with false
 
   useEffect(() => {
+    // Check if the modal has been shown in this session
+    const hasModalBeenShown = sessionStorage.getItem('modalShown');
+    
+    if (!hasModalBeenShown) {
+      setIsModalOpen(true);
+      // Mark that the modal has been shown in this session
+      sessionStorage.setItem('modalShown', 'true');
+    }
+
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   const nextImage = () => {
@@ -64,27 +71,26 @@ const Hero = () => {
           &gt;
         </button>
       </div>
-{/* Modal for Event Image */}
-{isModalOpen && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-    <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
-      {/* Close button positioned higher */}
-      <button
-        onClick={closeModal}
-        className="absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-white ring-2 ring-gray-300 hover:bg-gray-100 focus:outline-none z-10"
-      >
-        <span className="text-gray-800 text-xl font-bold">×</span>
-      </button>
 
-      {/* Image takes up the full width without any extra space below */}
-      <img
-        src={eventImage}
-        alt="Event"
-        className="rounded-lg w-full h-auto object-cover mb-0"
-      />
-    </div>
-  </div>
-)}
+      {/* Modal for Event Image */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
+          <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
+            {/* Close button positioned higher */}
+            <button
+              onClick={closeModal}
+              className="absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-white ring-2 ring-gray-300 hover:bg-gray-100 focus:outline-none z-10"
+            >
+              <span className="text-gray-800 text-xl font-bold">×</span>
+            </button>
+            <img
+              src={eventImage}
+              alt="Event"
+              className="rounded-lg w-full h-auto object-cover mb-0"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
