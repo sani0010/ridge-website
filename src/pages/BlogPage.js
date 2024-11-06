@@ -94,12 +94,12 @@ const BlogPage = () => {
                 <h3 className="text-2xl font-semibold text-gray-800 mb-2">{post.title}</h3>
                 <p className="text-sm text-gray-500 mb-4">{post.date} | by {post.author}</p>
                 <p className="text-lg text-gray-700 mb-6">{post.summary}</p>
-                <a
-                  href="#"
-                  className="text-[#004aad] font-semibold hover:underline"
+                <button
+                  onClick={() => alert('Redirecting to the full blog post...')}
+                  className="text-[#004aad] font-semibold hover:underline focus:outline-none"
                 >
                   Read More
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}
