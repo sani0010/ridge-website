@@ -12,6 +12,9 @@ import Footer from './components/Footer';
 import EventDetail from './components/EventDetail';
 import EntryRequirements from './pages/EntryRequirements';
 import FeesSchedule from './pages/FeesSchedule';
+import LivingAndStudying from './pages/LivingAndStudying';
+import StudentSupportServices from './pages/StudentSupportServices';
+import FormsPage from './pages/FormsPage';
 
 
 
@@ -30,6 +33,9 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/requirements" element={<EntryRequirements />} />
         <Route path="/schedule" element={<FeesSchedule />} />
+        <Route path="/living" element={<LivingAndStudying />} />
+        <Route path="/services" element={<StudentSupportServices />} />
+        <Route path="/forms" element={<FormsPage />} />
 
       </Routes>
       <Footer />

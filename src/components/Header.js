@@ -40,8 +40,8 @@ const Header = () => {
       name: 'International Students',
       path: '/international',
       dropdownItems: [
-        { name: 'Living and Studying in Australia', path: '/international/living-studying' },
-        { name: 'Student Support Services', path: '/international/support-services' },
+        { name: 'Living and Studying in Australia', path: '/living' },
+        { name: 'Student Support Services', path: '/services' },
         { name: 'Useful Information', path: '/international/useful-information' },
       ]
     },
@@ -58,7 +58,7 @@ const Header = () => {
       name: 'Resources',
       path: '/resources',
       dropdownItems: [
-        { name: 'Forms', path: '/resources/forms' },
+        { name: 'Forms', path: '/forms' },
         { name: 'Notices', path: '/resources/notices' },
         { name: 'Policies', path: '/resources/policies' },
         { name: 'Events', path: '/resources/events' },
