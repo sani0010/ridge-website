@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Link as LinkIcon, Video } from 'lucide-react';
+import { Link as LinkIcon } from 'lucide-react';
 
 const UniqueStudentIdentifier = () => {
   return (
@@ -33,7 +34,7 @@ const UniqueStudentIdentifier = () => {
             Below is a video tutorial demonstrating how to create a USI.
           </p>
 
-          <div className="relative aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+          <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
             <iframe
               src="https://www.youtube.com/embed/VIDEO_ID" // Replace "VIDEO_ID" with the actual ID of the tutorial video.
               title="How to Create a Unique Student Identifier (USI)"
