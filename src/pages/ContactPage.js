@@ -7,7 +7,7 @@ import {
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-const HomePage = () => {
+const ContactPage = () => {
   const [selectedDates, setSelectedDates] = useState([null, null, null, null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -281,4 +281,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ContactPage;
