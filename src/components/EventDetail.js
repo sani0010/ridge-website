@@ -81,7 +81,7 @@ const EventDetail = () => {
                   </div>
                 </div>
                 
-                <button className="mt-6 w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                <button className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200">
                   Register for Event
                 </button>
               </div>
