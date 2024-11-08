@@ -15,7 +15,7 @@ const EventDetail = () => {
           <h2 className="text-2xl font-bold text-gray-900">Event not found</h2>
           <button
             onClick={() => navigate('/')}
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-[#3554a5] hover:bg-[#3554a5]"
           >
             Return to Home
           </button>
@@ -29,7 +29,7 @@ const EventDetail = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/')}
-          className="mb-8 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
+          className="mb-8 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#3554a5] bg-white hover:bg-gray-50"
         >
           ← Back to Events
         </button>
@@ -81,7 +81,7 @@ const EventDetail = () => {
                   </div>
                 </div>
                 
-                <button className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200">
+                <button className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5] transition-colors duration-200">
                   Register for Event
                 </button>
               </div>
