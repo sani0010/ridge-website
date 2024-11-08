@@ -67,20 +67,24 @@ const HomeNoticePage = () => {
             <input
               type="text"
               placeholder="Search notices..."
-              className="pl-10 w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className="flex justify-center gap-2 flex-wrap mt-4">
+          <div className="flex justify-center gap-2 flex-wrap">
             {categories.map((category) => (
-              <span
+              <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`cursor-pointer px-4 py-2 rounded-full border ${selectedCategory === category ? 'bg-blue-500 text-white' : 'bg-transparent border-blue-500 text-blue-500'}`}
+                className={`px-4 py-1 rounded-full text-sm font-medium transition-colors
+                  ${selectedCategory === category 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+                  }`}
               >
                 {category}
-              </span>
+              </button>
             ))}
           </div>
         </div>
@@ -88,24 +92,36 @@ const HomeNoticePage = () => {
         {/* Notices Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredNotices.map((notice, index) => (
-            <div key={index} className="group p-4 border rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-between items-start mb-2">
-                <span className={`inline-block py-1 px-3 text-xs font-semibold ${getPriorityColor(notice.priority)} rounded-full`}>
-                  {notice.category}
-                </span>
-                <div className="flex items-center text-sm text-gray-500">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  {notice.date}
+            <div 
+              key={index} 
+              className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getPriorityColor(notice.priority)}`}>
+                    {notice.category}
+                  </span>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <Calendar className="h-4 w-4 mr-1" />
+                    {notice.date}
+                  </div>
                 </div>
-              </div>
-              <h2 className="text-xl font-semibold line-clamp-2">{notice.title}</h2>
-              <p className="text-gray-600 line-clamp-3 mb-4">{notice.description}</p>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-blue-500 cursor-pointer">
-                  <Bell className="h-3 w-3 mr-1" />
-                  Set Reminder
-                </span>
-                <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                
+                <h2 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2">
+                  {notice.title}
+                </h2>
+                
+                <p className="text-gray-600 mb-4 line-clamp-3">
+                  {notice.description}
+                </p>
+                
+                <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                  <button className="flex items-center space-x-1 text-sm font-medium text-blue-600 hover:text-blue-700 group">
+                    <Bell className="h-4 w-4" />
+                    <span>Set Reminder</span>
+                  </button>
+                  <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                </div>
               </div>
             </div>
           ))}
