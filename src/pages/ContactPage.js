@@ -2,15 +2,70 @@ import React, { useState } from 'react';
 import { 
   MapPin, Phone, Mail, Calendar, ArrowRight, 
   Facebook, Instagram, Twitter, Linkedin,
-  Clock, User, BookOpen, MessageCircle
+  Clock, User, BookOpen, MessageCircle, X
 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 const HomePage = () => {
-  const [selectedDates, setSelectedDates] = useState([null, null, null, null]); // Individual selected dates for each section
+  const [selectedDates, setSelectedDates] = useState([null, null, null, null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(null); // Track the index of the selected date
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const campusLocations = [
+    {
+      title: "Melbourne Campus",
+      location: "Level 5/85 Queen St, Melbourne, VIC, 3000, Australia",
+      phone: "+613 9620 7738",
+      email: "admin@ridge.edu.au",
+      bgImage: "/api/placeholder/800/400"
+    },
+    {
+      title: "Fitzroy Campus",
+      location: "97 Smith Street, Fitzroy VIC 3065, Australia",
+      phone: "+613 9620 7738",
+      email: "admin@ridge.edu.au",
+      bgImage: "/api/placeholder/800/400"
+    },
+    {
+      title: "Sydney Campus",
+      location: "Office 101, 30 Cowper Street, PARRAMATTA, New South Wales 2150",
+      phone: "+613 9620 7738",
+      email: "admin@ridge.edu.au",
+      bgImage: "/api/placeholder/800/400"
+    }
+  ];
+
+  const departments = [
+    {
+      title: "Academic Support",
+      email: "academic_support@ridge.edu.au",
+      hours: "Monday - Friday (2:00 PM - 4:00 PM)",
+      icon: BookOpen,
+      color: "bg-blue-100"
+    },
+    {
+      title: "Student Support",
+      email: "shweta@ridge.edu.au",
+      hours: "Monday - Friday (1:00 PM - 2:00 PM)",
+      icon: User,
+      color: "bg-green-100"
+    },
+    {
+      title: "Marketing - Melbourne",
+      email: "marketing@ridge.edu.au",
+      hours: "Monday - Friday (1:00 PM - 3:00 PM)",
+      icon: MessageCircle,
+      color: "bg-purple-100"
+    },
+    {
+      title: "Marketing - Sydney",
+      email: "sydneymarketing@ridge.edu.au",
+      hours: "Monday - Friday (1:00 PM - 3:00 PM)",
+      icon: MessageCircle,
+      color: "bg-orange-100"
+    }
+  ];
 
   const handleScheduleAppointment = (index) => {
     if (selectedDates[index]) {
@@ -19,70 +74,54 @@ const HomePage = () => {
     }
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setCurrentIndex(null); // Reset the index
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <div className="relative bg-blue-900 text-white">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-purple-900 opacity-90"></div>
-        <div className="container mx-auto px-4 py-24 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-            <p className="text-2xl text-blue-100 mb-8">We Are Ready To Help With Your Queries</p>
+      <div className="relative h-96">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900">
+          <div className="absolute inset-0 bg-blue-900/50 backdrop-blur-sm"></div>
+        </div>
+        <div className="relative h-full flex items-center justify-center text-center px-4">
+          <div>
+            <h1 className="text-6xl font-bold text-white mb-6">Get in Touch</h1>
+            <p className="text-2xl text-blue-100 max-w-2xl mx-auto">
+              We're here to help you take the next step in your educational journey
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Campus Locations */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {/* Campus Info */}
-          {[
-            {
-              title: "Melbourne Campus",
-              location: "Level 5/85 Queen St, Melbourne, VIC, 3000, Australia",
-              phone: "+613 9620 7738",
-              email: "admin@ridge.edu.au"
-            },
-            {
-              title: "Fitzroy Campus",
-              location: "97 Smith Street, Fitzroy VIC 3065, Australia",
-              phone: "+613 9620 7738",
-              email: "admin@ridge.edu.au"
-            },
-            {
-              title: "Sydney Campus",
-              location: "Office 101, 30 Cowper Street, PARRAMATTA, New South Wales 2150",
-              phone: "+613 9620 7738",
-              email: "admin@ridge.edu.au"
-            }
-          ].map((campus, idx) => (
-            <div key={idx} className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow">
-              <h2 className="text-2xl font-bold mb-6 text-blue-900">{campus.title}</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-semibold mb-1">Location</p>
+      {/* Main Content */}
+      <div className="container mx-auto px-4 -mt-20">
+        {/* Campus Cards */}
+        <div className="grid md:grid-cols-3 gap-8 mb-24">
+          {campusLocations.map((campus, idx) => (
+            <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-48 bg-blue-100 relative">
+                <img
+                  src={campus.bgImage}
+                  alt={campus.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-4 text-blue-900">{campus.title}</h2>
+                <div className="space-y-4">
+                  <div className="flex gap-3">
+                    <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
                     <p className="text-gray-600">{campus.location}</p>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-6 h-6 text-blue-600" />
-                  <div>
-                    <p className="font-semibold mb-1">Phone</p>
-                    <a href={`tel:${campus.phone}`} className="text-blue-600 hover:underline">{campus.phone}</a>
+                  <div className="flex gap-3">
+                    <Phone className="w-5 h-5 text-blue-600" />
+                    <a href={`tel:${campus.phone}`} className="text-blue-600 hover:underline">
+                      {campus.phone}
+                    </a>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-6 h-6 text-blue-600" />
-                  <div>
-                    <p className="font-semibold mb-1">Email</p>
-                    <a href={`mailto:${campus.email}`} className="text-blue-600 hover:underline">{campus.email}</a>
+                  <div className="flex gap-3">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <a href={`mailto:${campus.email}`} className="text-blue-600 hover:underline">
+                      {campus.email}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -91,142 +130,150 @@ const HomePage = () => {
         </div>
 
         {/* Appointment Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Schedule your Appointment</h2>
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-blue-900">Schedule an Appointment</h2>
+            <p className="text-gray-600 mt-4">Choose your preferred department and time</p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Appointment Details */}
-            {[
-              {
-                title: "Academic",
-                email: "academic_support@ridge.edu.au",
-                hours: "Monday/Tuesday/Wednesday/Thursday/Friday (2.00-4.00PM)",
-                icon: BookOpen
-              },
-              {
-                title: "Student Support",
-                email: "shweta@ridge.edu.au",
-                hours: "Monday/Tuesday/Wednesday/Thursday/Friday (1.00-2.00PM)",
-                icon: User
-              },
-              {
-                title: "Marketing - Melbourne Campus",
-                email: "marketing@ridge.edu.au",
-                hours: "Monday/Tuesday/Wednesday/Thursday/Friday (1.00-3.00PM)",
-                icon: MessageCircle
-              },
-              {
-                title: "Marketing - Sydney Campus",
-                email: "sydneymarketing@ridge.edu.au",
-                hours: "Monday/Tuesday/Wednesday/Thursday/Friday (1.00-3.00PM)",
-                icon: MessageCircle
-              }
-            ].map((dept, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                <div className="p-3 bg-blue-100 rounded-full w-fit mb-4">
+            {departments.map((dept, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <div className={`${dept.color} p-3 rounded-full w-fit mb-4`}>
                   {React.createElement(dept.icon, { className: "w-6 h-6 text-blue-600" })}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{dept.title}</h3>
-                <a href={`mailto:${dept.email}`} className="text-blue-600 hover:underline block mb-3">{dept.email}</a>
+                <h3 className="text-xl font-bold mb-3 text-blue-900">{dept.title}</h3>
+                <a href={`mailto:${dept.email}`} className="text-blue-600 hover:underline block mb-3">
+                  {dept.email}
+                </a>
                 <div className="flex items-center gap-2 text-gray-600 mb-4">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm">{dept.hours}</span>
                 </div>
-                <div className="relative">
-                  <DatePicker
-                    selected={selectedDates[index]}
-                    onChange={(date) => {
-                      const updatedDates = [...selectedDates]; // Create a copy of the current state
-                      updatedDates[index] = date; // Update the specific index
-                      setSelectedDates(updatedDates); // Set the new state
-                    }}
-                    className="w-full border border-gray-300 rounded-lg py-2 px-4 mb-2 focus:outline-none focus:ring focus:ring-blue-300"
-                    placeholderText="Select a date"
-                  />
-                  <button 
-                    onClick={() => handleScheduleAppointment(index)} // Use the current index
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
-                  >
-                    Schedule an Appointment
-                    <Calendar className="w-4 h-4" />
-                  </button>
-                </div>
+                <DatePicker
+                  selected={selectedDates[index]}
+                  onChange={(date) => {
+                    const newDates = [...selectedDates];
+                    newDates[index] = date;
+                    setSelectedDates(newDates);
+                  }}
+                  className="w-full border border-gray-300 rounded-lg p-2 mb-3"
+                  placeholderText="Select date"
+                />
+                <button
+                  onClick={() => handleScheduleAppointment(index)}
+                  disabled={!selectedDates[index]}
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Schedule Meeting
+                  <Calendar className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
         </div>
 
         {/* Contact Form Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center bg-white rounded-2xl shadow-lg p-8 mb-16">
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Support</h2>
-            <h3 className="text-2xl font-semibold mb-4">How Can We Help?</h3>
-            <p className="text-gray-600 mb-8">
-              We have an expert team who are dedicated to support and guide you every step of the way.
-            </p>
-            <div className="space-y-6">
-              <h4 className="text-xl font-semibold">Follow us on our social media handles:</h4>
-              <div className="flex gap-4">
-                {[{ Icon: Facebook, link: "#" }, { Icon: Instagram, link: "#" }, { Icon: Twitter, link: "#" }, { Icon: Linkedin, link: "#" }]
-                  .map(({ Icon, link }, idx) => (
-                  <a key={idx} href={link} target="_blank" rel="noopener noreferrer" className="p-3 bg-blue-100 rounded-full hover:bg-blue-600 hover:text-white transition-colors">
-                    <Icon className="w-6 h-6" />
-                  </a>
-                ))}
+        <div className="bg-white rounded-lg shadow-lg mb-24">
+          <div className="p-8">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h2 className="text-4xl font-bold text-blue-900 mb-6">Let's Connect</h2>
+                <p className="text-gray-600 mb-8">
+                  Have questions? Our team is here to help you navigate your educational journey.
+                </p>
+                <div className="space-y-6">
+                  <h4 className="text-xl font-semibold">Follow us:</h4>
+                  <div className="flex gap-4">
+                    {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
+                      <button
+                        key={idx}
+                        className="p-3 rounded-full border border-gray-200 hover:bg-blue-50 transition-colors"
+                      >
+                        <Icon className="w-5 h-5" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <textarea
+                  placeholder="Your Message"
+                  rows="4"
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-32"
+                />
+                <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                  Send Message
+                </button>
               </div>
             </div>
-          </div>
-          <div>
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
-              />
-              <textarea
-                placeholder="Your Message"
-                rows="4"
-                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none"
-              ></textarea>
-              <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                Send
-              </button>
-            </form>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="bg-blue-900 text-white rounded-2xl p-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">Want to study at Ridge International College?</h2>
-          <div className="flex gap-4 justify-center">
-            <button className="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors flex items-center gap-2">
-              Talk To Us
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors flex items-center gap-2">
-              Request Info
-              <ArrowRight className="w-5 h-5" />
-            </button>
+        <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg text-white mb-24">
+          <div className="p-12 text-center">
+            <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey?</h2>
+            <div className="flex gap-4 justify-center">
+              <button className="bg-white text-blue-900 px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors flex items-center gap-2">
+                Apply Now
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button className="border border-white px-6 py-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2">
+                Learn More
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Modal for Appointment Confirmation */}
+      {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-8 w-96 text-center">
-            <h3 className="text-xl font-semibold mb-4">Meeting Scheduled!</h3>
-            <p className="text-gray-600 mb-4">Your appointment has been scheduled for {selectedDates[currentIndex]?.toLocaleDateString()}.</p>
-            <button 
-              onClick={closeModal} 
-              className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
-            >
-              Close
-            </button>
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg w-full max-w-md">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold">Appointment Confirmed</h3>
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                  <Calendar className="w-8 h-8 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-gray-600">
+                    Your appointment with {departments[currentIndex]?.title} has been scheduled for:
+                  </p>
+                  <p className="font-semibold text-lg">
+                    {selectedDates[currentIndex]?.toLocaleDateString()}
+                  </p>
+                </div>
+                <p className="text-sm text-gray-500">
+                  A confirmation email has been sent to your inbox.
+                </p>
+                <button 
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Done
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
