@@ -37,21 +37,21 @@ const Header = () => {
     { name: 'About', path: '/about' },
     { name: 'Courses', path: '/courses' },
     {
-      name: 'International Students',
-      path: '/international',
-      dropdownItems: [
-        { name: 'Living and Studying in Australia', path: '/living' },
-        { name: 'Student Support Services', path: '/services' },
-        { name: 'Useful Information', path: '/international/useful-information' },
-      ]
-    },
-    {
       name: 'Admissions',
       path: '/admissions',
       dropdownItems: [
         { name: 'Entry Requirements', path: '/requirements' },
         { name: 'Unique Student Identifiers', path: '/admissions/unique-student-identifiers' },
         { name: 'Schedule of Fees and Charges', path: '/schedule' },
+      ]
+    },
+    {
+      name: 'International Students',
+      path: '/international',
+      dropdownItems: [
+        { name: 'Living and Studying in Australia', path: '/living' },
+        { name: 'Student Support Services', path: '/services' },
+        { name: 'Useful Information', path: '/info' },
       ]
     },
     {

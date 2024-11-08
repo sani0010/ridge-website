@@ -19,6 +19,7 @@ import HomeNoticePage from './pages/HomeNoticePage';
 import Events from './pages/Events';
 import BlogPage from './pages/BlogPage';
 import AffiliationsPartners from './pages/AffiliationsPartners';
+import UsefulInfo from './pages/UsefulInfo';
 
 
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/affiliations" element={<AffiliationsPartners />} />
+        <Route path="/info" element={<UsefulInfo />} />
 
       </Routes>
       <Footer />
