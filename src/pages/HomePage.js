@@ -5,6 +5,7 @@ import NewsAndEvents from '../components/NewsAndEvents.js'; // Ensure this is Pa
 import WhyChooseUs from '../components/WhyChooseUs';
 import LandingPage from '../components/LandingPage';
 import Testimonials from '../components/Testimonials.js';
+import AffiliationsPartners from './AffiliationsPartners.js';
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <Hero />
       <LandingPage />
       <NewsAndEvents />
+      <AffiliationsPartners/>
       <Testimonials />
       <WhyChooseUs />
     </div>

@@ -18,6 +18,7 @@ import FormsPage from './pages/FormsPage';
 import HomeNoticePage from './pages/HomeNoticePage';
 import Events from './pages/Events';
 import BlogPage from './pages/BlogPage';
+import AffiliationsPartners from './pages/AffiliationsPartners';
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/notice" element={<HomeNoticePage />} />
         <Route path="/events" element={<Events />} />
         <Route path="/blogs" element={<BlogPage />} />
+        <Route path="/affiliations" element={<AffiliationsPartners />} />
 
       </Routes>
       <Footer />
