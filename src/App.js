@@ -20,6 +20,7 @@ import Events from './pages/Events';
 import BlogPage from './pages/BlogPage';
 import AffiliationsPartners from './pages/AffiliationsPartners';
 import UsefulInfo from './pages/UsefulInfo';
+import UniqueStudentIdentifier from './pages/UniqueStudentIdentifier';
 
 
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/blogs" element={<BlogPage />} />
         <Route path="/affiliations" element={<AffiliationsPartners />} />
         <Route path="/info" element={<UsefulInfo />} />
+        <Route path="/identifier" element={<UniqueStudentIdentifier />} />
 
       </Routes>
       <Footer />

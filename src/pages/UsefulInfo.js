@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Link as LinkIcon, AlertCircle } from 'lucide-react';
+import { Link as LinkIcon, AlertCircle } from 'lucide-react';
 
 const UsefulInfo = () => {
   const amenities = [

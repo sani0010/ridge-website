@@ -41,7 +41,7 @@ const Header = () => {
       path: '/admissions',
       dropdownItems: [
         { name: 'Entry Requirements', path: '/requirements' },
-        { name: 'Unique Student Identifiers', path: '/admissions/unique-student-identifiers' },
+        { name: 'Unique Student Identifiers', path: '/identifier' },
         { name: 'Schedule of Fees and Charges', path: '/schedule' },
       ]
     },
