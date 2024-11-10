@@ -66,7 +66,7 @@ const Header = () => {
       dropdownItems: [
         { name: 'Forms', path: '/forms' },
         { name: 'Notices', path: '/notice' },
-        { name: 'Policies', path: '/resources/policies' },
+        { name: 'Policies', path: '/policy' },
         { name: 'Events', path: '/events' },
         { name: 'Blogs', path: '/blogs' },
       ]

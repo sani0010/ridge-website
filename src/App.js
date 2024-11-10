@@ -21,6 +21,7 @@ import BlogPage from './pages/BlogPage';
 import AffiliationsPartners from './pages/AffiliationsPartners';
 import UsefulInfo from './pages/UsefulInfo';
 import UniqueStudentIdentifier from './pages/UniqueStudentIdentifier';
+import PoliciesPage from './pages/PoliciesPage';
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/affiliations" element={<AffiliationsPartners />} />
         <Route path="/info" element={<UsefulInfo />} />
         <Route path="/identifier" element={<UniqueStudentIdentifier />} />
+        <Route path="/policy" element={<PoliciesPage />} />
 
       </Routes>
       <Footer />
