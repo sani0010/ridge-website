@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronRight, Book, GraduationCap, Languages, ClipboardCheck, BookOpen, Laptop, Package } from 'lucide-react';
 
 const EntryRequirements = () => {
-  const [activeSection, setActiveSection] = useState('age');
+  const [activeSection, setActiveSection] = useState(null);
 
   const sections = [
     { id: 'age', title: 'Age Requirement', icon: Book, color: 'bg-blue-500' },
@@ -27,7 +27,7 @@ const EntryRequirements = () => {
 
   const renderContent = (sectionId) => {
     const contentClass = "p-4 md:p-6 rounded-lg bg-white shadow-lg space-y-4";
-    
+
     switch (sectionId) {
       case 'age':
         return (
@@ -120,7 +120,7 @@ const EntryRequirements = () => {
           <div className={contentClass}>
             <p className="text-base md:text-lg mb-4">Required materials include:</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
+              {[ 
                 { text: 'Access to a laptop or computer', icon: Laptop },
                 { text: 'An active email address', icon: Book },
                 { text: 'Contact phone number', icon: Book },
@@ -144,40 +144,26 @@ const EntryRequirements = () => {
     <div className="max-w-7xl mx-auto p-4 md:p-8">
       <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-xl p-4 md:p-8">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 md:mb-8">Entry Requirements</h1>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8">
-          {/* Navigation Cards */}
-          <div className="lg:col-span-4 flex flex-col space-y-3 md:space-y-4">
-            {sections.map((section) => {
-              const Icon = section.icon;
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveSection(section.id)}
-                  className={`w-full group transition-all duration-300 ${
-                    activeSection === section.id
-                      ? 'bg-white shadow-lg scale-102'
-                      : 'bg-white/50 hover:bg-white hover:shadow-md'
-                  } rounded-xl p-3 md:p-4 flex items-center justify-between`}
-                >
-                  <div className="flex items-center space-x-3 md:space-x-4">
-                    <div className={`${section.color} p-2 rounded-lg text-white`}>
-                      <Icon className="w-4 h-4 md:w-5 md:h-5" />
-                    </div>
-                    <span className="font-medium text-gray-700 text-sm md:text-base">{section.title}</span>
-                  </div>
-                  <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 transition-transform ${
-                    activeSection === section.id ? 'rotate-90 text-blue-500' : 'text-gray-400'
-                  }`} />
-                </button>
-              );
-            })}
-          </div>
 
-          {/* Content Area */}
-          <div className="lg:col-span-8">
-            {renderContent(activeSection)}
-          </div>
+        <div className="space-y-4">
+          {sections.map((section) => (
+            <div key={section.id}>
+              <div
+                className={`flex items-center justify-between bg-white p-4 rounded-lg shadow-lg cursor-pointer transform transition-transform hover:scale-105 hover:shadow-xl`}
+                onClick={() => setActiveSection(activeSection === section.id ? null : section.id)}
+              >
+                <div className="flex items-center">
+                  <div className={`p-2 rounded-full ${section.color} text-white`}>
+                    <section.icon className="w-6 h-6" />
+                  </div>
+                  <h2 className="ml-4 text-lg font-semibold text-gray-800">{section.title}</h2>
+                </div>
+                <ChevronRight className="text-gray-500 w-5 h-5" />
+              </div>
+
+              {activeSection === section.id && renderContent(section.id)}
+            </div>
+          ))}
         </div>
       </div>
     </div>
