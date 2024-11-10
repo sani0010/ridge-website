@@ -20,7 +20,7 @@ const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
-  const campusRef = useRef(null); // Ref for Campus Tour section
+  const campusRef = useRef(null);
 
   const scrollToCampusTour = () => {
     campusRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +43,6 @@ const AboutUsPage = () => {
       observer.observe(section);
     });
 
-    // Counter Animation
     const animateCounter = (target, setValue) => {
       let count = 0;
       const increment = Math.ceil(target / 100);
@@ -93,17 +92,10 @@ const AboutUsPage = () => {
   ];
 
   const campusImages = [
-    campusImg1,
-    campusImg2,
-    campusImg3,
-    campusImg4,
-    campusImg5,
-    campusImg6,
-    campusImg7,
-    campusImg8
+    campusImg1, campusImg2, campusImg3, campusImg4,
+    campusImg5, campusImg6, campusImg7, campusImg8
   ];
 
-  // Animation variants for image grid
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -141,15 +133,15 @@ const AboutUsPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
       <div 
-        className="relative h-screen flex items-center justify-center bg-cover bg-center overflow-hidden"
+        className="relative min-h-[600px] h-screen flex items-center justify-center bg-cover bg-center overflow-hidden px-4"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 text-white leading-tight"
+            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight"
           >
             Shaping Future Leaders at
             <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
@@ -160,7 +152,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-blue-100 mb-12"
+            className="text-lg md:text-xl text-blue-100 mb-8 md:mb-12 px-4"
           >
             A premier institution dedicated to delivering world-class education and fostering global excellence
           </motion.p>
@@ -168,13 +160,13 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex gap-6 justify-center"
+            className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4"
           >
-            <Link to="/courses" className="group relative px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden">
+            <Link to="/courses" className="group relative px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden">
               <span className="relative z-10">Explore Courses</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </Link>
-            <button onClick={scrollToCampusTour} className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
+            <button onClick={scrollToCampusTour} className="px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
               Virtual Tour
             </button>
           </motion.div>
@@ -183,20 +175,20 @@ const AboutUsPage = () => {
       </div>
 
       {/* Stats Section */}
-      <section id="stats" className="py-24 px-4">
+      <section id="stats" className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible.stats ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="text-center bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                className="text-center bg-white p-4 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
-                <stat.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600">{stat.label}</div>
+                <stat.icon className="w-8 h-8 md:w-12 md:h-12 text-blue-600 mx-auto mb-3 md:mb-4" />
+                <div className="text-xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">{stat.value}</div>
+                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -204,20 +196,20 @@ const AboutUsPage = () => {
       </section>
 
       {/* CEO Section */}
-      <section id="ceo" className="py-24 bg-white">
+      <section id="ceo" className="py-16 md:py-24 bg-white">
         <div className="container mx-auto max-w-6xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.ceo ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
           >
             <div>
-              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
                 Message from CEO
               </h2>
-              <p className="text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
-              <div className="space-y-6 text-gray-600">
+              <p className="text-lg md:text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>
+              <div className="space-y-4 md:space-y-6 text-sm md:text-base text-gray-600">
                 <p>
                   Dear Student,
                   A very warm welcome to Ridge International College!
@@ -245,21 +237,19 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-
-
-      {/* Campus Tour Section with Motion */}
-      <section id="campus" className="py-24 bg-gray-50" ref={campusRef}>
+      {/* Campus Tour Section */}
+      <section id="campus" className="py-16 md:py-24 bg-gray-50" ref={campusRef}>
         <div className="container mx-auto max-w-6xl px-4">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.campus ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-4xl font-bold mb-12 text-center"
+            className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center"
           >
             Campus Tour
           </motion.h2>
           <motion.div 
-            className="grid md:grid-cols-4 grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             variants={containerVariants}
             initial="hidden"
             animate={isVisible.campus ? "visible" : "hidden"}
@@ -267,7 +257,7 @@ const AboutUsPage = () => {
             {campusImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                className="aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer"
                 variants={imageVariants}
                 whileHover="hover"
               >
@@ -286,33 +276,34 @@ const AboutUsPage = () => {
       </section>
       
       {/* Facilities Section */}
-      <section id="facilities" className="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      <section id="facilities" className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="container mx-auto max-w-6xl px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Campus Location and Facilities</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Location and Facilities</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
                Experience learning in our state-of-the-art facilities designed for academic excellence
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {facilities.map((facility, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
-                className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
-                <Building2 className="w-12 h-12 text-blue-600 mb-6" />
-                <h3 className="text-xl font-semibold mb-4">{facility.title}</h3>
-                <p className="text-gray-600 mb-6">{facility.description}</p>
+                className="group bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              >
+                <Building2 className="w-10 h-10 md:w-12 md:h-12 text-blue-600 mb-4 md:mb-6" />
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{facility.title}</h3>
+                <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{facility.description}</p>
                 <div className="flex items-center text-blue-600 font-medium">
-                  <span className="mr-2">Learn More</span>
+                  <span className="text-sm md:text-base mr-2">Learn More</span>
                   <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
