@@ -19,7 +19,7 @@ const ContactPage = () => {
     {
       title: "Melbourne Campus",
       location: "Level 5/85 Queen St, Melbourne, VIC, 3000, Australia",
-      phone: "+613 9620 7738",
+      phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
       image: melbourne,
       mapLink: "https://www.google.com/maps/place/level+5%2F85+Queen+St,+Melbourne+VIC+3000,+Australia/@-37.816465,144.961033,15z/data=!4m6!3m5!1s0x6ad65d4b550c0001:0x7de2f73dc09aaf50!8m2!3d-37.8164646!4d144.961033!16s%2Fg%2F11rm870p09?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
@@ -27,7 +27,7 @@ const ContactPage = () => {
     {
       title: "Fitzroy Campus",
       location: "97 Smith Street, Fitzroy VIC 3065, Australia",
-      phone: "+613 9620 7738",
+      phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
       image: fitzroy,
       mapLink: "https://www.google.com/maps/place/97+Smith+St,+Fitzroy+VIC+3065,+Australia/@-37.805917,144.982949,15z/data=!4m6!3m5!1s0x6ad642ddf0f10e41:0x28e12490fe5935f1!8m2!3d-37.805917!4d144.982949!16s%2Fg%2F11c5k3jr80?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
@@ -35,7 +35,7 @@ const ContactPage = () => {
     {
       title: "Sydney Campus",
       location: "Office 101, 30 Cowper Street, PARRAMATTA, New South Wales 2150",
-      phone: "+613 9620 7738",
+      phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
       image: sydney,
       mapLink: "https://www.google.com/maps/place/Office+101%2F30+Cowper+St,+Parramatta+NSW+2150,+Australia/@-33.82065,151.007161,15z/data=!4m6!3m5!1s0x6b12a323c4ba11fd:0x13edfafca3af5b0c!8m2!3d-33.8206497!4d151.0071609!16s%2Fg%2F11khd5j4bh?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"

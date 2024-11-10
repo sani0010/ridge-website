@@ -134,7 +134,7 @@ const LandingPage = () => {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="text-gray-600 mb-6 text-sm sm:text-base"
               >
-Ridge International College is one of the best VET college in Australia. It is established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students.
+                Ridge International College is one of the best VET college in Australia. It is established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students.
                 We also have an exceptional teaching team, trainers with excellent academic skills holding PhD or Masters degrees, along with a great deal of teaching experience and practical knowledge from working in the industry, they are amongst the best in the respective field. 
                 At our institute, only the most up-to-date knowledge and skills will be brought into our training and we ensure that we deliver quality outcomes for students, industry and the Australian economy.
               </motion.p>
@@ -211,6 +211,7 @@ Ridge International College is one of the best VET college in Australia. It is e
             <form onSubmit={handleFormSubmit} className="space-y-4">
               <input type="text" placeholder="Full Name" className="w-full px-4 py-2 border border-gray-300 rounded-lg" />
               <input type="email" placeholder="Email" className="w-full px-4 py-2 border border-gray-300 rounded-lg" />
+              <input type='text' placeholder='Which Course You Want To Enroll' className='w-full px-4 py-8 border border-gray-300 round-lg' />
               <input type="tel" placeholder="Phone Number" className="w-full px-4 py-2 border border-gray-300 rounded-lg" />
               <button type="submit" className="w-full bg-[#3554a5] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
                 Submit
