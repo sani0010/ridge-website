@@ -47,7 +47,7 @@ const Hero = () => {
         className="h-full bg-cover bg-center transition-opacity duration-1000"
         style={{ backgroundImage: `url(${images[currentIndex]})` }}
       >
-        <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-50 text-white text-center p-4 md:p-8 lg:p-12">
+        <div className="flex flex-col justify-center items-center h-full  bg-opacity-50 text-white text-center p-4 md:p-8 lg:p-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Welcome to Ridge International College</h1>
           <p className="text-lg md:text-xl lg:text-2xl mb-6">Your path to success starts here</p>
           <Link to="/about">
