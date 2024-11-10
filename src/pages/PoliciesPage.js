@@ -119,7 +119,8 @@ const PoliciesPage = () => {
         .animate-slide-down {
           animation: slideDown 0.5s ease-out forwards;
         }
-      `}</style>
+      `}
+      </style>
     </div>
   );
 };
