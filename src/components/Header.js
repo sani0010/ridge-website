@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo.png';
 
 const Header = () => {
   const location = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isLoginHovered, setIsLoginHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const timeoutRef = useRef(null);
 
   useEffect(() => {
@@ -29,7 +31,11 @@ const Header = () => {
     }
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 200); // 300ms delay before closing
+    }, 200);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const navigationItems = [
@@ -69,13 +75,12 @@ const Header = () => {
   ];
 
   const renderDropdown = (item) => (
-    <div 
+    <div
       className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 
                  bg-white border rounded-lg shadow-lg w-64 z-50"
       onMouseEnter={() => handleMouseEnter(item.name)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Added padding to create larger hover area */}
       <div className="py-2 px-1">
         {item.dropdownItems.map((dropdownItem) => (
           <Link
@@ -98,14 +103,11 @@ const Header = () => {
           <Link to="/" className="flex-shrink-0">
             <img src={logo} alt="Ridge International College Logo" className="h-16" />
           </Link>
-          
-          <ul className="flex space-x-5 justify-center items-center flex-grow">
+
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex space-x-5 justify-center items-center flex-grow">
             {navigationItems.map((item) => (
-              <li
-                key={item.path}
-                className="relative"
-              >
-                {/* Added padding-bottom to create larger hover area */}
+              <li key={item.path} className="relative">
                 <div
                   className="pb-3"
                   onMouseEnter={() => handleMouseEnter(item.name)}
@@ -115,8 +117,8 @@ const Header = () => {
                     to={item.path}
                     className={`
                       flex items-center px-3 py-2 rounded-md transition-colors duration-200
-                      ${location.pathname === item.path 
-                        ? 'text-[#F26722] font-semibold' 
+                      ${location.pathname === item.path
+                        ? 'text-[#F26722] font-semibold'
                         : 'text-gray-700 hover:text-[#F26722]'
                       }
                     `}
@@ -142,7 +144,13 @@ const Header = () => {
             ))}
           </ul>
 
-          <div className="relative ml-6 group"
+          {/* Mobile Menu Toggle */}
+          <button className="lg:hidden p-2" onClick={toggleMobileMenu}>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Login Button */}
+          <div className="hidden lg:flex relative ml-6 group"
                onMouseEnter={() => setIsLoginHovered(true)}
                onMouseLeave={() => setIsLoginHovered(false)}>
             <a
@@ -151,8 +159,6 @@ const Header = () => {
               rel="noopener noreferrer"
               className={`
                 inline-flex items-center px-6 py-2.5 
-                overflow-hidden relative
-                group-hover:scale-105
                 rounded-lg transition-all duration-300
                 ${isLoginHovered 
                   ? 'bg-gradient-to-r from-[#F26722] to-[#ff8142] text-white shadow-lg' 
@@ -160,22 +166,6 @@ const Header = () => {
                 }
               `}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className={`w-5 h-5 mr-2 transition-transform duration-300 ${
-                  isLoginHovered ? 'rotate-12' : ''
-                }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                />
-              </svg>
               <span className="font-semibold text-sm">Student Login</span>
             </a>
             <div className={`
@@ -188,6 +178,55 @@ const Header = () => {
             </div>
           </div>
         </nav>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white shadow-lg px-6 py-4 space-y-4">
+            <ul className="flex flex-col space-y-3">
+              {navigationItems.map((item) => (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`
+                      flex items-center px-3 py-2 rounded-md transition-colors duration-200
+                      ${location.pathname === item.path
+                        ? 'text-[#F26722] font-semibold'
+                        : 'text-gray-700 hover:text-[#F26722]'
+                      }
+                    `}
+                    onClick={toggleMobileMenu} // Close menu on item click
+                  >
+                    {item.name}
+                  </Link>
+                  {item.dropdownItems && (
+                    <div className="ml-4 mt-2 space-y-2">
+                      {item.dropdownItems.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.path}
+                          to={dropdownItem.path}
+                          className="block text-gray-600 hover:text-[#F26722] text-sm"
+                          onClick={toggleMobileMenu} // Close menu on item click
+                        >
+                          {dropdownItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4">
+              <a
+                href="https://app.axcelerate.com/auth/user/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-[#F26722] to-[#ff8142] text-white rounded-lg"
+              >
+                Student Login
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

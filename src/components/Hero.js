@@ -47,11 +47,11 @@ const Hero = () => {
         className="h-full bg-cover bg-center transition-opacity duration-1000"
         style={{ backgroundImage: `url(${images[currentIndex]})` }}
       >
-        <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-50 text-white text-center">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Ridge International College</h1>
-          <p className="text-xl mb-6">Your path to success starts here</p>
+        <div className="flex flex-col justify-center items-center h-full bg-black bg-opacity-50 text-white text-center p-4 md:p-8 lg:p-12">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Welcome to Ridge International College</h1>
+          <p className="text-lg md:text-xl lg:text-2xl mb-6">Your path to success starts here</p>
           <Link to="/about">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
+            <button className="bg-[#F26722] text-white px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#e0561b] transition duration-300">
               Learn More
             </button>
           </Link>
@@ -60,13 +60,13 @@ const Hero = () => {
         {/* Left and Right Navigation Buttons */}
         <button
           onClick={prevImage}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700 transition md:left-4 lg:left-6"
         >
           &lt;
         </button>
         <button
           onClick={nextImage}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-full hover:bg-gray-700 transition md:right-4 lg:right-6"
         >
           &gt;
         </button>
@@ -74,8 +74,8 @@ const Hero = () => {
 
       {/* Modal for Event Image */}
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-          <div className="bg-white rounded-lg p-1 md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
+          <div className="bg-white rounded-lg p-1 w-full max-w-lg md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
             {/* Close button positioned higher */}
             <button
               onClick={closeModal}
