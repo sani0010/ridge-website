@@ -305,7 +305,7 @@ const AboutUsPage = () => {
                   loading="lazy"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = '/placeholder-image.jpg'; // Add a placeholder image path
+                    e.target.src = '/placeholder-image.jpg';
                   }}
                 />
               </motion.div>
