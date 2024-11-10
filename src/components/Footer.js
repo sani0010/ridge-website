@@ -30,7 +30,7 @@ const Footer = () => {
           <h5 className="font-bold text-lg">Resources</h5>
           <ul className="mt-2 space-y-1">
             <li><a href="/forms" className="hover:text-gray-200">Forms</a></li>
-            <li><a href="/policies" className="hover:text-gray-200">Policies</a></li>
+            <li><a href="/policy" className="hover:text-gray-200">Policies</a></li>
             <li><a href="/find-an-agent" className="hover:text-gray-200">Find an Agent</a></li>
             <li><a href="/become-agent" className="hover:text-gray-200">Become a Ridge Representative Agent</a></li>
             <li><a href="/notice" className="hover:text-gray-200">Notice</a></li>
@@ -70,13 +70,8 @@ const Footer = () => {
         </div>
 
         {/* Footer Links */}
-        <div className="mt-4 md:col-span-3 text-center">
-          <ul className="flex justify-center space-x-4">
-            <li><a href="/privacy-policy" className="hover:text-gray-200">Privacy Policy</a></li>
-            <li><a href="/terms-of-service" className="hover:text-gray-200">Terms of Service</a></li>
-            <li><a href="/contact" className="hover:text-gray-200">Contact Us</a></li>
-          </ul>
-        </div>
+
+        <p className='flex justify-center text-center mt-4 md:col-span-3'>© Ridge International College. All Rights Reserved.</p>
       </div>
     </footer>
   );
