@@ -21,9 +21,19 @@ const AboutUsPage = () => {
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
   const campusRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const scrollToCampusTour = () => {
-    campusRef.current.scrollIntoView({ behavior: 'smooth' });
+    campusRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -36,34 +46,41 @@ const AboutUsPage = () => {
           }));
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
     document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
 
-    const animateCounter = (target, setValue) => {
-      let count = 0;
-      const increment = Math.ceil(target / 100);
-      const interval = setInterval(() => {
-        count += increment;
-        if (count >= target) {
-          clearInterval(interval);
-          setValue(target);
-        } else {
-          setValue(count);
-        }
-      }, 25);
+    const animateCounter = (target, setValue, delay = 0) => {
+      setTimeout(() => {
+        let count = 0;
+        const increment = Math.ceil(target / 100);
+        const interval = setInterval(() => {
+          count += increment;
+          if (count >= target) {
+            clearInterval(interval);
+            setValue(target);
+          } else {
+            setValue(count);
+          }
+        }, 25);
+      }, delay);
     };
 
     if (isVisible.stats) {
-      animateCounter(5000, setStudents);
-      animateCounter(4000, setGraduates);
+      if (isMobile) {
+        animateCounter(5000, setStudents, 0);
+        animateCounter(4000, setGraduates, 1000);
+      } else {
+        animateCounter(5000, setStudents);
+        animateCounter(4000, setGraduates);
+      }
     }
 
     return () => observer.disconnect();
-  }, [isVisible.stats]);
+  }, [isVisible.stats, isMobile]);
 
   const stats = [
     { icon: Users, label: "Students", value: `${students}+` },
@@ -141,7 +158,7 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight"
+            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight px-4"
           >
             Shaping Future Leaders at
             <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
@@ -162,11 +179,17 @@ const AboutUsPage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4"
           >
-            <Link to="/courses" className="group relative px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden">
+            <Link 
+              to="/courses" 
+              className="group relative px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden text-center"
+            >
               <span className="relative z-10">Explore Courses</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </Link>
-            <button onClick={scrollToCampusTour} className="px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
+            <button 
+              onClick={scrollToCampusTour} 
+              className="px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all"
+            >
               Virtual Tour
             </button>
           </motion.div>
@@ -177,13 +200,19 @@ const AboutUsPage = () => {
       {/* Stats Section */}
       <section id="stats" className="py-16 md:py-24 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+          <div className="flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={isVisible.stats ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                animate={isVisible.stats ? {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.8,
+                    delay: isMobile ? index * 0.5 : index * 0.2
+                  }
+                } : {}}
                 className="text-center bg-white p-4 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
                 <stat.icon className="w-8 h-8 md:w-12 md:h-12 text-blue-600 mx-auto mb-3 md:mb-4" />
@@ -213,10 +242,13 @@ const AboutUsPage = () => {
                 <p>
                   Dear Student,
                   A very warm welcome to Ridge International College!
-                  We are excited to see you on-campus and achieve your academic goals. Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential. Our friendly staffs are always ready to help you and guide you during your study here at Ridge International College. Our English, Business, Information technology, and hospitality courses are structured and designed to suit industry standards' that cater to individual needs.
+                  We are excited to see you on-campus and achieve your academic goals. Here, at Ridge International College, you will find exceptional experiences that allow you to grow and develop, explore new interests, and fully realize your potential.
                 </p>
                 <p>
-                  Producing skilled and career-ready graduates have always been central to our mission. Through a process that includes career exploration and professional preparation, we connect you with career paths and foster the skills and mindset needed for professional advancement. Our team is committed to shaping our students' skills and as a team, we play a role to connect students with the corporate world or professional world which is achieved through internships in the best organization in the market.
+                  Our friendly staffs are always ready to help you and guide you during your study here at Ridge International College. Our English, Business, Information technology, and hospitality courses are structured and designed to suit industry standards' that cater to individual needs.
+                </p>
+                <p>
+                  Producing skilled and career-ready graduates have always been central to our mission. Through a process that includes career exploration and professional preparation, we connect you with career paths and foster the skills and mindset needed for professional advancement.
                 </p>
                 <p>
                   With best wishes,<br />
@@ -225,14 +257,19 @@ const AboutUsPage = () => {
                 </p>
               </div>
             </div>
-            <motion.img 
-              src={CEO} 
-              alt="CEO" 
-              className="w-full h-auto rounded-lg shadow-md"
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isVisible.ceo ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-            />
+              className="relative w-full aspect-square md:aspect-auto"
+            >
+              <img 
+                src={CEO} 
+                alt="CEO" 
+                className="w-full h-full object-cover rounded-lg shadow-md"
+                loading="lazy"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -257,24 +294,26 @@ const AboutUsPage = () => {
             {campusImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer"
+                className="relative w-full pb-[100%] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-gray-200"
                 variants={imageVariants}
                 whileHover="hover"
               >
-                <motion.img 
+                <img 
                   src={image} 
-                  alt={`Campus Image ${index + 1}`} 
-                  className="w-full h-full object-cover"
-                  initial={{ scale: 1.2 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.8 }}
+                  alt={`Campus${index + 1}`} 
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/placeholder-image.jpg'; // Add a placeholder image path
+                  }}
                 />
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
-      
+
       {/* Facilities Section */}
       <section id="facilities" className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
         <div className="container mx-auto max-w-6xl px-4">
@@ -285,8 +324,8 @@ const AboutUsPage = () => {
             className="text-center mb-8 md:mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Location and Facilities</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
-               Experience learning in our state-of-the-art facilities designed for academic excellence
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-4">
+              Experience learning in our state-of-the-art facilities designed for academic excellence
             </p>
           </motion.div>
 
@@ -299,7 +338,7 @@ const AboutUsPage = () => {
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 className="group bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
               >
-                <Building2 className="w-10 h-10 md:w-12 md:h-12 text-blue-600 mb-4 md:mb-6" />
+                <Building2 className="w--10 h-10 md:w-12 md:h-12 text-blue-600 mb-4 md:mb-6" />
                 <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{facility.title}</h3>
                 <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{facility.description}</p>
                 <div className="flex items-center text-blue-600 font-medium">
