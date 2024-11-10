@@ -43,22 +43,22 @@ const AffiliationsPartners = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight text-center text-gray-900 sm:text-4xl">
+    <div className="bg-gray-100 py-6 sm:py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-center text-gray-900">
           Affiliations & Partners
         </h2>
         <div
-          className="mt-8 overflow-hidden flex space-x-8"
+          className="mt-4 sm:mt-6 md:mt-8 overflow-hidden flex space-x-4 sm:space-x-6 md:space-x-8"
           ref={scrollRef}
           style={{ display: 'flex', whiteSpace: 'nowrap' }}
         >
           {affiliations.map((affiliation) => (
-            <div key={affiliation.id} className="flex-shrink-0 w-1/4 p-4">
+            <div key={affiliation.id} className="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 p-2 sm:p-3 md:p-4">
               <img
                 src={affiliation.image}
                 alt={affiliation.name}
-                className="mx-auto h-24 object-contain"
+                className="mx-auto h-16 sm:h-20 md:h-24 object-contain"
               />
             </div>
           ))}
