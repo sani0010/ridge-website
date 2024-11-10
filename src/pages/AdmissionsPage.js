@@ -9,7 +9,6 @@ const AdmissionsPage = () => {
   const [activeTab, setActiveTab] = useState('onshore');
   const [isVisible, setIsVisible] = useState({});
 
-  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,16 +32,16 @@ const AdmissionsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-[600px] h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900">
-          <div className="absolute inset-0  opacity-10 bg-repeat"></div>
+          <div className="absolute inset-0 opacity-10 bg-repeat"></div>
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-6xl font-bold mb-6 text-white leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight text-center"
           >
             Your Future Begins at
             <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
@@ -53,7 +52,7 @@ const AdmissionsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-blue-100 mb-12"
+            className="text-lg sm:text-xl text-blue-100 mb-8 sm:mb-12 text-center"
           >
             Join a community of global learners and innovators
           </motion.p>
@@ -61,13 +60,13 @@ const AdmissionsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex gap-6 justify-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
           >
-            <button className="group relative px-8 py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden">
+            <button className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-900 rounded-xl font-semibold overflow-hidden w-full sm:w-auto">
               <span className="relative z-10">Begin Application</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </button>
-            <button className="px-8 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all w-full sm:w-auto">
               Download Prospectus
             </button>
           </motion.div>
@@ -76,23 +75,23 @@ const AdmissionsPage = () => {
       </div>
 
       {/* Features Section */}
-      <section id="features" className="py-24 px-4">
+      <section id="features" className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-6xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.features ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
               Why Choose Ridge International
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto px-4">
               Experience world-class education with our unique advantages
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               { 
                 icon: Globe, 
@@ -121,11 +120,11 @@ const AdmissionsPage = () => {
                 className="group relative bg-white rounded-2xl shadow-lg overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
-                <div className="p-8">
+                <div className="p-6 sm:p-8">
                   <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${feature.color} text-white mb-6`}>
                     <feature.icon size={24} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">{feature.title}</h3>
                   <p className="text-gray-600">{feature.desc}</p>
                   <div className="mt-6 flex items-center text-blue-600 font-medium">
                     <span className="mr-2">Learn More</span>
@@ -139,21 +138,21 @@ const AdmissionsPage = () => {
       </section>
 
       {/* Application Process */}
-      <section id="process" className="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="container mx-auto max-w-6xl px-4">
+      <section id="process" className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.process ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">Your Journey Starts Here</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Your Journey Starts Here</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               A simple three-step process to begin your educational journey
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: ScrollText,
@@ -181,14 +180,14 @@ const AdmissionsPage = () => {
                 transition={{ duration: 0.8, delay: idx * 0.2 }}
                 className="relative group"
               >
-                <div className="bg-white p-8 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
                   <div className="mb-6">
-                    <span className="text-5xl font-bold text-blue-100">{step.step}</span>
+                    <span className="text-4xl sm:text-5xl font-bold text-blue-100">{step.step}</span>
                     <div className="mt-4 inline-flex p-3 rounded-xl bg-blue-50 text-blue-600 mb-4">
                       <step.icon size={24} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">{step.title}</h3>
                   <p className="text-gray-600">{step.content}</p>
                   <div className="mt-6 flex items-center text-blue-600 font-medium group-hover:gap-2 transition-all">
                     <span>View Details</span>
@@ -202,7 +201,7 @@ const AdmissionsPage = () => {
       </section>
 
       {/* Payment Information */}
-      <section id="payment" className="py-24 px-4">
+      <section id="payment" className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -210,12 +209,12 @@ const AdmissionsPage = () => {
             transition={{ duration: 0.8 }}
             className="bg-white rounded-3xl shadow-xl overflow-hidden"
           >
-            <div className="p-8 md:p-12">
+            <div className="p-6 sm:p-8 md:p-12">
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
                   <CreditCard size={24} />
                 </div>
-                <h2 className="text-3xl font-bold">Payment Details</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold">Payment Details</h2>
               </div>
 
               <div className="flex justify-center mb-8">
@@ -224,7 +223,7 @@ const AdmissionsPage = () => {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                      className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all ${
                         activeTab === tab
                           ? 'bg-white text-blue-600 shadow-md'
                           : 'text-gray-600 hover:text-gray-900'
@@ -236,11 +235,11 @@ const AdmissionsPage = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 rounded-2xl p-8">
+              <div className="bg-gray-50 rounded-2xl p-6 sm:p-8">
                 <div className="grid gap-6">
                   {activeTab === 'onshore' ? (
                     <>
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label className="text-sm text-gray-600">Bank</label>
                           <p className="font-medium">Australia and New Zealand Banking Group Limited (ANZ)</p>
@@ -261,7 +260,7 @@ const AdmissionsPage = () => {
                     </>
                   ) : (
                     <>
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <label className="text-sm text-gray-600">Bank</label>
                           <p className="font-medium">Commonwealth Bank of Australia (CBA)</p>
@@ -289,13 +288,13 @@ const AdmissionsPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="container mx-auto max-w-6xl px-4">
+      <section id="contact" className="py-16 sm:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible.contact ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-12 items-center bg-white rounded-3xl shadow-xl p-8 md:p-12"
+            className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center bg-white rounded-3xl shadow-xl p-6 sm:p-8 md:p-12"
           >
             <div>
               <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
