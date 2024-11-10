@@ -5,20 +5,20 @@ import { styled } from '@mui/system';
 const SectionTitle = styled(Typography)({
   fontSize: '2.5rem',
   fontWeight: '600',
-  color: '#2C3E50',
+  color: '#3554a5',
   marginBottom: '40px',
 });
 
 const SubsectionTitle = styled(Typography)({
   fontSize: '1.8rem',
   fontWeight: '600',
-  color: '#2980B9',
+  color: '#3554a5',
   marginBottom: '20px',
 });
 
 const InfoText = styled(Typography)({
   fontSize: '1.1rem',
-  color: '#34495E',
+  color: '#3554a5',
   lineHeight: '1.6',
   fontWeight: '500',
   marginBottom: '20px',
