@@ -22,6 +22,7 @@ import AffiliationsPartners from './pages/AffiliationsPartners';
 import UsefulInfo from './pages/UsefulInfo';
 import UniqueStudentIdentifier from './pages/UniqueStudentIdentifier';
 import PoliciesPage from './pages/PoliciesPage';
+import ITCoursesPage from './pages/ITCoursesPage';
 
 
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/info" element={<UsefulInfo />} />
         <Route path="/identifier" element={<UniqueStudentIdentifier />} />
         <Route path="/policy" element={<PoliciesPage />} />
+        <Route path="/course/information-technology" element={<ITCoursesPage />} />
 
       </Routes>
       <Footer />
