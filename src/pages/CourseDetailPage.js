@@ -41,7 +41,7 @@ const CourseDetailPage = () => {
   }
 
   const HighlightCard = ({ icon: Icon, title, value }) => (
-    <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+    <div className="bg-white rounded-xl p-6 mt-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
       <div className="flex items-center gap-4">
         <div className="p-3 bg-[#3554a5]/10 rounded-lg">
           <Icon className="w-6 h-6 text-[#3554a5]" />
