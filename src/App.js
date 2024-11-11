@@ -24,6 +24,11 @@ import UniqueStudentIdentifier from './pages/UniqueStudentIdentifier';
 import PoliciesPage from './pages/PoliciesPage';
 import ITCoursesPage from './pages/ITCoursesPage';
 import LeadershipPage from './pages/LeadershipPage';
+import CookeryPage from './pages/CookeryPage';
+import AgedPage from './pages/AgedPage';
+import DisablePage from './pages/DisablePage';
+import CommunityPage from './pages/CommunityPage';
+import ChildhoodPage from './pages/ChildhoodPage';
 
 
 
@@ -54,6 +59,11 @@ function App() {
         <Route path="/policy" element={<PoliciesPage />} />
         <Route path="/course/information-technology" element={<ITCoursesPage />} />
         <Route path="/course/leadership-and-management" element={<LeadershipPage />} />
+        <Route path="/course/aged-care" element={<AgedPage />} />
+        <Route path="/course/disability-care" element={<DisablePage />} />
+        <Route path="/course/community-service" element={<CommunityPage />} />
+        <Route path="/course/early-childhood-education" element={<ChildhoodPage />} />
+        <Route path="/course/commercial-cookery-hospitality-management" element={<CookeryPage />} />
         
 
       </Routes>
