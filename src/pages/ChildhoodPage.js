@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import diploma from '../assets/diplomaITImage.jpg';
+import advanced from '../assets/advancddiplomaITImage.jpg';
 
-const AgedPage = () => (
+const ITCoursesPage = () => (
   <div className="min-h-screen bg-gray-50">
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="text-center mb-12">
@@ -21,21 +22,6 @@ const AgedPage = () => (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-xl duration-300">
           <img src={diploma} alt="ICT50220 Diploma of Information Technology" className="w-full h-48 object-cover transition-transform duration-500 transform hover:scale-110" />
           <div className="p-6">
-            <Link to="/course/chc50121-diploma-early-childhood-education-and-care" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
-              ICT50220 Diploma of Information Technology
-            </Link>
-            <p className="text-gray-600">A comprehensive program to develop foundational IT skills needed for the industry.</p>
-            <p className="text-gray-600"><strong>Duration:</strong> 52 weeks</p>
-            <p className="text-gray-600"><strong>Tuition Fee:</strong> $300 per week</p>
-          </div>
-        </div>
-
-      </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* ICT50220 Diploma of Information Technology */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-xl duration-300">
-          <img src={diploma} alt="ICT50220 Diploma of Information Technology" className="w-full h-48 object-cover transition-transform duration-500 transform hover:scale-110" />
-          <div className="p-6">
             <Link to="/course/chc30121-certificate-iii-early-childhood-education-and-care" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
               ICT50220 Diploma of Information Technology
             </Link>
@@ -45,9 +31,21 @@ const AgedPage = () => (
           </div>
         </div>
 
+        {/* ICT60220 Advanced Diploma of Information Technology */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-xl duration-300">
+          <img src={advanced} alt="ICT60220 Advanced Diploma of Information Technology" className="w-full h-48 object-cover transition-transform duration-500 transform hover:scale-110" />
+          <div className="p-6">
+            <Link to="/course/chc50121-diploma-early-childhood-education-and-care" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
+              ICT60220 Advanced Diploma of Information Technology
+            </Link>
+            <p className="text-gray-600">Advanced training for complex IT problem-solving and management skills.</p>
+            <p className="text-gray-600"><strong>Duration:</strong> 78 weeks</p>
+            <p className="text-gray-600"><strong>Tuition Fee:</strong> $350 per week</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 );
 
-export default AgedPage;
+export default ITCoursesPage;
