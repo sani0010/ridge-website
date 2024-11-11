@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import diploma from '../assets/diplomaITImage.jpg';
 import advanced from '../assets/advancddiplomaITImage.jpg';
 
-const ITCoursesPage = () => (
+const LeadershipPage = () => (
   <div className="min-h-screen bg-gray-50">
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="text-center mb-12">
@@ -22,7 +22,7 @@ const ITCoursesPage = () => (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-xl duration-300">
           <img src={diploma} alt="ICT50220 Diploma of Information Technology" className="w-full h-48 object-cover transition-transform duration-500 transform hover:scale-110" />
           <div className="p-6">
-            <Link to="/course/ict50220-diploma-information-technology" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
+            <Link to="/course/bsb50420-diploma-leadership-management" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
               ICT50220 Diploma of Information Technology
             </Link>
             <p className="text-gray-600">A comprehensive program to develop foundational IT skills needed for the industry.</p>
@@ -35,7 +35,7 @@ const ITCoursesPage = () => (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all transform hover:scale-105 hover:shadow-xl duration-300">
           <img src={advanced} alt="ICT60220 Advanced Diploma of Information Technology" className="w-full h-48 object-cover transition-transform duration-500 transform hover:scale-110" />
           <div className="p-6">
-            <Link to="/course/ict60220-advanced-diploma-of-information-technology" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
+            <Link to="/course/bsb60420-advanced-diploma-leadership-management" className="text-xl font-semibold text-gray-800 hover:text-[#F26722] mb-2 transition-all duration-200">
               ICT60220 Advanced Diploma of Information Technology
             </Link>
             <p className="text-gray-600">Advanced training for complex IT problem-solving and management skills.</p>
@@ -48,4 +48,4 @@ const ITCoursesPage = () => (
   </div>
 );
 
-export default ITCoursesPage;
+export default LeadershipPage;

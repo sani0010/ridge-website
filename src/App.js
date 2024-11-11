@@ -23,6 +23,7 @@ import UsefulInfo from './pages/UsefulInfo';
 import UniqueStudentIdentifier from './pages/UniqueStudentIdentifier';
 import PoliciesPage from './pages/PoliciesPage';
 import ITCoursesPage from './pages/ITCoursesPage';
+import LeadershipPage from './pages/LeadershipPage';
 
 
 
@@ -52,6 +53,8 @@ function App() {
         <Route path="/identifier" element={<UniqueStudentIdentifier />} />
         <Route path="/policy" element={<PoliciesPage />} />
         <Route path="/course/information-technology" element={<ITCoursesPage />} />
+        <Route path="/course/leadership-and-management" element={<LeadershipPage />} />
+        
 
       </Routes>
       <Footer />
