@@ -24,43 +24,50 @@ const courses = [
     title: 'Information Technology',
     description: 'Develop in-demand tech skills for the growing IT sector.',
     image: it,
-    bgColor: 'bg-orange-500'
+    bgColor: 'bg-orange-500',
+    slug: 'information-technology'
   },
   {
     title: 'Leadership and Management',
     description: 'Acquire essential skills for effective leadership in various industries.',
     image: leadership,
-    bgColor: 'bg-green-600'
+    bgColor: 'bg-green-600',
+    slug: 'leadership-and-management'
   },
   {
     title: 'Commercial Cookery & Hospitality Management',
     description: 'Kickstart your career in the hospitality industry.',
     image: hospitality,
-    bgColor: 'bg-blue-600'
+    bgColor: 'bg-blue-600',
+    slug: 'commercial-cookery-hospitality-management'
   },
   {
     title: 'Aged Care',
     description: 'Learn to provide quality care and support for elderly individuals.',
     image: agedCare,
-    bgColor: 'bg-amber-700'
+    bgColor: 'bg-amber-700',
+    slug: 'aged-care'
   },
   {
     title: 'Disability Care',
     description: 'Develop skills to support people with disabilities.',
     image: disabilityCare,
-    bgColor: 'bg-cyan-500'
+    bgColor: 'bg-cyan-500',
+    slug: 'disability-care'
   },
   {
     title: 'Community Service',
     description: 'Gain knowledge and skills for a career in community support services.',
     image: communityService,
-    bgColor: 'bg-pink-500'
+    bgColor: 'bg-pink-500',
+    slug: 'community-service'
   },
   {
     title: 'Early Childhood Education',
     description: "Learn to support children's development and well-being.",
     image: earlyChildhood,
-    bgColor: 'bg-teal-600'
+    bgColor: 'bg-teal-600',
+    slug: 'early-childhood-education'
   }
 ];
 

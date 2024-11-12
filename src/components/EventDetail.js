@@ -1,12 +1,20 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { eventData } from '../data/eventData';
 
 const EventDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
+  const location = useLocation();
+
   const event = eventData.find(item => item.id === parseInt(id));
+
+  // Retrieve the saved scroll position
+  useEffect(() => {
+    if (location.state?.scrollPosition) {
+      window.scrollTo(0, location.state.scrollPosition);
+    }
+  }, [location.state]);
 
   if (!event) {
     return (
@@ -14,10 +22,10 @@ const EventDetail = () => {
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900">Event not found</h2>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate(-1)}
             className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-[#3554a5] hover:bg-[#3554a5]"
           >
-            Return to Home
+            Return to Events
           </button>
         </div>
       </div>
@@ -28,7 +36,7 @@ const EventDetail = () => {
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
           className="mb-8 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#3554a5] bg-white hover:bg-gray-50"
         >
           ← Back to Events
