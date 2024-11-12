@@ -1,3 +1,4 @@
+import diploma from '../assets/diplomaITImage.jpg';
 export const courseData = {
     'general-english': {
         title: 'ELICOS (General English)',
@@ -64,6 +65,7 @@ export const courseData = {
         'Focus on child-centered learning',
         'Guidance on industry standards and regulations',
     ],
+    image: diploma,
     careerOutcomes: 'After completion, graduates can pursue roles in specialized ICT functions like advanced networking, systems administration, or even start as contractors.',
     educationPathways: 'Further study options include ICT60220 Advanced Diploma of Information Technology.',
     courseStructure: {

@@ -15,12 +15,59 @@ import { courseData } from '../data/courseData';
 
 // Import all course images
 import generalEnglishImg from '../assets/general-english.jpg';
-import leadershipImg from '../assets/leadership.jpg';
+//Leader//
+import AdvDiploma from '../assets/AdvDip.jpg';
+import DipLeader from '../assets/DipLeader.jpg';
+import Graduate from '../assets/Graduatedip.jpg';
+//Cook//
+import DiplomaofHospitality from '../assets/DiplomaofHospitality.jpg';
+import Cert3Cookery from '../assets/Cert3Cookery.jpg';
+import CertificateIV from '../assets/CertificateIV.jpg';
+import AdvDip from '../assets/Advhospitality.jpg';
+//IT//
+import diploma from '../assets/diplomaITImage.jpg';
+import advanced from '../assets/advancddiplomaITImage.jpg';
+//Disable//
+import DisabilitySupp from '../assets/DisabilitySupp.jpg';
+//Childhood//
+import childhood from '../assets/Childhoodedu.jpg';
+import Cert3EarlyChildhood from '../assets/Cert3EarlyChildhood.jpg';
+//Aged//
+import CertificateIVAge from '../assets/CertificateIVAge.jpg';
+import individualsupport from '../assets/individualsupport.jpg';
+//Community//
+import CommunityService from '../assets/CommunityService.jpg';
 
-// Image mapping object - now used in the hero section
+// Image mapping object - now includes all course images
 const courseImages = {
   'general-english': generalEnglishImg,
-  'leadership-and-management': leadershipImg,
+
+
+  'bsb50420-bsb50420-diploma-leadership-management': DipLeader,
+  'bsb50420-diploma-leadership-management': AdvDiploma,
+  'bsb60420-advanced-diploma-leadership-management': Graduate,
+
+
+  'ict50220-diploma-information-technology': diploma,
+  'ict60220-advanced-diploma-of-information-technology':advanced,
+
+
+  'chc43121-certificate-iv-disability-support':DisabilitySupp,
+
+  'chc30121-certificate-iii-early-childhood-education-and-care':Cert3EarlyChildhood,
+  'chc50121-diploma-early-childhood-education-and-care':childhood,
+
+
+  'chc33021-certificate-iii-individual-support':CertificateIVAge,
+  'chc43015-certificate-iv-ageing-support':individualsupport,
+
+  'chc52021-diploma-community-services':CommunityService,
+
+
+  'sit30821-certificate-iii-commercial-cookery': Cert3Cookery,
+  'sit40521-certificate-iv-kitchen-management': CertificateIV,
+  'sit50422-diploma-hospitality-management': DiplomaofHospitality,
+  'sit60322-advanced-diploma-hospitality-management': AdvDip,
 };
 
 // Course category mapping
@@ -29,6 +76,9 @@ const courseCategories = {
   'leadership-and-management': 'Management Programs',
   'business': 'Business Programs',
   'ict50220-diploma-information-technology': 'IT Programs',
+  'sit30821-certificate-iii-commercial-cookery': 'Hospitality Programs',
+  'sit40521-certificate-iv-kitchen-management': 'Hospitality Programs',
+  'sit50422-diploma-hospitality-management': 'Hospitality Programs',
   'sit60322-advanced-diploma-hospitality-management': 'Hospitality Programs',
 };
 
@@ -39,6 +89,17 @@ const CourseDetailPage = () => {
   if (!course) {
     return <div className="text-center text-red-500">Course not found!</div>;
   }
+
+  // Helper function to get course image
+  const getCourseImage = () => {
+    if (courseImages[courseName]) {
+      return courseImages[courseName];
+    }
+    if (course.image) {
+      return course.image;
+    }
+    return '/api/placeholder/1200/500';
+  };
 
   const HighlightCard = ({ icon: Icon, title, value }) => (
     <div className="bg-white rounded-xl p-6 mt-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
@@ -72,8 +133,7 @@ const CourseDetailPage = () => {
   const assessmentMethods = Array.isArray(course.assessmentMethods) ? course.assessmentMethods : [];
   const startDates = Array.isArray(course.startDates) ? course.startDates : [];
 
-  // Get the course image or use a default
-  const courseImage = courseImages[courseName] || '/api/placeholder/1200/500';
+  const courseImage = getCourseImage();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -99,7 +159,6 @@ const CourseDetailPage = () => {
         </div>
       </div>
 
-      {/* Rest of the component remains the same */}
       {/* Quick Stats */}
       <div className="max-w-7xl mx-auto px-4 -mt-20 mb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

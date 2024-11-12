@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, BookOpen } from 'lucide-react';
-import AdvDip from '../assets/AdvDip.jpg';
+import AdvDiploma from '../assets/AdvDip.jpg';
 import DipLeader from '../assets/DipLeader.jpg';
 import Graduate from '../assets/Graduatedip.jpg';
 
@@ -86,7 +86,7 @@ const LeadershipPage = () => (
           <div className="relative">
             <div className="h-72 overflow-hidden">
               <img
-                src={AdvDip}
+                src={AdvDiploma}
                 alt="BSB60420 Advanced Diploma of Leadership & Management"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
