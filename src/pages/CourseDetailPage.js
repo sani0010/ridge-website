@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Clock,
@@ -12,6 +12,8 @@ import {
   ClipboardCheck
 } from 'lucide-react';
 import { courseData } from '../data/courseData';
+import ApplicationModal from './ApplicationModal';
+
 
 // Import all course images
 import generalEnglishImg from '../assets/general-english.jpg';
@@ -82,9 +84,12 @@ const courseCategories = {
   'sit60322-advanced-diploma-hospitality-management': 'Hospitality Programs',
 };
 
+
+
 const CourseDetailPage = () => {
   const { courseName } = useParams();
   const course = courseData[courseName];
+  const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
 
   if (!course) {
     return <div className="text-center text-red-500">Course not found!</div>;
@@ -328,9 +333,12 @@ const CourseDetailPage = () => {
                     <span className="font-semibold text-gray-900">{course.tuitionFee}</span>
                   </div>
                 </div>
-                <button className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4">
-                  Apply Now
-                </button>
+                <button 
+  className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4"
+  onClick={() => setIsApplicationModalOpen(true)}
+>
+  Apply Now
+</button>
                 <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors">
                   Download Brochure
                 </button>
@@ -354,6 +362,10 @@ const CourseDetailPage = () => {
           </div>
         </div>
       </div>
+      <ApplicationModal 
+  isOpen={isApplicationModalOpen} 
+  onClose={() => setIsApplicationModalOpen(false)}
+/>
     </div>
   );
 };

@@ -66,6 +66,8 @@ function App() {
         <Route path="/course/commercial-cookery-hospitality-management" element={<CookeryPage />} />
         
 
+        
+
       </Routes>
       <Footer />
     </Router>
