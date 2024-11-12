@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { eventData } from '../data/eventData';
 
@@ -8,8 +8,11 @@ const EventDetail = () => {
   const location = useLocation();
 
   const event = eventData.find(item => item.id === parseInt(id));
+  
+  // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Retrieve the saved scroll position
+  // Retrieve the saved scroll position and scroll to it
   useEffect(() => {
     if (location.state?.scrollPosition) {
       window.scrollTo(0, location.state.scrollPosition);
@@ -89,13 +92,85 @@ const EventDetail = () => {
                   </div>
                 </div>
                 
-                <button className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5] transition-colors duration-200">
+                <button 
+                  className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5] transition-colors duration-200"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   Register for Event
                 </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Render the registration modal */}
+      {isModalOpen && (
+        <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      )}
+    </div>
+  );
+};
+
+// Registration modal component
+const RegistrationModal = ({ isOpen, onClose }) => {
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  // Form submission handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsRegistered(true);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (e.target.id === 'modal-overlay') {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      id="modal-overlay"
+      className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center"
+      onClick={handleOutsideClick}
+    >
+      <div className="bg-white p-6 rounded-lg w-full max-w-md" onClick={(e) => e.stopPropagation()}>
+        {isRegistered ? (
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-4">Successfully Registered!</h2>
+            <p className="text-gray-600 mb-6">Thank you for registering for the event.</p>
+            <button 
+              onClick={() => {
+                setIsRegistered(false);
+                onClose();
+              }}
+              className="w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5]"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <h2 className="text-xl font-bold mb-4">Register for Event</h2>
+            <label className="block mb-2">
+              Name:
+              <input type="text" className="w-full p-2 border rounded" required />
+            </label>
+            <label className="block mb-2">
+              Email:
+              <input type="email" className="w-full p-2 border rounded" required />
+            </label>
+            {/* Add more fields as necessary */}
+            <button 
+              type="submit" 
+              className="mt-4 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5]"
+            >
+              Submit
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
