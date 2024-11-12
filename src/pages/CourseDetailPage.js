@@ -45,9 +45,9 @@ const courseImages = {
   'general-english': generalEnglishImg,
 
 
-  'bsb50420-bsb50420-diploma-leadership-management': DipLeader,
-  'bsb50420-diploma-leadership-management': AdvDiploma,
-  'bsb60420-advanced-diploma-leadership-management': Graduate,
+  'bsb50420-diploma-leadership-management': DipLeader,
+  'bsb60420-advanced-diploma-leadership-management': AdvDiploma,
+  'bsb80120-graduate-diploma-management-learning': Graduate,
 
 
   'ict50220-diploma-information-technology': diploma,
@@ -60,8 +60,8 @@ const courseImages = {
   'chc50121-diploma-early-childhood-education-and-care':childhood,
 
 
-  'chc33021-certificate-iii-individual-support':CertificateIVAge,
-  'chc43015-certificate-iv-ageing-support':individualsupport,
+  'chc33021-certificate-iii-individual-support':individualsupport,
+  'chc43015-certificate-iv-ageing-support':CertificateIVAge,
 
   'chc52021-diploma-community-services':CommunityService,
 
