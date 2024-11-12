@@ -19,7 +19,7 @@ const ITCoursesPage = () => (
           to="/courses"
           className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
         >
-          View All IT Courses
+          View All Courses
           <ArrowRight className="w-5 h-5" />
         </Link>
       </div>
@@ -62,7 +62,8 @@ const ITCoursesPage = () => (
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-orange-500" />
-                <span>$300 per week</span>
+                <span> CRICOS Code:
+                108709K</span>
               </div>
             </div>
 
@@ -79,7 +80,7 @@ const ITCoursesPage = () => (
 
         {/* ICT60220 Advanced Diploma of Information Technology */}
         <Link
-          to="/course/ict60220-advanced-diploma-information-technology"
+          to="/course/ict60220-advanced-diploma-of-information-technology"
           className="group bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]"
         >
           <div className="relative">
@@ -109,17 +110,18 @@ const ITCoursesPage = () => (
             <div className="flex flex-wrap gap-6 text-gray-600">
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-orange-500" />
-                <span>78 weeks duration</span>
+                <span>52 weeks duration</span>
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-orange-500" />
-                <span>$350 per week</span>
+                <span>CRICOS Code:
+                108710F</span>
               </div>
             </div>
 
             {/* Learn More Button */}
             <Link
-              to="/course/ict60220-advanced-diploma-information-technology"
+              to="/course/ict60220-advanced-diploma-of-information-technology"
               className="inline-flex items-center gap-2 text-orange-600 mt-6 hover:text-orange-700 transition-all duration-300"
             >
               Learn More
