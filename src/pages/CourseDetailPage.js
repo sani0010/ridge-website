@@ -179,6 +179,36 @@ const CourseDetailPage = () => {
               <SectionTitle>Course Overview</SectionTitle>
               <p className="text-gray-600 leading-relaxed mb-8">{course.description}</p>
             </ContentCard>
+            {courseName === 'general-english' && course.proficiencyLevels && course.proficiencyLevels.length > 0 && (
+  <ContentCard>
+    <SectionTitle>Course Levels</SectionTitle>
+    <div className="grid gap-4">
+      {course.proficiencyLevels.map((level, index) => (
+        <div
+          key={index}
+          className="group flex items-center justify-between p-6 bg-gradient-to-r from-gray-50 to-white rounded-xl hover:from-blue-50 hover:to-white transition-all duration-300 transform hover:scale-[1.02] border border-gray-100 hover:border-blue-100 hover:shadow-md"
+        >
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
+              <BookOpen className="w-6 h-6 text-[#3554a5]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 group-hover:text-[#3554a5] transition-colors">
+                {level.level}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Course Duration: {level.duration}
+              </p>
+            </div>
+          </div>
+          <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-[#3554a5]/10 group-hover:bg-[#3554a5]/20 transition-colors">
+            <span className="font-semibold text-[#3554a5]">{index + 1}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </ContentCard>
+)}
 
             {/* Course Structure */}
             {(coreUnits.length > 0 || electives.length > 0) && (
