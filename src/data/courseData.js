@@ -4,7 +4,7 @@ export const courseData = {
         title: 'ELICOS (General English)',
         subtitle: 'Elementary to Advanced',
         description:
-          'Ridge International College offers a range of General English classes in Melbourne. It focuses on essential language skills for everyday life and academic purposes.',
+          'Ridge International College offers a range of General English classes in Melbourne. It is recommended as the first step of learning without English. Ridge International College General English course focuses on teaching language skills required for everyday life and academic purposes ( entry pathway for RIC courses). Ridge International College English classes integrate reading, writing, listening, and speaking activities.',
         duration: 'Up to 60 weeks',
         tuitionFee: '$280 per week',
         cricosCode: '108438F',
@@ -24,7 +24,7 @@ export const courseData = {
           'Speaking and class activities',
           'Listening activities',
         ],
-        startDates: ['January 2024', 'March 2024', 'July 2024'],
+        startDates: ['December 2024', 'April 2025', 'March 2025'],
         highlights: [
           'No prerequisites for enrollment',
           'Face-to-face delivery at Melbourne campus',
@@ -40,7 +40,7 @@ export const courseData = {
 'ict50220-diploma-information-technology': {
     title: 'ICT50220 Diploma of Information Technology',
     subtitle: 'Nurturing Early Childhood Educators',
-    description: `Prepares students for a career in early childhood settings, focusing on child development, health, safety, and care.`,
+    description: `Diploma of Information Technology reflects the role of individuals in a variety of information and communications technology (ICT) roles who have established specialized skills in a technical ICT function. Individuals in these roles carry out moderately complex tasks in a specialist field, working independently, as part of a team, or leading a deliverable with others. They may apply their skills across a wide range of industries, business functions, and departments, or as a business owner (sole trader/contractor).`,
     tuitionFee: '$11,000',
     cricosCode: '108709K',
     duration: '52 weeks',
@@ -66,7 +66,12 @@ export const courseData = {
         'Guidance on industry standards and regulations',
     ],
     image: diploma,
-    careerOutcomes: 'After completion, graduates can pursue roles in specialized ICT functions like advanced networking, systems administration, or even start as contractors.',
+    careerOutcomes: [
+        'Assistant IT manager',
+        'Systems administrator',
+        'Network support technician',
+        'Assistant system manager',
+    ],
     educationPathways: 'Further study options include ICT60220 Advanced Diploma of Information Technology.',
     courseStructure: {
         coreUnits: [
@@ -126,7 +131,14 @@ export const courseData = {
         'Hands-on training in system development and networking',
         'Industry-relevant curriculum and assessments',
     ],
-    careerOutcomes: 'Graduates can pursue roles in advanced ICT functions, including systems analysis, IT strategy, and cyber security.',
+
+    careerOutcomes: [
+        'Software manager',
+        'ICT administrator',
+        'Senior technical officer',
+        'IT manager'
+        
+    ],
     educationPathways: 'Further study options include a Bachelor of Information Technology.',
     courseStructure: {
         coreUnits: [
@@ -182,7 +194,14 @@ export const courseData = {
         'Prepare for senior management and business development roles',
         'Focus on real-world business challenges and solutions',
     ],
-    careerOutcomes: 'Graduates can pursue roles in business development, team leadership, operations management, and more.',
+    careerOutcomes: [
+        'Business manager',
+        'Human resources manager',
+        'Sales team manager',
+        'Business development manager',
+        
+        
+    ],
     educationPathways: 'Further study options include advanced business qualifications and higher-level management courses.',
     courseStructure: {
         coreUnits: [
@@ -234,7 +253,14 @@ export const courseData = {
         'Focus on innovation and strategic business planning',
         'Prepare for senior leadership and executive roles',
     ],
-    careerOutcomes: 'Graduates can pursue senior management and leadership roles across various industries such as Senior Administrator, General Manager, Operations Manager, or Director.',
+    careerOutcomes: [
+        'Senior executive',
+        'Branch manager',
+        'Business manager',
+        'Senior administrator',
+        'Production manager',
+        
+    ],
     educationPathways: 'This qualification provides a pathway to higher education or degree courses depending on the requirements of the individual university.',
     courseStructure: {
         coreUnits: [
@@ -286,7 +312,14 @@ export const courseData = {
         'Apply learning practices and research-based solutions',
         'Prepare for leadership roles across various industries',
     ],
-    careerOutcomes: 'Graduates can work as learning and development consultants, RTO managers, educational professionals, or workforce planners.',
+    careerOutcomes: [
+        'Manager',
+        'Operations manager',
+        'Learning resource manager',
+        'Department manager',
+        'Business manager',
+        
+    ],
     educationPathways: 'This qualification provides a pathway to leadership roles in various industries, including education, workforce development, and strategic planning.',
     courseStructure: {
         coreUnits: [
@@ -321,7 +354,14 @@ export const courseData = {
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300',
     workPlacement: '120 hours of work placement required.',
-    careerOutcomes: 'Graduates can pursue roles such as Assistant in Nursing, Personal Care Assistant, Disability Support Worker, and more in the community and aged care sectors.',
+    careerOutcomes: [
+        'Home and community care worker',
+        'Aged care worker',
+        'Support services assistant',
+        'Personal care assistant',
+        'Accommodation support worker',
+        
+    ],
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or other related community services qualifications.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
     proficiencyLevels: [
@@ -378,7 +418,14 @@ export const courseData = {
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300',
     workPlacement: '120 hours of work placement required.',
-    careerOutcomes: 'Graduates can pursue roles such as Community Program Coordinator, Residential Care Worker, Support Worker, Personal Care Worker, and Aged Care Team Leader in the aged care sector.',
+    careerOutcomes: [
+        'Home care assistant',
+        'Community care worker',
+        'Personal care attendant',
+        'Residential care worker',
+        'Care team leader/supervisor'
+        
+    ],
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or related community services qualifications.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
     proficiencyLevels: [
@@ -437,7 +484,14 @@ export const courseData = {
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300',
     workPlacement: '200 hours of work placement required.',
-    careerOutcomes: 'Graduates can pursue a wide range of roles such as Community Care Manager, Case Coordinator, Youth Worker, Disability Team Leader, Community Development Worker, and more in the community services sector.',
+    careerOutcomes: [
+        'Case worker/manager',
+        'Community services worker',
+        'Family support worker',
+        'Family services coordinator',
+        'Program coordinator'
+        
+    ],
     educationPathways: 'This qualification can lead to further studies in CHC62015 Advanced Diploma of Community Sector Management or higher education qualifications in community services.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
     proficiencyLevels: [
@@ -496,7 +550,14 @@ export const courseData = {
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300',
     workPlacement: '300 hours of work placement required.',
-    careerOutcomes: 'Graduates can pursue roles such as Early Childhood Educator, Group Leader, Preschool Assistant, Outside School Hours Educator, Home-Based Educator, and many more in early childhood services.',
+    careerOutcomes: [
+        'Early childhood coordinator',
+        'Family-daycare coordinator',
+        'Early childhood educator',
+        'Playgroup coordinator',
+        'Nanny',
+        
+    ],
     educationPathways: 'Graduates may pursue further education in higher qualifications in early childhood education and care.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
     proficiencyLevels: [
@@ -549,7 +610,14 @@ export const courseData = {
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300',
     workPlacement: '160 hours of work placement required in a regulated childrens education and care service.',
-    careerOutcomes: 'Graduates can work as an Early Childhood Educator, Family Day Carer, Nanny, Out-of-School Hours Assistant, Recreation Assistant, Kindergarten Assistant, and more.',
+    careerOutcomes: [
+        'Early childhood educator',
+        'Playgroup supervisor',
+        'Recreation assistant',
+        'Family-daycare worker',
+        'Nanny',
+        
+    ],
     educationPathways: 'Graduates may proceed to the CHC50121 Diploma of Early Childhood Education and Care or other higher qualifications in the field.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
     proficiencyLevels: [
@@ -603,23 +671,12 @@ export const courseData = {
     resourceFee: '$300',
     workPlacement: '120 hours of work placement in the disability support sector.',
     careerOutcomes: [
-        'Lifestyle Support Officer',
-        'Community Development Officer',
-        'Senior Personal Care Assistant',
-        'Behavioural Support Officer',
-        'Disability Team Leader',
-        'Disability Support Assistant (Schools)',
-        'Project Officer',
-        'Marketing Coordinator (Disability)',
-        'Senior Disability Worker',
-        'Social Educator (Disability)',
-        'Support Facilitator (Disability)',
-        'Job Coordinator',
-        'Disabilities Supervisor',
-        'Social Trainer',
-        'Local Area Coordinator',
-        'Disability Service Officer',
-        'Community-Based Support Officer'
+        'Behavioural support officer',
+        'Disability support worker',
+        'Residential facility coordinator',
+        'Day program coordinator',
+        'Lifestyle support worker',
+        
     ],
     educationPathways: 'Graduates can continue into the CHC52015 Diploma of Community Services or other community services diplomas.',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
@@ -670,11 +727,11 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: '192 hours of work placement in a hospitality establishment are required.',
     careerOutcomes: [
-        'Qualified Cook',
-        'Head Chef',
-        'Kitchen Attendant',
-        'Catering Team Assistant',
-        'Pre-Chef Trainee',
+        'Sous chef',
+        'Pastry chef',
+        'Kitchen manager',
+        'Chef executive',
+        
     ],
     educationPathways: [
         'SIT40521 Certificate IV in Kitchen Management',
@@ -745,10 +802,12 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: 'At least 240 hours of work placement required in a hospitality establishment. Students will complete a minimum of 48 food service periods covering various meal services.',
     careerOutcomes: [
-        'Head Chef',
-        'Catering Manager',
-        'Chef de Partie',
-        'Sous Chef',
+        'Commis chef',
+        'Chef de partie',
+        'Sous chef de cuisine',
+        'Chef de cuisine',
+       ' Chef executive',
+        
     ],
     educationPathways: [
         'SIT50416 Diploma of Hospitality Management',
@@ -824,14 +883,10 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: 'At least 48 shifts of work placement in a hospitality establishment, covering breakfast, lunch, dinner, and special functions.',
     careerOutcomes: [
-        'Banquet or Function Manager',
-        'Bar Manager',
-        'Cafe Manager',
-        'Chef de Cuisine',
-        'Executive Housekeeper',
-        'Restaurant Manager',
-        'Sous Chef',
-        'Unit Manager Catering Operations',
+        'Chef de cuisine',
+        'Restaurant manager',
+        'Sous chef'
+        
     ],
     educationPathways: [
         'SIT60316 Advanced Diploma of Hospitality Management',
@@ -902,16 +957,13 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: 'At least 48 shifts in a hospitality establishment, including breakfast, lunch, dinner, and special functions. Work placement can be arranged by the college or arranged independently by the student, subject to suitability.',
     careerOutcomes: [
-        'Area Manager or Operations Manager',
-        'Café Owner or Manager',
-        'Club Secretary or Manager',
-        'Executive Chef',
-        'Executive Housekeeper',
-        'Executive Sous Chef',
-        'Food and Beverage Manager',
-        'Head Chef',
-        'Motel Owner or Manager',
-        'Rooms Division Manager',
+        'Area manager or operations manager',
+        'Cafe owner or manager',
+        'Club secretary or manager',
+        'Food and beverage manager',
+        'Motel owner or manager',
+        'Rooms division manager'
+        
     ],
     educationPathways: [
         'Bachelor of Hospitality Management (further study at other institutions)',

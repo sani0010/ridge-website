@@ -19,7 +19,7 @@ const ChildhoodPage = () => (
           to="/courses" 
           className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
         >
-          Explore All Early Childhood Education Courses
+          Explore All Courses
           <ArrowRight className="w-5 h-5" />
         </Link>
       </div>
