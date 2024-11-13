@@ -30,7 +30,7 @@ const BlogDetails = () => {
             <p className="text-gray-600 mb-6">Sorry, we couldn't find the blog post you're looking for.</p>
             <Link
               to="/blog"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+              className="inline-flex items-center text-[#3554a5] hover:text-[#3554a5] font-medium"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog
@@ -46,7 +46,7 @@ const BlogDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Hero Section with Post Title */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
+      <div className="bg-gradient-to-r from-[#3554a5] to-[#3554a5] text-white py-16">
         <div className="container mx-auto px-4">
           <Link
             to="/blogs"
@@ -96,7 +96,7 @@ const BlogDetails = () => {
                 {post.tags?.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
+                    className="px-3 py-1 bg-blue-100 text-[#3554a5] rounded-full text-sm font-medium"
                   >
                     {tag}
                   </span>
@@ -158,7 +158,7 @@ const BlogDetails = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Author</h2>
             <div className="flex items-start gap-4">
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center">
-                <User className="h-8 w-8 text-blue-600" />
+                <User className="h-8 w-8 text-[#3554a5]" />
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-900">{post.author.name}</h3>
