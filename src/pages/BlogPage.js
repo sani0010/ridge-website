@@ -3,6 +3,9 @@ import { Calendar, User, Search, Clock, ArrowUpRight, Heart, MessageSquare } fro
 import campus1 from '../assets/campus1.jpg';
 import campus2 from '../assets/campus2.jpg';
 import campus3 from '../assets/campus3.jpg';
+import { Link } from 'react-router-dom';
+
+
 
 const blogPosts = [
   {
@@ -148,9 +151,11 @@ const BlogPage = () => {
                     </div>
                   </div>
                   <button className="flex items-center text-[#3554a5] hover:text-p[#3554a5] font-medium">
-                    Read Full Story
-                    <ArrowUpRight className="h-4 w-4 ml-1" />
-                  </button>
+  <Link to={`/blog/${filteredPosts[0]?.title}`}>
+    Read Full Story
+  </Link>
+  <ArrowUpRight className="h-4 w-4 ml-1" />
+</button>
                 </div>
               </div>
             </div>
