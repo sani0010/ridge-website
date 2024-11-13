@@ -1,10 +1,25 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Calendar, User, Clock, Heart, MessageSquare, ArrowLeft } from 'lucide-react';
+import campus1 from '../assets/campus1.jpg';
+import campus2 from '../assets/campus2.jpg';
+import campus3 from '../assets/campus3.jpg';
+
+const campusImages = [
+  { id: 1, src: campus1, alt: "Campus Life Scene 1" },
+  { id: 2, src: campus2, alt: "Campus Life Scene 2" },
+  { id: 3, src: campus3, alt: "Campus Life Scene 3" }
+];
 
 const BlogDetails = () => {
   const location = useLocation();
   const { post } = location.state || {};
+
+  // Function to get random image for post
+  const getPostImage = () => {
+    const randomIndex = Math.floor(Math.random() * campusImages.length);
+    return campusImages[randomIndex];
+  };
 
   if (!post) {
     return (
@@ -25,6 +40,8 @@ const BlogDetails = () => {
       </div>
     );
   }
+
+  const postImage = getPostImage();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -61,11 +78,16 @@ const BlogDetails = () => {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             {/* Featured Image */}
-            <img 
-              src={`/api/placeholder/1200/600`}
-              alt={post.title}
-              className="w-full h-[400px] object-cover"
-            />
+            <div className="relative">
+              <img 
+                src={postImage.src}
+                alt={postImage.alt}
+                className="w-full h-[400px] object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
+                {postImage.alt}
+              </div>
+            </div>
 
             {/* Content */}
             <div className="p-8">
@@ -91,6 +113,30 @@ const BlogDetails = () => {
                 <p className="text-gray-700 leading-relaxed mb-6">
                   {post.details || `This is a detailed blog post about ${post.title}. The content provides in-depth information about the topic, including personal experiences, insights, and valuable takeaways for readers.`}
                 </p>
+                
+                {/* Additional Images Gallery */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img
+                      src={campus2}
+                      alt="Campus Life Scene 2"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
+                      Campus Life Scene 2
+                    </div>
+                  </div>
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img
+                      src={campus3}
+                      alt="Campus Life Scene 3"
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
+                      Campus Life Scene 3
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Engagement Stats */}

@@ -1,68 +1,69 @@
 import React, { useState } from 'react';
 import { Calendar, User, Search, Clock, ArrowUpRight, Heart, MessageSquare } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import campus1 from '../assets/campus1.jpg';
 import campus2 from '../assets/campus2.jpg';
 import campus3 from '../assets/campus3.jpg';
-import { Link } from 'react-router-dom';
-
-
-
-const blogPosts = [
-  {
-    title: 'A Day in the Life of an International Student',
-    date: 'October 1, 2024',
-    author: {
-      name: 'John Doe',
-      role: 'International Student'
-    },
-    category: 'Student Life',
-    tags: ['International', 'Campus Life'],
-    summary: 'Follow along as I navigate through a typical day at Ridge International College, from morning classes to evening study sessions. Get insights into campus life, cultural experiences, and academic challenges...',
-    readTime: '5 min read',
-    likes: 124,
-    comments: 23,
-    image: campus1,
-
-  },
-  {
-    title: 'How I Balanced Work and Study: Tips for Success',
-    date: 'September 28, 2024',
-    author: {
-      name: 'Jane Smith',
-      role: 'Final Year Student'
-    },
-    category: 'Study Tips',
-    tags: ['Work-Study', 'Time Management'],
-    summary: 'Struggling to manage your part-time job with your studies? In this blog post, I share my personal experience and practical tips that helped me maintain good grades while working...',
-    readTime: '7 min read',
-    likes: 89,
-    comments: 15,
-
-    image: campus2,
-
-  },
-  {
-    title: 'My Exchange Semester Experience in Melbourne',
-    date: 'September 25, 2024',
-    author: {
-      name: 'Alice Johnson',
-      role: 'Exchange Student'
-    },
-    category: 'Experience',
-    tags: ['Exchange Program', 'Melbourne'],
-    summary: 'From discovering hidden cafes to adapting to a new educational system, heres my complete journey of studying abroad in Melbourne. Learn about the challenges, victories, and everything in between...',
-    readTime: '6 min read',
-    likes: 156,
-    comments: 31,
-    image: campus3,
-  }
-];
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const navigate = useNavigate();
+
+  // Blog posts data
+  const blogPosts = [
+    {
+      title: 'A Day in the Life of an International Student',
+      date: 'October 1, 2024',
+      author: {
+        name: 'John Doe',
+        role: 'International Student'
+      },
+      category: 'Student Life',
+      tags: ['International', 'Campus Life'],
+      summary: 'Follow along as I navigate through a typical day at Ridge International College, from morning classes to evening study sessions. Get insights into campus life, cultural experiences, and academic challenges...',
+      readTime: '5 min read',
+      likes: 124,
+      comments: 23,
+      image: campus1,
+    },
+    {
+      title: 'How I Balanced Work and Study: Tips for Success',
+      date: 'September 28, 2024',
+      author: {
+        name: 'Jane Smith',
+        role: 'Final Year Student'
+      },
+      category: 'Study Tips',
+      tags: ['Work-Study', 'Time Management'],
+      summary: 'Struggling to manage your part-time job with your studies? In this blog post, I share my personal experience and practical tips that helped me maintain good grades while working...',
+      readTime: '7 min read',
+      likes: 89,
+      comments: 15,
+      image: campus2,
+    },
+    {
+      title: 'My Exchange Semester Experience in Melbourne',
+      date: 'September 25, 2024',
+      author: {
+        name: 'Alice Johnson',
+        role: 'Exchange Student'
+      },
+      category: 'Experience',
+      tags: ['Exchange Program', 'Melbourne'],
+      summary: 'From discovering hidden cafes to adapting to a new educational system, heres my complete journey of studying abroad in Melbourne. Learn about the challenges, victories, and everything in between...',
+      readTime: '6 min read',
+      likes: 156,
+      comments: 31,
+      image: campus3,
+    }
+  ];
 
   const categories = ['All', 'Student Life', 'Study Tips', 'Experience', 'Career Advice', 'Campus Events'];
+
+  const handlePostClick = (post) => {
+    navigate(`/blog/${encodeURIComponent(post.title)}`, { state: { post } });
+  };
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -114,60 +115,64 @@ const BlogPage = () => {
         </div>
 
         {/* Featured Blog Post */}
-        <div className="mb-12">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-1/2 h-80">
-                <img 
-                  src={filteredPosts[0]?.image} 
-                  alt={filteredPosts[0]?.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="md:w-1/2 p-8">
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-[#3554a5] rounded-full text-sm font-medium">
-                    {filteredPosts[0]?.category}
-                  </span>
-                  <span className="flex items-center text-sm text-gray-500">
-                    <Clock className="h-4 w-4 mr-1" />
-                    {filteredPosts[0]?.readTime}
-                  </span>
+        {filteredPosts.length > 0 && (
+          <div className="mb-12">
+            <div 
+              className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
+              onClick={() => handlePostClick(filteredPosts[0])}
+            >
+              <div className="md:flex">
+                <div className="md:w-1/2 h-80">
+                  <img 
+                    src={filteredPosts[0].image} 
+                    alt={filteredPosts[0].title}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  {filteredPosts[0]?.title}
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  {filteredPosts[0]?.summary}
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center text-sm text-gray-500">
-                      <User className="h-4 w-4 mr-2" />
-                      <div>
-                        <p className="font-medium text-gray-900">{filteredPosts[0]?.author.name}</p>
-                        <p className="text-xs">{filteredPosts[0]?.author.role}</p>
+                <div className="md:w-1/2 p-8">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <span className="px-3 py-1 bg-blue-100 text-[#3554a5] rounded-full text-sm font-medium">
+                      {filteredPosts[0].category}
+                    </span>
+                    <span className="flex items-center text-sm text-gray-500">
+                      <Clock className="h-4 w-4 mr-1" />
+                      {filteredPosts[0].readTime}
+                    </span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    {filteredPosts[0].title}
+                  </h2>
+                  <p className="text-gray-600 mb-6">
+                    {filteredPosts[0].summary}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center text-sm text-gray-500">
+                        <User className="h-4 w-4 mr-2" />
+                        <div>
+                          <p className="font-medium text-gray-900">{filteredPosts[0].author.name}</p>
+                          <p className="text-xs">{filteredPosts[0].author.role}</p>
+                        </div>
                       </div>
                     </div>
+                    <div className="flex items-center text-[#3554a5] hover:text-blue-700 font-medium">
+                      Read Full Story
+                      <ArrowUpRight className="h-4 w-4 ml-1" />
+                    </div>
                   </div>
-                  <button className="flex items-center text-[#3554a5] hover:text-p[#3554a5] font-medium">
-  <Link to={`/blog/${filteredPosts[0]?.title}`}>
-    Read Full Story
-  </Link>
-  <ArrowUpRight className="h-4 w-4 ml-1" />
-</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.slice(1).map((post, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer"
+              onClick={() => handlePostClick(post)}
             >
               <img 
                 src={post.image} 
@@ -176,7 +181,7 @@ const BlogPage = () => {
               />
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-blue-100 text-[#3554a5]rounded-full text-sm font-medium">
+                  <span className="px-3 py-1 bg-blue-100 text-[#3554a5] rounded-full text-sm font-medium">
                     {post.category}
                   </span>
                   <span className="flex items-center text-sm text-gray-500">
