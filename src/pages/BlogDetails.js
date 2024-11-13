@@ -49,7 +49,7 @@ const BlogDetails = () => {
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-16">
         <div className="container mx-auto px-4">
           <Link
-            to="/blog"
+            to="/blogs"
             className="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
