@@ -217,6 +217,21 @@ const CourseDetailPage = () => {
   </ContentCard>
 )}
 
+            {/* Career Outcomes */}
+            {careerOutcomes.length > 0 && (
+              <ContentCard>
+                <SectionTitle>Career Outcomes</SectionTitle>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {careerOutcomes.map((career, index) => (
+                    <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+                      <Briefcase className="w-5 h-5 text-[#3554a5]" />
+                      <span className="text-gray-700">{career}</span>
+                    </div>
+                  ))}
+                </div>
+              </ContentCard>
+            )}
+
             {/* Course Structure */}
             {(coreUnits.length > 0 || electives.length > 0) && (
               <ContentCard>
@@ -254,20 +269,7 @@ const CourseDetailPage = () => {
               </ContentCard>
             )}
 
-            {/* Career Outcomes */}
-            {careerOutcomes.length > 0 && (
-              <ContentCard>
-                <SectionTitle>Career Outcomes</SectionTitle>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {careerOutcomes.map((career, index) => (
-                    <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
-                      <Briefcase className="w-5 h-5 text-[#3554a5]" />
-                      <span className="text-gray-700">{career}</span>
-                    </div>
-                  ))}
-                </div>
-              </ContentCard>
-            )}
+
 
             {/* Work Placement */}
             {course.workPlacement && (
