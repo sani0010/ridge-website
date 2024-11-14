@@ -939,7 +939,7 @@ export const courseData = {
             'SITXFSA006 Participate in safe food handling practices',
         ],
     },
-    RPL_CreditTransfer: 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -1022,7 +1022,7 @@ export const courseData = {
             'SITXCOM010 Manage conflict',
         ],
     },
-    RPL_CreditTransfer: 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: ' Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
