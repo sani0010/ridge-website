@@ -7,7 +7,6 @@ const Footer = () => {
         
         {/* College Information */}
         <div>
-          <h4 className="font-bold text-lg">Courselog University – CU</h4>
           <p>ABN: 18 624 550 741</p>
           <p>RTO No: 45472</p>
           <p>CRICOS Provider No: 03747K</p>
