@@ -170,7 +170,7 @@ const CourseDetailPage = () => {
           <HighlightCard icon={Clock} title="Duration" value={course.duration} />
           <HighlightCard icon={DollarSign} title="Tuition Fee" value={course.tuitionFee} />
           <HighlightCard icon={Award} title="CRICOS Code" value={course.cricosCode} />
-          <HighlightCard icon={MapPin} title="Delivery Locations" value={`Melbourne${course.deliveryLocation ? `, ${course.deliveryLocation}` : ""}`}/>
+          <HighlightCard icon={MapPin} title="Delivery Location" value={`Melbourne${course.deliveryLocation ? `, ${course.deliveryLocation}` : ""}`}/>
 
         </div>
       </div>
