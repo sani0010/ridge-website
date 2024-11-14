@@ -9,14 +9,13 @@ import disabilityCare from '../assets/disability-care.jpg';
 import communityService from '../assets/community-service.jpg';
 import earlyChildhood from '../assets/early-childhood.jpg';
 
-// Course data structure
 const courses = [
   {
     title: 'General English',
     description: 'Learn essential English language skills for everyday communication.',
     image: generalEnglish,
     bgColor: 'bg-red-600',
-    slug: 'general-english' // Added slug for linking
+    slug: 'general-english'
     
   },
   {
@@ -49,7 +48,7 @@ const courses = [
   },
   {
     title: 'Disability Care',
-    description: 'Develop skills to support people with disabilities.',
+    description: 'Develop skills to support people wit`h disabilities.',
     image: disabilityCare,
     bgColor: 'bg-cyan-500',
     slug: 'disability-care'
@@ -106,7 +105,7 @@ const CoursePage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-[#3554a5] text-white py-16">
+      <div className="bg-[#3554a5] text-white py-16 mb-20">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
           <p className="mb-8">
