@@ -9,7 +9,8 @@ import {
   Calendar,
   Briefcase,
   BookOpen,
-  ClipboardCheck
+  ClipboardCheck,
+  FileCheck
 } from 'lucide-react';
 import { courseData } from '../data/courseData';
 import ApplicationModal from './ApplicationModal';
@@ -292,6 +293,24 @@ const CourseDetailPage = () => {
                 </div>
               </ContentCard>
             )}
+            {/* RPL and Credit Transfer Section */}
+<ContentCard>
+  <SectionTitle>Recognition of Prior Learning (RPL) & Credit Transfer</SectionTitle>
+  <div className="space-y-6">
+    <div className="p-6 bg-gradient-to-r from-gray-50 to-white rounded-xl border border-gray-100">
+      <div className="flex items-start gap-4">
+        <div className="p-3 bg-[#3554a5]/10 rounded-lg">
+          <FileCheck className="w-6 h-6 text-[#3554a5]" />
+        </div>
+        <div>
+          <p className="text-gray-600 leading-relaxed">
+            {course.RPL_CreditTransfer || 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for more details.'}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ContentCard>
           </div>
 
           {/* Right Sidebar */}
