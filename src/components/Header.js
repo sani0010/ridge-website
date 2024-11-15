@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import logo from '../assets/logo.png';
+import { Menu, X, ChevronRight } from 'lucide-react';
+import logo from '../assets/logo.png'
 
 const Header = () => {
   const location = useLocation();
@@ -17,6 +17,17 @@ const Header = () => {
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const handleMouseEnter = (dropdownName) => {
     if (timeoutRef.current) {
@@ -41,7 +52,19 @@ const Header = () => {
   const navigationItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Courses', path: '/courses' },
+    { 
+      name: 'Courses', 
+      path: '/courses',
+      dropdownItems: [
+        { name: 'ELICOS General English', path: '/course/general-english'},
+        { name: 'Aged Care', path: '/course/aged-care'},
+        { name: 'Community Service', path: '/course/community-service'},
+        { name: 'Early Childhood Education and Care', path: '/course/early-childhood-education'},
+        { name: 'Disability Care', path: '/course/disability-care'},
+        { name: 'Information technology', path: '/course/information-technology'},
+        { name: 'Commercial Cookery and Hospitality Management', path: '/course/commercial-cookery-hospitality-management'}
+      ]
+     },
     {
       name: 'Admissions',
       path: '/admissions',
@@ -77,21 +100,34 @@ const Header = () => {
   const renderDropdown = (item) => (
     <div
       className="dropdown-menu absolute top-full left-1/2 transform -translate-x-1/2 
-                 bg-white border rounded-lg shadow-lg w-64 z-50"
+                 bg-white rounded-xl shadow-2xl w-72 z-50
+                 border border-gray-100 backdrop-blur-lg"
       onMouseEnter={() => handleMouseEnter(item.name)}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="py-2 px-1">
-        {item.dropdownItems.map((dropdownItem) => (
-          <Link
-            key={dropdownItem.path}
-            to={dropdownItem.path}
-            className="block px-4 py-2.5 text-gray-700 hover:text-[#F26722] hover:bg-gray-50 
-                       rounded-md transition-all duration-150 text-sm mx-1"
-          >
-            {dropdownItem.name}
-          </Link>
-        ))}
+      <div className="py-2">
+        <div className="px-4 pb-2 border-b border-gray-100">
+          <h3 className="text-sm font-semibold text-gray-400">{item.name}</h3>
+        </div>
+        <div className="max-h-[400px] overflow-y-auto">
+          {item.dropdownItems.map((dropdownItem) => (
+            <Link
+              key={dropdownItem.path}
+              to={dropdownItem.path}
+              className="group flex items-center justify-between px-4 py-2 hover:bg-gray-50 
+                         transition-all duration-200"
+            >
+              <span className="text-gray-700 group-hover:text-[#F26722] 
+                             transition-colors duration-200 text-sm">
+                {dropdownItem.name}
+              </span>
+              <ChevronRight 
+                className="w-4 h-4 text-gray-400 group-hover:text-[#F26722] 
+                           transform group-hover:translate-x-1 transition-all duration-200" 
+              />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -99,9 +135,10 @@ const Header = () => {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto">
-        <nav className="flex justify-between items-center px-6 py-3">
+        <nav className="flex justify-between items-center px-6 py-2">
           <Link to="/" className="flex-shrink-0">
-            <img src={logo} alt="Ridge International College Logo" className="h-16" />
+            {/* Replace src with your actual logo path */}
+            <img src={logo} alt="Ridge International College Logo" className="h-14" />
           </Link>
 
           {/* Desktop Menu */}
@@ -109,7 +146,6 @@ const Header = () => {
             {navigationItems.map((item) => (
               <li key={item.path} className="relative">
                 <div
-                  className="pb-3"
                   onMouseEnter={() => handleMouseEnter(item.name)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -145,20 +181,25 @@ const Header = () => {
           </ul>
 
           {/* Mobile Menu Toggle */}
-          <button className="lg:hidden p-2" onClick={toggleMobileMenu}>
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <button 
+            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200" 
+            onClick={toggleMobileMenu}
+          >
+            <Menu size={24} />
           </button>
 
           {/* Login Button */}
-          <div className="hidden lg:flex relative ml-6 group"
-               onMouseEnter={() => setIsLoginHovered(true)}
-               onMouseLeave={() => setIsLoginHovered(false)}>
+          <div 
+            className="hidden lg:flex relative ml-6 group"
+            onMouseEnter={() => setIsLoginHovered(true)}
+            onMouseLeave={() => setIsLoginHovered(false)}
+          >
             <a
               href="https://app.axcelerate.com/auth/user/"
               target="_blank"
               rel="noopener noreferrer"
               className={`
-                inline-flex items-center px-6 py-2.5 
+                inline-flex items-center px-6 py-2 
                 rounded-lg transition-all duration-300
                 ${isLoginHovered 
                   ? 'bg-gradient-to-r from-[#F26722] to-[#ff8142] text-white shadow-lg' 
@@ -185,7 +226,7 @@ const Header = () => {
               <span className="font-semibold text-sm">Student Login</span>
             </a>
             <div className={`
-              absolute -bottom-12 left-1/2 transform -translate-x-1/2 
+              absolute -bottom-10 left-1/2 transform -translate-x-1/2 
               bg-gray-800 text-white text-xs py-1 px-3 rounded-md whitespace-nowrap
               transition-all duration-200
               ${isLoginHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1 pointer-events-none'}
@@ -197,49 +238,87 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white shadow-lg px-6 py-4 space-y-4">
-            <ul className="flex flex-col space-y-3">
-              {navigationItems.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    className={`
-                      flex items-center px-3 py-2 rounded-md transition-colors duration-200
-                      ${location.pathname === item.path
-                        ? 'text-[#F26722] font-semibold'
-                        : 'text-gray-700 hover:text-[#F26722]'
-                      }
-                    `}
-                    onClick={toggleMobileMenu} // Close menu on item click
-                  >
-                    {item.name}
-                  </Link>
-                  {item.dropdownItems && (
-                    <div className="ml-4 mt-2 space-y-2">
-                      {item.dropdownItems.map((dropdownItem) => (
-                        <Link
-                          key={dropdownItem.path}
-                          to={dropdownItem.path}
-                          className="block text-gray-600 hover:text-[#F26722] text-sm"
-                          onClick={toggleMobileMenu} // Close menu on item click
-                        >
-                          {dropdownItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4">
-              <a
-                href="https://app.axcelerate.com/auth/user/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center px-6 py-2.5 bg-gradient-to-r from-[#F26722] to-[#ff8142] text-white rounded-lg"
+          <div className="lg:hidden fixed inset-0 z-50 bg-white">
+            {/* Mobile Header with Back Button and Close Button */}
+            <div className="h-[72px] bg-white shadow-md flex items-center justify-between px-4">
+              <div className="flex items-center gap-2">
+                <Link to="/" onClick={toggleMobileMenu}>
+                  {/* Replace src with your actual logo path */}
+                  <img src={logo} alt="Ridge International College Logo" className="h-14" />
+                </Link>
+              </div>
+              <button 
+                onClick={toggleMobileMenu}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200 flex items-center gap-2 text-gray-600"
               >
-                Student Login
-              </a>
+                <span className="text-sm font-medium"></span>
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="overflow-y-auto h-[calc(100vh-72px)] pb-6">
+              <div className="px-4 py-4 space-y-4">
+                <ul className="flex flex-col space-y-1">
+                  {navigationItems.map((item) => (
+                    <li key={item.path}>
+                      <Link
+                        to={item.path}
+                        className={`
+                          flex items-center px-3 py-2 rounded-md transition-colors duration-200
+                          ${location.pathname === item.path
+                            ? 'text-[#F26722] font-semibold bg-orange-50'
+                            : 'text-gray-700 hover:text-[#F26722] hover:bg-gray-50'
+                          }
+                        `}
+                        onClick={toggleMobileMenu}
+                      >
+                        {item.name}
+                      </Link>
+                      {item.dropdownItems && (
+                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-100">
+                          {item.dropdownItems.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.path}
+                              to={dropdownItem.path}
+                              className="block pl-4 pr-3 py-2 text-gray-600 hover:text-[#F26722] 
+                                       hover:bg-gray-50 rounded-r-md text-sm transition-colors duration-200"
+                              onClick={toggleMobileMenu}
+                            >
+                              {dropdownItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-2 border-t border-gray-100">
+                  <a
+                    href="https://app.axcelerate.com/auth/user/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center px-6 py-2 
+                             bg-gradient-to-r from-[#F26722] to-[#ff8142] text-white rounded-lg
+                             transition-all duration-200 hover:shadow-lg"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 mr-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    <span className="font-semibold text-sm">Student Login</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         )}
