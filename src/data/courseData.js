@@ -99,7 +99,7 @@ export const courseData = {
             'ICTTEN519 Design network building projects',
         ]
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer for previous relevant work experience or units previously completed. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 //Advanced Diploma of Information Technology//
@@ -162,7 +162,7 @@ export const courseData = {
             'ICTPMG614 Manage ICT project delivery',
         ]
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer for previous relevant work experience or units previously completed. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 //Diploma of Leadership and Management//
@@ -221,7 +221,7 @@ export const courseData = {
             'BSBSUS511 Develop workplace policies and procedures for sustainability',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer for previous relevant work experience or units previously completed. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -278,7 +278,7 @@ export const courseData = {
             'BSBHRM613 Contribute to the development of learning and development strategies',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer based on previous qualifications or work experience. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -335,7 +335,7 @@ export const courseData = {
             'BSBSTR802 Lead strategic planning processes for an organisation',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer based on prior learning or work experience. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -398,7 +398,7 @@ export const courseData = {
             'CHCDIS020 Work effectively in disability support',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer based on prior learning or work experience. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -465,7 +465,7 @@ export const courseData = {
             'HLTAID011 Provide first aid',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for RPL or credit transfer based on prior learning or work experience. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -532,7 +532,7 @@ export const courseData = {
             'BSBPEF502 Develop and use emotional intelligence',
         ],
     },
-    RPL_CreditTransfer: 'Students may apply for RPL (Recognition of Prior Learning) or credit transfer for previously completed courses. Please refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -592,7 +592,7 @@ export const courseData = {
             'CHCDIV003 Manage and promote diversity',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -653,7 +653,7 @@ export const courseData = {
             'CHCDIV001 Work with diverse people',
         ],
     },
-    RPL_CreditTransfer: 'Students can apply for Recognition of Prior Learning (RPL) or Credit Transfer for previous qualifications or work experience. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 //Certificate IV in Disability Support//
@@ -707,7 +707,7 @@ export const courseData = {
             'CHCDIS020 Work effectively in disability support'
         ],
     },
-    RPL_CreditTransfer: 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Please refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -781,7 +781,7 @@ export const courseData = {
             'BSBSUS211 Participate in sustainable work practices',
         ],
     },
-    RPL_CreditTransfer: 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
@@ -863,7 +863,7 @@ export const courseData = {
         ],
         electives: [],
     },
-    RPL_CreditTransfer: 'Students may apply for Recognition of Prior Learning (RPL) or Credit Transfer. Refer to the RPL/Credit Transfer policy for more details.',
+    RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
 
 
