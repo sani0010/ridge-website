@@ -73,25 +73,30 @@ const EntryRequirements = () => {
         return (
           <div className={contentClass}>
             <p className="text-base md:text-lg mb-6">Students must possess sound Literacy and Numeracy skills for course completion.</p>
-            <div className="grid grid-cols-1 gap-4">
+            <div className="space-y-4">
               {llnData.slice(1).map((row, rowIndex) => (
                 <div key={rowIndex} className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">{row[0]}</h4>
-                  <div className="grid grid-cols-5 gap-2 text-sm md:text-base">
-                    <div>
-                      <span className="text-gray-600">Learning:</span> {row[1]}
+                  <h4 className="font-semibold text-gray-800 mb-4">{row[0]}</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+                    <div className="bg-white p-3 rounded shadow-sm">
+                      <span className="block text-gray-600 text-sm">Learning</span>
+                      <span className="text-lg font-medium">{row[1]}</span>
                     </div>
-                    <div>
-                      <span className="text-gray-600">Reading:</span> {row[2]}
+                    <div className="bg-white p-3 rounded shadow-sm">
+                      <span className="block text-gray-600 text-sm">Reading</span>
+                      <span className="text-lg font-medium">{row[2]}</span>
                     </div>
-                    <div>
-                      <span className="text-gray-600">Writing:</span> {row[3]}
+                    <div className="bg-white p-3 rounded shadow-sm">
+                      <span className="block text-gray-600 text-sm">Writing</span>
+                      <span className="text-lg font-medium">{row[3]}</span>
                     </div>
-                    <div>
-                      <span className="text-gray-600">Oral:</span> {row[4]}
+                    <div className="bg-white p-3 rounded shadow-sm">
+                      <span className="block text-gray-600 text-sm">Oral</span>
+                      <span className="text-lg font-medium">{row[4]}</span>
                     </div>
-                    <div>
-                      <span className="text-gray-600">Numeracy:</span> {row[5]}
+                    <div className="bg-white p-3 rounded shadow-sm">
+                      <span className="block text-gray-600 text-sm">Numeracy</span>
+                      <span className="text-lg font-medium">{row[5]}</span>
                     </div>
                   </div>
                 </div>
