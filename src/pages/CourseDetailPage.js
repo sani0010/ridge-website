@@ -356,11 +356,11 @@ const CourseDetailPage = () => {
                   </div>
                 </div>
                 <button 
-  className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4"
-  onClick={() => setIsApplicationModalOpen(true)}
->
-  Apply Now
-</button>
+                  className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4"
+                  onClick={() => setIsApplicationModalOpen(true)}
+                >
+                Apply Now
+                </button>
                 <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors">
                   Download Brochure
                 </button>
