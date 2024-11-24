@@ -6,17 +6,19 @@ import eduworks from '../assets/eduworks.png';
 import rtoworks from '../assets/rtoworks.png';
 import commonwealthbank from '../assets/commonwealthbank.jpg';
 import nswit from '../assets/nsit.png';
-import allianzlogo from '../assets/axcelerate.png';
+import allianzlogo from '../assets/allianzlogo.png';
+import axcelerate from '../assets/axcelerate.png';
 
 const affiliations = [
-  { id: 1, image: aqflogo, name: "AQF" },
-  { id: 2, image: velgtraining, name: "Velg Training" },
-  { id: 3, image: nrtlogo, name: "NRT" },
-  { id: 4, image: eduworks, name: "EduWorks" },
-  { id: 5, image: rtoworks, name: "RTO Works" },
-  { id: 6, image: commonwealthbank, name: "Commonwealth Bank" },
-  { id: 8, image: nswit, name: "NSW IT" },
-  { id: 9, image: allianzlogo, name: "Allianz" },
+  { id: 1, image: aqflogo, name: 'AQF' },
+  { id: 2, image: velgtraining, name: 'Velg Training' },
+  { id: 3, image: nrtlogo, name: 'NRT' },
+  { id: 4, image: eduworks, name: 'EduWorks' },
+  { id: 5, image: rtoworks, name: 'RTO Works' },
+  { id: 6, image: commonwealthbank, name: 'Commonwealth Bank' },
+  { id: 8, image: nswit, name: 'NSW IT' },
+  { id: 9, image: allianzlogo, name: 'Allianz' },
+  { id: 10, image: axcelerate, name: 'Axcelerate' },
 ];
 
 const AffiliationsPartners = () => {
@@ -24,15 +26,14 @@ const AffiliationsPartners = () => {
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
-    let scrollAmount = 0;
 
     const scroll = () => {
       if (scrollContainer) {
-        scrollAmount += 1;
-        scrollContainer.scrollLeft = scrollAmount;
-
-        if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-          scrollAmount = 0; // Reset scroll
+        // If scrolled to the end, reset scroll position
+        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+          scrollContainer.scrollLeft = 0;
+        } else {
+          scrollContainer.scrollLeft += 1;
         }
       }
     };
@@ -53,8 +54,11 @@ const AffiliationsPartners = () => {
           ref={scrollRef}
           style={{ display: 'flex', whiteSpace: 'nowrap' }}
         >
-          {affiliations.map((affiliation) => (
-            <div key={affiliation.id} className="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 p-2 sm:p-3 md:p-4">
+          {[...affiliations, ...affiliations].map((affiliation, index) => (
+            <div
+              key={`${affiliation.id}-${index}`}
+              className="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 p-2 sm:p-3 md:p-4"
+            >
               <img
                 src={affiliation.image}
                 alt={affiliation.name}
