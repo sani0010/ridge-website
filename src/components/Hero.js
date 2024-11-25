@@ -9,7 +9,6 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Move successTexts outside the component or use useMemo to prevent recreation
   const successTexts = React.useMemo(() => [
     "Your path to success starts here",
     "Unlock your potential with us",
@@ -93,59 +92,6 @@ const Hero = () => {
               Learn More
             </button>
           </Link>
-        </div>
-
-        {/* Video Controls */}
-        <div className="absolute bottom-4 right-4 z-20 flex space-x-2">
-          <button 
-            className="bg-white/20 hover:bg-white/30 text-white p-2 rounded-full backdrop-blur-sm transition-colors duration-300"
-            onClick={() => {
-              const video = document.querySelector('video');
-              if (video.paused) {
-                video.play();
-              } else {
-                video.pause();
-              }
-            }}
-          >
-            <svg 
-              className="w-6 h-6" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d={document.querySelector('video')?.paused 
-                  ? "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" 
-                  : "M10 9v6m4-6v6"
-                }
-              />
-            </svg>
-          </button>
-          <button 
-            className="bg-white/20 hover:bg-white/30 text-white p-2 rounded-full backdrop-blur-sm transition-colors duration-300"
-            onClick={() => {
-              const video = document.querySelector('video');
-              video.muted = !video.muted;
-            }}
-          >
-            <svg 
-              className="w-6 h-6" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M12 18v-2m0 0l-4-4m4 4l4-4m-4 4V6"
-              />
-            </svg>
-          </button>
         </div>
       </div>
 
