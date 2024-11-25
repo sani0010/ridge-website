@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import eventImage from '../assets/Scholarship.png';
-import heroVideo from '../assets/video.mp4';  // Import the video
+import heroVideo from '../assets/video.mp4';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -31,13 +31,15 @@ const Hero = () => {
           className="w-full h-full object-cover"
         >
           <source 
-            src={heroVideo}  // Use the imported video
+            src={heroVideo}
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
-        {/* Overlay to ensure text readability */}
+        {/* Dark overlay for general visibility */}
         <div className="absolute inset-0 bg-black/40"></div>
+        {/* Gradient fade at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </div>
 
       {/* Content */}
