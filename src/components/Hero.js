@@ -58,23 +58,32 @@ const Hero = () => {
 
   return (
     <section className="h-screen relative overflow-hidden">
-      {/* Video Background */}
+      {/* Video Background Container */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source 
-            src={heroVideo}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        {/* Overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative w-full h-full">
+          {/* 16:9 Aspect Ratio Container */}
+          <div className="absolute inset-0">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2"
+              style={{
+                width: '100%',
+                height: '100%'
+              }}
+            >
+              <source 
+                src={heroVideo}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
       </div>
 
       {/* Content */}
