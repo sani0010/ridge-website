@@ -29,6 +29,13 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const handleMouseEnter = (dropdownName) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -43,6 +50,11 @@ const Header = () => {
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 200);
+  };
+
+  const handleNavClick = () => {
+    scrollToTop();
+    setIsMobileMenuOpen(false);
   };
 
   const toggleMobileMenu = () => {
@@ -114,6 +126,7 @@ const Header = () => {
             <Link
               key={dropdownItem.path}
               to={dropdownItem.path}
+              onClick={handleNavClick}
               className="group flex items-center justify-between px-4 py-2 hover:bg-gray-50 
                          transition-all duration-200"
             >
@@ -136,8 +149,7 @@ const Header = () => {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto">
         <nav className="flex justify-between items-center px-6 py-2">
-          <Link to="/" className="flex-shrink-0">
-            {/* Replace src with your actual logo path */}
+          <Link to="/" className="flex-shrink-0" onClick={handleNavClick}>
             <img src={logo} alt="Ridge International College Logo" className="h-14" />
           </Link>
 
@@ -151,6 +163,7 @@ const Header = () => {
                 >
                   <Link
                     to={item.path}
+                    onClick={handleNavClick}
                     className={`
                       flex items-center px-3 py-2 rounded-md transition-colors duration-200
                       ${location.pathname === item.path
@@ -239,11 +252,9 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-0 z-50 bg-white">
-            {/* Mobile Header with Back Button and Close Button */}
             <div className="h-[72px] bg-white shadow-md flex items-center justify-between px-4">
               <div className="flex items-center gap-2">
-                <Link to="/" onClick={toggleMobileMenu}>
-                  {/* Replace src with your actual logo path */}
+                <Link to="/" onClick={handleNavClick}>
                   <img src={logo} alt="Ridge International College Logo" className="h-14" />
                 </Link>
               </div>
@@ -270,7 +281,7 @@ const Header = () => {
                             : 'text-gray-700 hover:text-[#F26722] hover:bg-gray-50'
                           }
                         `}
-                        onClick={toggleMobileMenu}
+                        onClick={handleNavClick}
                       >
                         {item.name}
                       </Link>
@@ -282,7 +293,7 @@ const Header = () => {
                               to={dropdownItem.path}
                               className="block pl-4 pr-3 py-2 text-gray-600 hover:text-[#F26722] 
                                        hover:bg-gray-50 rounded-r-md text-sm transition-colors duration-200"
-                              onClick={toggleMobileMenu}
+                              onClick={handleNavClick}
                             >
                               {dropdownItem.name}
                             </Link>
