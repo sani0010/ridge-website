@@ -1,19 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import eventImage from '../assets/Scholarship.png';
-import heroVideo from '../assets/video.mp4';  // Import the video
+import heroVideo from '../assets/video.mp4';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Move successTexts outside the component or use useMemo to prevent recreation
+  const successTexts = React.useMemo(() => [
+    "Your path to success starts here",
+    "Unlock your potential with us",
+    "Shape your future today",
+    "Excellence in education awaits"
+  ], []);
 
   useEffect(() => {
     const hasModalBeenShown = sessionStorage.getItem('modalShown');
-    
     if (!hasModalBeenShown) {
       setIsModalOpen(true);
       sessionStorage.setItem('modalShown', 'true');
     }
   }, []);
+
+  useEffect(() => {
+    const typeSpeed = 100;
+    const deleteSpeed = 50;
+    const waitTime = 2000;
+
+    const type = () => {
+      const currentText = successTexts[currentTextIndex];
+      
+      if (!isDeleting) {
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+        
+        if (displayText.length === currentText.length) {
+          setTimeout(() => setIsDeleting(true), waitTime);
+        }
+      } else {
+        setDisplayText(currentText.substring(0, displayText.length - 1));
+        
+        if (displayText.length === 0) {
+          setIsDeleting(false);
+          setCurrentTextIndex((prevIndex) => (prevIndex + 1) % successTexts.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, currentTextIndex, isDeleting, successTexts]);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -31,7 +69,7 @@ const Hero = () => {
           className="w-full h-full object-cover"
         >
           <source 
-            src={heroVideo}  // Use the imported video
+            src={heroVideo}
             type="video/mp4"
           />
           Your browser does not support the video tag.
@@ -46,8 +84,9 @@ const Hero = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Welcome to Ridge International College
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl mb-6">
-            Your path to success starts here
+          <p className="text-lg md:text-xl lg:text-2xl mb-6 min-h-[2.5rem] font-mono">
+            {displayText}
+            <span className="animate-blink">|</span>
           </p>
           <Link to="/about">
             <button className="bg-[#F26722] text-white px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#e0561b] transition duration-300">
@@ -128,6 +167,17 @@ const Hero = () => {
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        
+        .animate-blink {
+          animation: blink 1s step-end infinite;
+        }
+      `}</style>
     </section>
   );
 };
