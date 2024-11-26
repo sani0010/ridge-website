@@ -5,21 +5,9 @@ import campus1 from '../assets/campus1.jpg';
 import campus2 from '../assets/campus2.jpg';
 import campus3 from '../assets/campus3.jpg';
 
-const campusImages = [
-  { id: 1, src: campus1, alt: "Campus Life Scene 1" },
-  { id: 2, src: campus2, alt: "Campus Life Scene 2" },
-  { id: 3, src: campus3, alt: "Campus Life Scene 3" }
-];
-
 const BlogDetails = () => {
   const location = useLocation();
   const { post } = location.state || {};
-
-  // Function to get random image for post
-  const getPostImage = () => {
-    const randomIndex = Math.floor(Math.random() * campusImages.length);
-    return campusImages[randomIndex];
-  };
 
   if (!post) {
     return (
@@ -40,8 +28,6 @@ const BlogDetails = () => {
       </div>
     );
   }
-
-  const postImage = getPostImage();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
@@ -80,12 +66,12 @@ const BlogDetails = () => {
             {/* Featured Image */}
             <div className="relative">
               <img 
-                src={postImage.src}
-                alt={postImage.alt}
+                src={post.image || campus1}
+                alt={post.title}
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
-                {postImage.alt}
+                {post.title}
               </div>
             </div>
 
@@ -119,7 +105,7 @@ const BlogDetails = () => {
                   <div className="relative rounded-lg overflow-hidden">
                     <img
                       src={campus2}
-                      alt="Campus Life Scene 2"
+                      alt="Campus Life Scene"
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
@@ -129,7 +115,7 @@ const BlogDetails = () => {
                   <div className="relative rounded-lg overflow-hidden">
                     <img
                       src={campus3}
-                      alt="Campus Life Scene 3"
+                      alt="Campus Life Scene"
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 text-sm">
