@@ -73,6 +73,14 @@ const ContactPage = () => {
     }
   ];
 
+  const formatDate = (date) => {
+    if (!date) return null;
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString().slice(-2);
+    return `${day}/${month}/${year}`;
+  };
+
   const handleScheduleAppointment = (index) => {
     if (selectedDates[index]) {
       const department = departments[index];
@@ -80,7 +88,7 @@ const ContactPage = () => {
       const body = encodeURIComponent(`
 Dear ${department.title},
 
-I would like to schedule an appointment on ${selectedDates[index]?.toLocaleDateString()}.
+I would like to schedule an appointment on ${formatDate(selectedDates[index])}.
 
 Please confirm the availability of this date and time.
 
@@ -177,6 +185,7 @@ Best regards,
                     newDates[index] = date;
                     setSelectedDates(newDates);
                   }}
+                  dateFormat="dd/MM/yy"
                   className="w-full border border-gray-300 rounded-lg p-2 mb-3"
                   placeholderText="Select date"
                 />
@@ -194,7 +203,6 @@ Best regards,
         </div>
 
         {/* Contact Form Section */}
-        {/* ... rest of the component remains the same ... */}
         <div className="bg-white rounded-lg shadow-lg mb-24">
           <div className="p-8">
             <div className="grid md:grid-cols-2 gap-12">
@@ -281,7 +289,7 @@ Best regards,
                       Your appointment request to {departments[currentIndex]?.title} has been initiated.
                     </p>
                     <p className="font-semibold text-lg">
-                      Selected Date: {selectedDates[currentIndex]?.toLocaleDateString()}
+                    Selected Date: {formatDate(selectedDates[currentIndex])}
                     </p>
                     <p className="text-sm text-gray-500 mt-2">
                       An email has been drafted to {departments[currentIndex]?.email}
