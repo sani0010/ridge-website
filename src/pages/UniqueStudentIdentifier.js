@@ -36,7 +36,7 @@ const UniqueStudentIdentifier = () => {
 
           <div className="relative w-full h-[80vh] rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src="https://www.youtube.com/embed/QD8eXcYvlNk?si=AC5S1MEvTpvB0TCy"
+              src="https://www.youtube.com/embed/QD8eXcYvlNk?autoplay=1&mute=1&rel=0"
               title="How to Create a Unique Student Identifier (USI)"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
