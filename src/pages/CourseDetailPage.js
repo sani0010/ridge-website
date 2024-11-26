@@ -11,13 +11,14 @@ import {
   BookOpen,
   ClipboardCheck,
   FileCheck,
-  Star
+  Star, 
 } from 'lucide-react';
 import { courseData } from '../data/courseData';
 import ApplicationModal from './ApplicationModal';
 
 
 // Import all course images
+import generalEnglishBrochure from '../assets/english.brochure.pdf';
 import generalEnglishImg from '../assets/general-english.jpg';
 //Leader//
 import AdvDiploma from '../assets/AdvDip.jpg';
@@ -43,6 +44,10 @@ import individualsupport from '../assets/individualsupport.jpg';
 import CommunityService from '../assets/CommunityService.jpg';
 
 // Image mapping object - now includes all course images
+
+const courseBrochures = {
+  'general-english': generalEnglishBrochure,
+};
 const courseImages = {
   'general-english': generalEnglishImg,
 
@@ -108,6 +113,27 @@ const CourseDetailPage = () => {
     return '/api/placeholder/1200/500';
   };
 
+  const downloadBrochure = () => {
+    // Get the brochure for the current course
+    const brochure = courseBrochures[courseName];
+    
+    if (!brochure) {
+      // Fallback if no specific brochure is found
+      alert('Brochure not available for this course');
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = brochure;
+    
+    // Generate filename based on course name
+    const filename = `${course.title.toLowerCase().replace(/\s+/g, '-')}-brochure.pdf`;
+    link.download = filename;
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   const HighlightCard = ({ icon: Icon, title, value }) => (
     <div className="bg-white rounded-xl p-6 mt-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
       <div className="flex items-center gap-4">
@@ -380,7 +406,8 @@ const CourseDetailPage = () => {
                 >
                 Apply Now
                 </button>
-                <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors">
+                <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors" onClick={downloadBrochure}>
+
                   Download Brochure
                 </button>
               </ContentCard>
