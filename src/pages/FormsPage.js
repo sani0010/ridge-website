@@ -7,87 +7,96 @@ const formsData = [
   {
     title: 'Application Form (For Melbourne Campus)',
     description: 'If you wish to apply to study with us – also contains the USI authority form which notifies us of your USI or allows us to request creation of a USI on your behalf (required for enrolment).',
-    link: 'https://www.ridge.edu.au/path/to/melbourne-application-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/01/Ridge-application-form-melbourne.pdf'
   },
   {
     title: 'Application Form (For Sydney Campus)',
     description: 'If you wish to apply to study with us – also contains the USI authority form which notifies us of your USI or allows us to request creation of a USI on your behalf (required for enrolment).',
-    link: 'https://www.ridge.edu.au/path/to/sydney-application-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/01/Ridge-application-form-sydney.pdf'
   },
   {
     title: 'Credit Application Form',
     description: 'If you want to apply for Credit Transfer.',
-    link: 'https://www.ridge.edu.au/path/to/credit-application-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2022/07/Credit_application_form.pdf'
   },
   {
     title: 'Complaints and Appeals Form',
     description: 'If you wish to complain about our services, or appeal an assessment decision made.',
-    link: 'https://www.ridge.edu.au/path/to/complaints-appeals-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Complaints-and-Appeals-Form_v2.2.pdf'
   },
   {
     title: 'Refund Application Form',
     description: 'If you believe you have grounds for a refund.',
-    link: 'https://www.ridge.edu.au/path/to/refund-application-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Refund-Application-Form_v2.1.pdf'
   },
   {
     title: 'Marketing Permissions Form',
     description: 'If we want to use your picture, testimonial, or other details on our marketing material (e.g., website), we will ask you to complete this.',
-    link: 'https://www.ridge.edu.au/path/to/marketing-permissions-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Marketing-Permissions-Form_v2.1.pdf'
   },
   {
     title: 'Student Change of Details Form',
     description: 'Used to notify us if your personal details (e.g., name, contact details, address) have changed.',
-    link: 'https://www.ridge.edu.au/path/to/student-change-details-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Student-Change-of-Details-Form_v2.1.pdf'
   },
   {
     title: 'Withdrawal Form',
     description: 'If you wish to withdraw from a currently enrolled course of study.',
-    link: 'https://www.ridge.edu.au/path/to/withdrawal-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Withdrawal-Form_v2.1.pdf'
   },
   {
     title: 'Assessment Task Cover Sheet',
     description: 'Please use this when submitting assessment tasks.',
-    link: 'https://www.ridge.edu.au/path/to/assessment-task-cover-sheet.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Assessment-Task-Cover-Sheet_v2.1.pdf'
   },
   {
     title: 'Suggestion for Improvement Form',
     description: 'If you would like to supply us with a suggestion to improve our services.',
-    link: 'https://www.ridge.edu.au/path/to/suggestion-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Suggestion-for-Improvement-Form_v2.0.pdf'
   },
   {
     title: 'Request to Access Records Form',
     description: 'To request access to the information we have in your file.',
-    link: 'https://www.ridge.edu.au/path/to/access-records-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Access-to-Records-Request-Form_v1.1.pdf'
   },
   {
     title: 'Amendment to Records Form',
     description: 'If you believe the information we have in your file is incorrect.',
-    link: 'https://www.ridge.edu.au/path/to/amendment-records-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Amendment-to-Records-Request-Form_v2.1.pdf'
   },
   {
     title: 'Application for Deferral Form',
     description: 'If you wish to defer your studies in compassionate or compelling circumstances.',
-    link: 'https://www.ridge.edu.au/path/to/deferral-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Application-for-Deferral-Form-International-Students_v2.1.pdf'
   },
   {
     title: 'Internal Course Transfer Form',
     description: 'If you wish to change to another course with Ridge International College.',
-    link: 'https://www.ridge.edu.au/path/to/course-transfer-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Internal-Course-Location-Transfer-Application-Form-International-Students_v2.2.pdf'
   },
   {
     title: 'Application for Leave of Absence',
     description: 'If you wish to apply for leave of absence.',
-    link: 'https://www.ridge.edu.au/path/to/leave-of-absence-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Application-for-Leave-of-Absence-Form-International-Students_v2.1.pdf'
   },
   {
     title: 'Request for Term Break Letter',
     description: 'If you wish to request for a term break.',
-    link: 'https://www.ridge.edu.au/path/to/term-break-request-form.pdf'
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Request-for-Issuance-of-Term-Break-Letter_v1.1.pdf'
+  },
+  {
+    title: 'Early Course Completion Form',
+    description: 'If you wish to complete your course earlier than originally planned.',
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Early-Course-Completion-Form_v1.1.pdf'
+  },
+  {
+    title: 'Field Visit Form',
+    description: 'Form for organizing or participating in field visits.',
+    link: 'https://ridge.edu.au/wp-content/uploads/2024/11/Field-Visit-Form_v1.0.pdf'
   }
 ];
 
 // Categories configuration
-
 const categories = {
   'Enrollment': {
     icon: School,
@@ -96,7 +105,7 @@ const categories = {
   },
   'Academic': {
     icon: FileText,
-    forms: ['Assessment Task Cover Sheet', 'Application for Deferral Form', 'Request for Term Break Letter', 'Application for Leave of Absence'],
+    forms: ['Assessment Task Cover Sheet', 'Application for Deferral Form', 'Request for Term Break Letter', 'Application for Leave of Absence', 'Early Course Completion Form', 'Field Visit Form'],
     color: '#f26722'
   },
   'Changes & Transfers': {
@@ -116,6 +125,7 @@ const categories = {
   }
 };
 
+// Rest of the component remains the same as in the previous version (FormCard, CategorySection, FormsPage)
 const FormCard = ({ form, color }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -140,8 +150,6 @@ const FormCard = ({ form, color }) => {
           href={form.link}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-white transition-all hover:opacity-90"
           style={{ backgroundColor: color }}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <DownloadIcon className="h-4 w-4" />
           Download
