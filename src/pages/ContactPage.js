@@ -72,6 +72,25 @@ const ContactPage = () => {
       color: "bg-orange-100"
     }
   ];
+  const socialMediaLinks = [
+    {
+      Icon: Facebook,
+      link: "https://www.facebook.com/ridgeinternationalcollege"
+    },
+    {
+      Icon: Instagram,
+      link: "https://www.instagram.com/ridgeinternationalcollege/"
+    },
+    {
+      Icon: Twitter,
+      link: "https://www.twitter.com/RidgeCollege"
+    },
+    {
+      Icon: Linkedin,
+      link: "https://www.linkedin.com/company/ridge-international-college/"
+    }
+  ];
+
 
   const formatDate = (date) => {
     if (!date) return null;
@@ -186,6 +205,7 @@ Best regards,
                     setSelectedDates(newDates);
                   }}
                   dateFormat="dd/MM/yy"
+                  minDate={new Date()}
                   className="w-full border border-gray-300 rounded-lg p-2 mb-3"
                   placeholderText="Select date"
                 />
@@ -212,18 +232,21 @@ Best regards,
                   Have questions? Our team is here to help you navigate your educational journey.
                 </p>
                 <div className="space-y-6">
-                  <h4 className="text-xl font-semibold">Follow us:</h4>
-                  <div className="flex gap-4">
-                    {[Facebook, Instagram, Twitter, Linkedin].map((Icon, idx) => (
-                      <button
-                        key={idx}
-                        className="p-3 rounded-full border border-gray-200 hover:bg-blue-50 transition-colors"
-                      >
-                        <Icon className="w-5 h-5" />
-                      </button>
-                    ))}
-                  </div>
+                <h4 className="text-xl font-semibold">Follow us:</h4>
+                <div className="flex gap-4">
+                  {socialMediaLinks.map(({ Icon, link }, idx) => (
+                    <a
+                      key={idx}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-full border border-gray-200 hover:bg-blue-50 transition-colors"
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  ))}
                 </div>
+              </div>
               </div>
               <div className="space-y-4">
                 <input
