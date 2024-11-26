@@ -44,7 +44,7 @@ const AdmissionsPage = () => {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white leading-tight text-center"
           >
             Your Future Begins at
-            <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent py-5">
               Ridge International College
             </span>
           </motion.h1>
@@ -83,7 +83,7 @@ const AdmissionsPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent py-4">
               Why Choose Ridge International
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto px-4">

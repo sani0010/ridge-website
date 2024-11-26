@@ -234,7 +234,7 @@ const AboutUsPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-900 to-indigo-900 bg-clip-text text-transparent py-3">
                 Message from CEO
               </h2>
               <p className="text-lg md:text-xl font-semibold text-gray-800 mb-4">Mr. Kishor Raj Aryal, CEO</p>

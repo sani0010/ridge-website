@@ -10,7 +10,8 @@ import {
   Briefcase,
   BookOpen,
   ClipboardCheck,
-  FileCheck
+  FileCheck,
+  Star
 } from 'lucide-react';
 import { courseData } from '../data/courseData';
 import ApplicationModal from './ApplicationModal';
@@ -138,6 +139,7 @@ const CourseDetailPage = () => {
   const careerOutcomes = Array.isArray(course.careerOutcomes) ? course.careerOutcomes : [];
   const assessmentMethods = Array.isArray(course.assessmentMethods) ? course.assessmentMethods : [];
   const startDates = Array.isArray(course.startDates) ? course.startDates : [];
+  const highlights = Array.isArray(course.highlights) ? course.highlights : [];
 
   const courseImage = getCourseImage();
 
@@ -186,6 +188,27 @@ const CourseDetailPage = () => {
               <SectionTitle>Course Overview</SectionTitle>
               <p className="text-gray-600 leading-relaxed mb-8">{course.description}</p>
             </ContentCard>
+                        {/* Course Highlights */}
+                        {highlights.length > 0 && (
+              <ContentCard>
+                <SectionTitle>Course Highlights</SectionTitle>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {highlights.map((highlight, index) => (
+                    <div 
+                      key={index} 
+                      className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
+                    >
+                      <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
+                        <Star className="w-6 h-6 text-[#3554a5]" />
+                      </div>
+                      <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
+                        {highlight}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </ContentCard>
+            )}
             {courseName === 'general-english' && course.proficiencyLevels && course.proficiencyLevels.length > 0 && (
   <ContentCard>
     <SectionTitle>Course Levels</SectionTitle>
