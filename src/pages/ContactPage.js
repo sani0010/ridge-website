@@ -75,6 +75,21 @@ const ContactPage = () => {
 
   const handleScheduleAppointment = (index) => {
     if (selectedDates[index]) {
+      const department = departments[index];
+      const subject = encodeURIComponent(`Appointment Request for ${department.title}`);
+      const body = encodeURIComponent(`
+Dear ${department.title},
+
+I would like to schedule an appointment on ${selectedDates[index]?.toLocaleDateString()}.
+
+Please confirm the availability of this date and time.
+
+Best regards,
+[Your Name]
+      `);
+
+      window.location.href = `mailto:${department.email}?subject=${subject}&body=${body}`;
+
       setCurrentIndex(index);
       setIsModalOpen(true);
     }
@@ -103,7 +118,7 @@ const ContactPage = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {campusLocations.map((campus, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <a href={campus.mapLink} target="_blank" rel="noopener noreferrer" className="h-48 bg-blue-100 relative block">
+              <a href={campus.mapLink} className="h-48 bg-blue-100 relative block">
                 <img
                   src={campus.image}
                   alt={campus.title}
@@ -179,6 +194,7 @@ const ContactPage = () => {
         </div>
 
         {/* Contact Form Section */}
+        {/* ... rest of the component remains the same ... */}
         <div className="bg-white rounded-lg shadow-lg mb-24">
           <div className="p-8">
             <div className="grid md:grid-cols-2 gap-12">
@@ -241,48 +257,48 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg w-full max-w-md">
-            <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold">Appointment Confirmed</h3>
-                <button 
-                  onClick={() => setIsModalOpen(false)}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-                  <Calendar className="w-8 h-8 text-green-600" />
+        {/* Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg w-full max-w-md">
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="text-xl font-semibold">Appointment Request</h3>
+                  <button 
+                    onClick={() => setIsModalOpen(false)}
+                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
                 </div>
-                <div>
-                  <p className="text-gray-600">
-                    Your appointment with {departments[currentIndex]?.title} has been scheduled for:
-                  </p>
-                  <p className="font-semibold text-lg">
-                    {selectedDates[currentIndex]?.toLocaleDateString()}
-                  </p>
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                    <Calendar className="w-8 h-8 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-gray-600">
+                      Your appointment request to {departments[currentIndex]?.title} has been initiated.
+                    </p>
+                    <p className="font-semibold text-lg">
+                      Selected Date: {selectedDates[currentIndex]?.toLocaleDateString()}
+                    </p>
+                    <p className="text-sm text-gray-500 mt-2">
+                      An email has been drafted to {departments[currentIndex]?.email}
+                    </p>
+                  </div>
+                  <button 
+                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                    onClick={() => setIsModalOpen(false)}
+                  >
+                    Close
+                  </button>
                 </div>
-                <p className="text-sm text-gray-500">
-                  A confirmation email has been sent to your inbox.
-                </p>
-                <button 
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Done
-                </button>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
