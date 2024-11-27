@@ -142,6 +142,7 @@ const LandingPage = () => {
         from_email: formData.email,
         course: formData.course,
         phone_number: formData.phoneNumber,
+        
         message: `Hello Ridge International College,
     
     A new application has been received for the ${formData.course} course.
