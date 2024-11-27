@@ -318,15 +318,23 @@ const LandingPage = () => {
                 required 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg" 
               />
-              <input 
-                type='text' 
-                name="course"
-                placeholder='Which Course You Want To Enroll' 
-                value={formData.course}
-                onChange={handleInputChange}
-                required 
-                className='w-full px-4 py-2 border border-gray-300 rounded-lg' 
-              />
+<select 
+  name="course"
+  value={formData.course}
+  onChange={handleInputChange}
+  required 
+  className='w-full px-4 py-2 border border-gray-300 rounded-lg'
+>
+  <option value="">Select a Course</option>
+  <option value="General English">General English</option>
+  <option value="Information Technology">Information Technology</option>
+  <option value="Leadership and Management">Leadership and Management</option>
+  <option value="Commercial Cookery & Hospitality Management">Commercial Cookery & Hospitality Management</option>
+  <option value="Aged Care">Aged Care</option>
+  <option value="Disability Care">Disability Care</option>
+  <option value="Community Service">Community Service</option>
+  <option value="Early Childhood Education">Early Childhood Education</option>
+</select>
               <input 
                 type="tel" 
                 name="phoneNumber"
