@@ -70,6 +70,7 @@ const Header = () => {
       dropdownItems: [
         { name: 'ELICOS General English', path: '/course/general-english'},
         { name: 'Aged Care', path: '/course/aged-care'},
+        { name: 'Leadership and Management', path: '/course/leadership-and-management'},
         { name: 'Community Service', path: '/course/community-service'},
         { name: 'Early Childhood Education and Care', path: '/course/early-childhood-education'},
         { name: 'Disability Care', path: '/course/disability-care'},
