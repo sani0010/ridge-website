@@ -861,7 +861,15 @@ export const courseData = {
             'SITHCCC040 Prepare and serve cheese',
             'SITHCCC044 Prepare specialised food items',
         ],
-        electives: [],
+        electives: [
+            'Prepare and present sandwiches',
+            'Participate in safe work practices',
+            'Clean kitchen premises and equipment',
+            'Produce and serve food for buffets',
+            'Prepare and serve cheese',
+            'Prepare specialised food items',
+
+        ],
     },
     RPL_CreditTransfer: 'Students can apply for recognition of prior learning, and work experience towards this qualification. During the course of your life, you will develop a wide range of skills and knowledge. Through work, volunteer roles, family commitments, and various tasks undertaken in everyday life, you are building up a bank of knowledge. The evidence of these skills and knowledge accumulated can be used to help you gain a qualification. You can also apply for course credit if you have completed the same unit previously. To apply for RPL or credit transfer indicate your preference in the application form or speak to our staff at the time of enrolment. Refer to RPL/Credit Transfer policy for details.',
 },
