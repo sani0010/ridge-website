@@ -41,11 +41,19 @@ const Events = () => {
                 onChange={handleDateChange}
                 value={selectedDate}
                 tileClassName={({ date }) => {
-                  return eventData.some(
+                  // Check if the date is a Sunday (day of week === 0)
+                  const isSunday = date.getDay() === 0;
+                  
+                  // Check if there are events on this date
+                  const hasEvents = eventData.some(
                     (item) => new Date(item.date).toDateString() === date.toDateString()
-                  )
-                    ? 'bg-[#3554a5] text-[#f26722] rounded-full font-bold'
-                    : null;
+                  );
+
+                  // Combine classes - Sunday will be red, events will have a different style if needed
+                  return [
+                    isSunday ? 'text-red-500 font-bold' : '',
+                    hasEvents ? 'bg-[#3554a5] text-[#f26722] rounded-full' : ''
+                  ].filter(Boolean).join(' ');
                 }}
               />
             </div>
@@ -82,8 +90,8 @@ const Events = () => {
                     {/* Event Details */}
                     <div className="p-6 md:w-2/3 flex flex-col justify-between">
                       <div>
-                        <div className="flex justify-between items-start mb-4">
-                          <h2 className="text-2xl font-bold text-gray-900">
+                        <div className="flex flex-col sm:flex-row justify-between items-start mb-4">
+                          <h2 className="text-2xl font-bold text-gray-900 mb-2 sm:mb-0">
                             {item.title}
                           </h2>
                           <span className="bg-[#3554a5] text-white px-3 py-1 rounded-full text-sm">
@@ -95,7 +103,7 @@ const Events = () => {
                           {item.description}
                         </p>
 
-                        <div className="flex items-center space-x-4 text-gray-600 mb-4">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-gray-600 mb-4">
                           <div className="flex items-center">
                             <MapPin className="w-5 h-5 mr-2 text-[#3554a5]" />
                             <span>Campus Main Hall</span>
