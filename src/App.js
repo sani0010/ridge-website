@@ -30,6 +30,7 @@ import DisablePage from './pages/DisablePage';
 import CommunityPage from './pages/CommunityPage';
 import ChildhoodPage from './pages/ChildhoodPage';
 import BlogDetails from './pages/BlogDetails';
+import RegisteredEvents from './pages/RegisteredEvents';
 
 
 
@@ -66,6 +67,7 @@ function App() {
         <Route path="/course/community-service" element={<CommunityPage />} />
         <Route path="/course/early-childhood-education" element={<ChildhoodPage />} />
         <Route path="/course/commercial-cookery-hospitality-management" element={<CookeryPage />} />
+        <Route path="/my-events" element={<RegisteredEvents />} />
         <Route path="/blog/:title" element={<BlogDetails />} />
         
 

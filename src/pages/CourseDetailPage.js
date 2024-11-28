@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import {
   Clock,
   Award,
@@ -97,6 +98,122 @@ const CourseDetailPage = () => {
   const { courseName } = useParams();
   const course = courseData[courseName];
   const [isApplicationModalOpen, setIsApplicationModalOpen] = useState(false);
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    course: '',
+    phoneNumber: '',
+  });
+  const modalRef = useRef();
+  const formRef = useRef();
+  
+  useEffect(() => {
+    // Initialize EmailJS with your service ID, template ID, and public key
+    try {
+      emailjs.init("BxXKTf8kRFRKqP00b");
+    } catch (error) {
+      console.error("EmailJS initialization error:", error);
+      setErrorMessage("Email service initialization failed. Please try again later.");
+    }
+  }, []);
+
+  const handleApplyNowClick = () => {
+    setShowFormModal(true);
+    setErrorMessage(''); // Clear any previous error messages
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setErrorMessage(''); // Clear previous error messages
+
+    // Validate form data
+    if (!formData.fullName || !formData.email || !formData.course || !formData.phoneNumber) {
+      setErrorMessage('Please fill out all fields.');
+      return;
+    }
+
+    // Send email using EmailJS with more comprehensive error handling
+    emailjs.send(
+      "service_0bu2fzc",
+      "template_8ki1tyw",
+      {
+        from_name: formData.fullName,
+        from_email: formData.email,
+        course: formData.course,
+        phone_number: formData.phoneNumber,
+        
+        message: `Hello Ridge International College,
+    
+    A new application has been received for the ${formData.course} course.
+    
+    Applicant Details:
+    Name: ${formData.fullName}
+    Email: ${formData.email}
+    Phone Number: ${formData.phoneNumber}
+    
+    Please review the application and follow up with the candidate.
+    
+    Best regards,
+    Ridge International College Application System`
+      }
+    
+    ).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setShowFormModal(false);
+        setShowCompletionModal(true);
+      },
+      (error) => {
+        console.error('Email Send FAILED...', error);
+        
+        // More detailed error handling
+        let errorMsg = 'Failed to submit application. ';
+        if (error.text) {
+          errorMsg += error.text;
+        } else if (error.status) {
+          errorMsg += `Status: ${error.status}. `;
+        }
+        
+        setErrorMessage(errorMsg + ' Please check your internet connection or try again later.');
+      }
+    ).catch((err) => {
+      console.error('Unexpected error:', err);
+      setErrorMessage('An unexpected error occurred. Please try again.');
+    });
+  };
+
+  const closeModal = () => {
+    setShowFormModal(false);
+    setShowCompletionModal(false);
+    setErrorMessage('');
+  };
+
+  // Close modal when clicking outside of it
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setShowFormModal(false);
+      }
+    };
+    if (showFormModal) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    } else {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    }
+    return () => document.removeEventListener('mousedown', handleOutsideClick);
+  }, [showFormModal]);
+
 
   if (!course) {
     return <div className="text-center text-red-500">Course not found!</div>;
@@ -112,6 +229,7 @@ const CourseDetailPage = () => {
     }
     return '/api/placeholder/1200/500';
   };
+
 
   const downloadBrochure = () => {
     // Get the brochure for the current course
@@ -401,17 +519,94 @@ const CourseDetailPage = () => {
                   </div>
                 </div>
                 <button 
-                  className="w-full bg-[#F26722] text-white py-4 px-6 rounded-xl font-semibold hover:bg-[#d55a1d] transition-colors mb-4"
-                  onClick={() => setIsApplicationModalOpen(true)}
-                >
-                Apply Now
-                </button>
+            className="w-full bg-white text-[#F26722] border-2 border-[#F26722] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors mb-2"
+            onClick={handleApplyNowClick}
+          >
+            Apply Now
+          </button>
                 <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors" onClick={downloadBrochure}>
 
                   Download Brochure
                 </button>
               </ContentCard>
+              {showFormModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
+          <div ref={modalRef} className="bg-white rounded-lg p-6 md:p-8 w-full max-w-md">
+            <h2 className="text-xl md:text-2xl font-semibold text-center mb-6">Application Form</h2>
+            <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
+              <input 
+                type="text" 
+                name="fullName"
+                placeholder="Full Name" 
+                value={formData.fullName}
+                onChange={handleInputChange}
+                required 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg" 
+              />
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Email" 
+                value={formData.email}
+                onChange={handleInputChange}
+                required 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg" 
+              />
+<select 
+  name="course"
+  value={formData.course}
+  onChange={handleInputChange}
+  required 
+  className='w-full px-4 py-2 border border-gray-300 rounded-lg'
+>
+  <option value="">Select a Course</option>
+  <option value="General English">General English</option>
+  <option value="Information Technology">Information Technology</option>
+  <option value="Leadership and Management">Leadership and Management</option>
+  <option value="Commercial Cookery & Hospitality Management">Commercial Cookery & Hospitality Management</option>
+  <option value="Aged Care">Aged Care</option>
+  <option value="Disability Care">Disability Care</option>
+  <option value="Community Service">Community Service</option>
+  <option value="Early Childhood Education">Early Childhood Education</option>
+</select>
+              <input 
+                type="tel" 
+                name="phoneNumber"
+                placeholder="Phone Number" 
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+                required 
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg" 
+              />
+              
+              {/* Error message display */}
+              {errorMessage && (
+                <div className="text-red-500 text-sm text-center mb-4">
+                  {errorMessage}
+                </div>
+              )}
 
+              <button type="submit" className="w-full bg-[#3554a5] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                Submit
+              </button>
+            </form>
+            <button onClick={closeModal} className="mt-4 text-sm text-gray-500 hover:text-gray-700 text-center block w-full">
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+            {showCompletionModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
+          <div className="bg-white rounded-lg p-6 md:p-8 w-full max-w-md">
+            <h2 className="text-xl md:text-2xl font-semibold text-center mb-6">Application Submitted</h2>
+            <p className="text-gray-700 text-center mb-6">Thank you for your application! We will get in touch with you soon.</p>
+            <button onClick={closeModal} className="w-full bg-[#3554a5] text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
               {/* Intake Dates */}
               {startDates.length > 0 && (
                 <ContentCard>

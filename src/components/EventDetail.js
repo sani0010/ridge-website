@@ -11,6 +11,12 @@ const EventDetail = () => {
   
   // State to control modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // State to track registered events
+  const [registeredEvents, setRegisteredEvents] = useState(() => {
+    // Load registered events from localStorage on initial render
+    const savedEvents = localStorage.getItem('registeredEvents');
+    return savedEvents ? JSON.parse(savedEvents) : [];
+  });
 
   // Retrieve the saved scroll position and scroll to it
   useEffect(() => {
@@ -34,6 +40,9 @@ const EventDetail = () => {
       </div>
     );
   }
+
+  // Check if event is already registered
+  const isEventRegistered = registeredEvents.some(regEvent => regEvent.id === event.id);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -93,10 +102,15 @@ const EventDetail = () => {
                 </div>
                 
                 <button 
-                  className="mt-6 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5] transition-colors duration-200"
+                  className={`mt-6 w-full text-white py-2 px-4 rounded-md transition-colors duration-200 ${
+                    isEventRegistered 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-[#3554a5] hover:bg-[#3554a5]'
+                  }`}
                   onClick={() => setIsModalOpen(true)}
+                  disabled={isEventRegistered}
                 >
-                  Register for Event
+                  {isEventRegistered ? 'Already Registered' : 'Register for Event'}
                 </button>
               </div>
             </div>
@@ -106,20 +120,49 @@ const EventDetail = () => {
 
       {/* Render the registration modal */}
       {isModalOpen && (
-        <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <RegistrationModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          event={event}
+          onRegister={(registrationData) => {
+            // Update registered events in local storage
+            const newRegisteredEvents = [...registeredEvents, {
+              ...event,
+              registrationDetails: registrationData
+            }];
+            setRegisteredEvents(newRegisteredEvents);
+            localStorage.setItem('registeredEvents', JSON.stringify(newRegisteredEvents));
+          }}
+        />
       )}
     </div>
   );
 };
 
 // Registration modal component
-const RegistrationModal = ({ isOpen, onClose }) => {
+const RegistrationModal = ({ isOpen, onClose, event, onRegister }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
+
   const [isRegistered, setIsRegistered] = useState(false);
 
   // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Call the onRegister callback with form data
+    onRegister(formData);
     setIsRegistered(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   const handleOutsideClick = (e) => {
@@ -140,7 +183,7 @@ const RegistrationModal = ({ isOpen, onClose }) => {
         {isRegistered ? (
           <div className="text-center">
             <h2 className="text-xl font-bold mb-4">Successfully Registered!</h2>
-            <p className="text-gray-600 mb-6">Thank you for registering for the event.</p>
+            <p className="text-gray-600 mb-6">Thank you for registering for {event.title}.</p>
             <button 
               onClick={() => {
                 setIsRegistered(false);
@@ -153,16 +196,40 @@ const RegistrationModal = ({ isOpen, onClose }) => {
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <h2 className="text-xl font-bold mb-4">Register for Event</h2>
+            <h2 className="text-xl font-bold mb-4">Register for {event.title}</h2>
             <label className="block mb-2">
               Name:
-              <input type="text" className="w-full p-2 border rounded" required />
+              <input 
+                type="text" 
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded" 
+                required 
+              />
             </label>
             <label className="block mb-2">
               Email:
-              <input type="email" className="w-full p-2 border rounded" required />
+              <input 
+                type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded" 
+                required 
+              />
             </label>
-            {/* Add more fields as necessary */}
+            <label className="block mb-2">
+              Phone:
+              <input 
+                type="tel" 
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full p-2 border rounded" 
+                required 
+              />
+            </label>
             <button 
               type="submit" 
               className="mt-4 w-full bg-[#3554a5] text-white py-2 px-4 rounded-md hover:bg-[#3554a5]"
