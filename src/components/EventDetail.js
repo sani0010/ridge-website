@@ -8,17 +8,15 @@ const EventDetail = () => {
   const location = useLocation();
 
   const event = eventData.find(item => item.id === parseInt(id));
-  
-  // State to control modal visibility
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // State to track registered events
   const [registeredEvents, setRegisteredEvents] = useState(() => {
-    // Load registered events from localStorage on initial render
     const savedEvents = localStorage.getItem('registeredEvents');
     return savedEvents ? JSON.parse(savedEvents) : [];
   });
 
-  // Retrieve the saved scroll position and scroll to it
+  const [showMyEventsButton, setShowMyEventsButton] = useState(false);
+
   useEffect(() => {
     if (location.state?.scrollPosition) {
       window.scrollTo(0, location.state.scrollPosition);
@@ -41,19 +39,28 @@ const EventDetail = () => {
     );
   }
 
-  // Check if event is already registered
   const isEventRegistered = registeredEvents.some(regEvent => regEvent.id === event.id);
 
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="mb-8 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#3554a5] bg-white hover:bg-gray-50"
-        >
-          ← Back to Events
-        </button>
-        
+        <div className="flex justify-between mb-8">
+          <button
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-[#3554a5] bg-white hover:bg-gray-50"
+          >
+            ← Back to Events
+          </button>
+          {showMyEventsButton && (
+            <button
+              onClick={() => navigate('/my-events')}
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#3554a5] hover:bg-[#3554a5]"
+            >
+              Go to My Events
+            </button>
+          )}
+        </div>
+
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
           <div className="relative h-96">
             <img
@@ -67,7 +74,7 @@ const EventDetail = () => {
               <h1 className="text-4xl font-bold mt-2">{event.title}</h1>
             </div>
           </div>
-          
+
           <div className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
@@ -75,7 +82,7 @@ const EventDetail = () => {
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
                   {event.fullDescription}
                 </p>
-                
+
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Event Highlights</h3>
                 <ul className="list-disc pl-5 space-y-2 text-gray-600">
                   {event.highlights.map((highlight, index) => (
@@ -83,7 +90,7 @@ const EventDetail = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Event Information</h3>
                 <div className="space-y-4">
@@ -100,12 +107,12 @@ const EventDetail = () => {
                     <p className="mt-1 text-gray-900">{event.location}</p>
                   </div>
                 </div>
-                
-                <button 
+
+                <button
                   className={`mt-6 w-full text-white py-2 px-4 rounded-md transition-colors duration-200 ${
-                    isEventRegistered 
-                    ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-[#3554a5] hover:bg-[#3554a5]'
+                    isEventRegistered
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-[#3554a5] hover:bg-[#3554a5]'
                   }`}
                   onClick={() => setIsModalOpen(true)}
                   disabled={isEventRegistered}
@@ -118,20 +125,19 @@ const EventDetail = () => {
         </div>
       </div>
 
-      {/* Render the registration modal */}
       {isModalOpen && (
-        <RegistrationModal 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
+        <RegistrationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
           event={event}
           onRegister={(registrationData) => {
-            // Update registered events in local storage
-            const newRegisteredEvents = [...registeredEvents, {
-              ...event,
-              registrationDetails: registrationData
-            }];
+            const newRegisteredEvents = [
+              ...registeredEvents,
+              { ...event, registrationDetails: registrationData },
+            ];
             setRegisteredEvents(newRegisteredEvents);
             localStorage.setItem('registeredEvents', JSON.stringify(newRegisteredEvents));
+            setShowMyEventsButton(true); // Show "Go to My Events" button after registration
           }}
         />
       )}
