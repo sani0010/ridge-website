@@ -18,9 +18,9 @@ const SubsectionTitle = styled(Typography)({
 
 const InfoText = styled(Typography)({
   fontSize: '1.1rem',
-  color: 'black',
+  color: 'CCCCCC',
   lineHeight: '1.6',
-  fontWeight: '500',
+  fontWeight: '400',
   marginBottom: '20px',
 });
 
