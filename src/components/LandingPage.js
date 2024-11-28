@@ -267,7 +267,7 @@ const LandingPage = () => {
       {/* Courses Section */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 md:mb-12">
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F26722] mb-4">Explore the Areas of Study</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-[#F26722] mb-4">Explore the Areas of Study</h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
             Ridge International College offers nationally recognised courses for both domestic and international students.
           </p>
