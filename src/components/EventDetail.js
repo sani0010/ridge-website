@@ -15,8 +15,6 @@ const EventDetail = () => {
     return savedEvents ? JSON.parse(savedEvents) : [];
   });
 
-  const [showMyEventsButton, setShowMyEventsButton] = useState(false);
-
   useEffect(() => {
     if (location.state?.scrollPosition) {
       window.scrollTo(0, location.state.scrollPosition);
@@ -51,14 +49,6 @@ const EventDetail = () => {
           >
             ← Back to Events
           </button>
-          {showMyEventsButton && (
-            <button
-              onClick={() => navigate('/my-events')}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#3554a5] hover:bg-[#3554a5]"
-            >
-              Go to My Events
-            </button>
-          )}
         </div>
 
         <div className="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -111,13 +101,18 @@ const EventDetail = () => {
                 <button
                   className={`mt-6 w-full text-white py-2 px-4 rounded-md transition-colors duration-200 ${
                     isEventRegistered
-                      ? 'bg-gray-400 cursor-not-allowed'
+                      ? 'bg-[#F26722] hover:bg-[#F26722]'
                       : 'bg-[#3554a5] hover:bg-[#3554a5]'
                   }`}
-                  onClick={() => setIsModalOpen(true)}
-                  disabled={isEventRegistered}
+                  onClick={() => {
+                    if (isEventRegistered) {
+                      navigate('/my-events');
+                    } else {
+                      setIsModalOpen(true);
+                    }
+                  }}
                 >
-                  {isEventRegistered ? 'Already Registered' : 'Register for Event'}
+                  {isEventRegistered ? 'Go to My Events' : 'Register for Event'}
                 </button>
               </div>
             </div>
@@ -137,13 +132,14 @@ const EventDetail = () => {
             ];
             setRegisteredEvents(newRegisteredEvents);
             localStorage.setItem('registeredEvents', JSON.stringify(newRegisteredEvents));
-            setShowMyEventsButton(true); // Show "Go to My Events" button after registration
           }}
         />
       )}
     </div>
   );
 };
+
+// RegistrationModal remains unchanged
 
 // Registration modal component
 const RegistrationModal = ({ isOpen, onClose, event, onRegister }) => {
