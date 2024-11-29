@@ -139,7 +139,6 @@ const BlogDetails = () => {
             </div>
           </div>
 
-          {/* Author Bio */}
           <div className="bg-white rounded-xl shadow-lg p-8 mt-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Author</h2>
             <div className="flex items-start gap-4">
