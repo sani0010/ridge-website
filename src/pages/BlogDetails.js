@@ -2,8 +2,8 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Calendar, User, Clock, Heart, MessageSquare, ArrowLeft } from 'lucide-react';
 import campus1 from '../assets/campus1.jpg';
-import campus2 from '../assets/campus2.jpg';
-import campus3 from '../assets/campus3.jpg';
+
+
 
 const BlogDetails = () => {
   const location = useLocation();
@@ -89,7 +89,7 @@ const BlogDetails = () => {
                 ))}
               </div>
 
-              {/* Summary */}
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {post.summary}
               </p>
@@ -101,7 +101,7 @@ const BlogDetails = () => {
                 </p>
                 
                 {/* Additional Images Gallery */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
                   <div className="relative rounded-lg overflow-hidden">
                     <img
                       src={campus2}
@@ -122,7 +122,7 @@ const BlogDetails = () => {
                       Campus Life Scene 3
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex items-center gap-6 mt-8 pt-8 border-t border-gray-100">
