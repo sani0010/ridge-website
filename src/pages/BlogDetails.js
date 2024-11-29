@@ -125,7 +125,6 @@ const BlogDetails = () => {
                 </div>
               </div>
 
-              {/* Engagement Stats */}
               <div className="flex items-center gap-6 mt-8 pt-8 border-t border-gray-100">
                 <div className="flex items-center text-gray-500">
                   <Heart className="h-5 w-5 mr-2" />
