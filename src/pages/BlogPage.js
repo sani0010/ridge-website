@@ -10,6 +10,12 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const navigate = useNavigate();
 
+  // Truncate summary function
+  const truncateSummary = (summary, maxLength = 200) => {
+    if (summary.length <= maxLength) return summary;
+    return summary.substring(0, maxLength) + '...';
+  };
+
   // Blog posts data
   const blogPosts = [
     {
@@ -36,7 +42,7 @@ const BlogPage = () => {
       },
       category: 'Study Tips',
       tags: ['Work-Study', 'Time Management'],
-      summary: 'Struggling to manage your part-time job with your studies? In this blog post, I share my personal experience and practical tips that helped me maintain good grades while working...',
+      summary: 'Balancing work and studies is like walking on a tightrope - it requires focus, balance, and constant adjustment. Through my journey as a working student, Ive developed strategies that helped me excel in both areas. Time management is crucial. I use the Pomodoro Technique for studying, breaking my work into 25-minute focused sessions. This helps me maintain concentration and make the most of my limited study time. Communication with professors and employers is key. I have found that most are understanding and flexible if you are upfront about your commitments. Many professors have offered alternative assignment deadlines, and my employer allows me to adjust my schedule during exam periods. The biggest lesson I have learned is the importance of self-care. Despite busy schedules, taking time for rest and recreation is essential for long-term success.',
       readTime: '7 min read',
       likes: 89,
       comments: 15,
@@ -51,7 +57,7 @@ const BlogPage = () => {
       },
       category: 'Experience',
       tags: ['Exchange Program', 'Melbourne'],
-      summary: 'From discovering hidden cafes to adapting to a new educational system, heres my complete journey of studying abroad in Melbourne. Learn about the challenges, victories, and everything in between...',
+      summary: 'My semester in Melbourne was a transformative experience that changed my perspective on education and life. The Australian approach to learning, with its emphasis on independent research and practical application, was refreshingly different from what I was used to. Melbourns coffee culture became an integral part of my student life. I found that some of my best study sessions happened in the citys hidden laneway cafes. The blend of academic and cultural experiences made every day an adventure. One of the highlights was participating in field research projects that took us to the Great Ocean Road and the Grampians. These hands-on experiences taught me more about environmental science than any textbook could. The challenges of adapting to a new educational system and culture were real, but the support from local students and faculty made the transition smoother. I have made lifelong friends and professional connections that I know will be valuable in my future career.',
       readTime: '6 min read',
       likes: 156,
       comments: 31,
@@ -143,7 +149,7 @@ const BlogPage = () => {
                     {filteredPosts[0].title}
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    {filteredPosts[0].summary}
+                    {truncateSummary(filteredPosts[0].summary)}
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
@@ -195,7 +201,7 @@ const BlogPage = () => {
                 </h2>
 
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {post.summary}
+                  {truncateSummary(post.summary)}
                 </p>
 
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
