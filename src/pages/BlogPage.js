@@ -21,7 +21,7 @@ const BlogPage = () => {
       },
       category: 'Student Life',
       tags: ['International', 'Campus Life'],
-      summary: 'Follow along as I navigate through a typical day at Ridge International College, from morning classes to evening study sessions. Get insights into campus life, cultural experiences, and academic challenges...',
+      summary: 'As an international student, every day brings new experiences and challenges. My day typically starts at 7 AM, when I head to the campus café for a quick breakfast before my 8:30 AM Economics class. The diversity in the classroom is incredible - we have students from over 15 different countries One of the most interesting aspects of my day is the cultural exchange that happens naturally during lunch breaks. We often share traditional snacks from our home countries and discuss how university life differs across cultures. The afternoon is usually packed with study sessions in the library, where Ive found a great study group. We help each other not just with academics, but also in understanding cultural nuances and adapting to life in a new country. Evening activities often include participating in international student society events, where we organize cultural festivals, language exchange programs, and support sessions for new international students. These activities have helped me build a strong community away from home.',
       readTime: '5 min read',
       likes: 124,
       comments: 23,
