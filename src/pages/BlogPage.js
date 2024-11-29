@@ -16,7 +16,6 @@ const BlogPage = () => {
     return summary.substring(0, maxLength) + '...';
   };
 
-  // Blog posts data
   const blogPosts = [
     {
       title: 'A Day in the Life of an International Student',
