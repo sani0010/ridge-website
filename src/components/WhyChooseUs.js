@@ -29,7 +29,7 @@ const benefits = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-24 bg-gradient-to-b from-gray-0 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-5xl font-bold mb-6 text-[#F26722] relative inline-block">

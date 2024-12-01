@@ -105,42 +105,45 @@ const Testimonials = () => {
             </div>
           </div>
 
-          <div 
-            className={`transition-all duration-300 ease-in-out ${
-              isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
-            }`}
-          >
-            {/* Profile Image */}
-            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-6 sm:mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#f26722] to-blue-500 rounded-full animate-spin-slow"></div>
-              <div className="absolute inset-1 bg-white rounded-full"></div>
-              <div className="absolute inset-2 rounded-full overflow-hidden">
-                <img
-                  src={testimonials[displayIndex].image}
-                  alt={testimonials[displayIndex].name}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="text-center space-y-4">
-              <div className="space-y-2">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-                  {testimonials[displayIndex].name}
-                </h3>
-                <p className="text-red-500 text-sm sm:text-base font-medium">
-                  {testimonials[displayIndex].role}
-                </p>
+          {/* Fixed Height Container */}
+          <div className="min-h-[500px] relative">
+            <div 
+              className={`absolute inset-0 transition-all duration-300 ease-in-out ${
+                isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
+              }`}
+            >
+              {/* Profile Image */}
+              <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-6 sm:mb-8">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#f26722] to-blue-500 rounded-full animate-spin-slow"></div>
+                <div className="absolute inset-1 bg-white rounded-full"></div>
+                <div className="absolute inset-2 rounded-full overflow-hidden">
+                  <img
+                    src={testimonials[displayIndex].image}
+                    alt={testimonials[displayIndex].name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
               </div>
 
-              <blockquote className="text-gray-700 text-lg leading-relaxed italic max-w-2xl mx-auto px-4 sm:px-8">
-                "{testimonials[displayIndex].quote}"
-              </blockquote>
+              {/* Content */}
+              <div className="text-center space-y-4">
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                    {testimonials[displayIndex].name}
+                  </h3>
+                  <p className="text-red-500 text-sm sm:text-base font-medium">
+                    {testimonials[displayIndex].role}
+                  </p>
+                </div>
 
-              <button className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-base rounded-full font-semibold transform transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
-                Read More
-              </button>
+                <blockquote className="text-gray-700 text-lg leading-relaxed italic max-w-2xl mx-auto px-4 sm:px-8 min-h-[120px] flex items-center justify-center">
+                  "{testimonials[displayIndex].quote}"
+                </blockquote>
+
+                <button className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-base rounded-full font-semibold transform transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
+                  Read More
+                </button>
+              </div>
             </div>
           </div>
 
