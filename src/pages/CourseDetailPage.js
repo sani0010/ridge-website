@@ -332,27 +332,27 @@ const CourseDetailPage = () => {
               <SectionTitle>Course Overview</SectionTitle>
               <p className="text-gray-600 leading-relaxed mb-8">{course.description}</p>
             </ContentCard>
-                        {/* Course Highlights */}
-                        {highlights.length > 0 && (
-              <ContentCard>
-                <SectionTitle>Course Highlights</SectionTitle>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {highlights.map((highlight, index) => (
-                    <div 
-                      key={index} 
-                      className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
-                    >
-                      <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
-                        <Star className="w-6 h-6 text-[#3554a5]" />
-                      </div>
-                      <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
-                        {highlight}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </ContentCard>
-            )}
+{/* Admission Requirements - Now in the left content area */}
+{course.admissionRequirements && (
+  <ContentCard>
+    <SectionTitle>Admission Requirements</SectionTitle>
+    <div className="grid gap-4">
+      {course.admissionRequirements.map((requirement, index) => (
+        <div 
+          key={index} 
+          className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
+        >
+          <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
+            <FileCheck className="w-6 h-6 text-[#3554a5]" />
+          </div>
+          <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
+            {requirement}
+          </span>
+        </div>
+      ))}
+    </div>
+  </ContentCard>
+)}
             {courseName === 'general-english' && course.proficiencyLevels && course.proficiencyLevels.length > 0 && (
   <ContentCard>
     <SectionTitle>Course Levels</SectionTitle>
@@ -481,18 +481,8 @@ const CourseDetailPage = () => {
           {/* Right Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 space-y-8">
-              {/* Entry Requirements Card */}
-              {course.admissionRequirements && (
-                <ContentCard>
-                  <h3 className="text-xl font-bold text-gray-800 mb-6">Entry Requirements</h3>
-                  <div className="prose prose-gray">
-                    <p className="text-gray-600">{course.admissionRequirements}</p>
-                  </div>
-                </ContentCard>
-              )}
-
-              {/* Course Fees */}
-              <ContentCard>
+                            {/* Course Fees */}
+                            <ContentCard>
                 <h3 className="text-xl font-bold text-gray-800 mb-6">Course Fees</h3>
                 <div className="space-y-4 mb-8">
                   {course.applicationFee && (
@@ -529,6 +519,28 @@ const CourseDetailPage = () => {
                   Download Brochure
                 </button>
               </ContentCard>
+{/* Course Highlights - Now in the right sidebar */}
+{highlights.length > 0 && (
+  <ContentCard>
+    <h3 className="text-xl font-bold text-gray-800 mb-6">Course Highlights</h3>
+    <div className="space-y-4">
+      {highlights.map((highlight, index) => (
+        <div 
+          key={index} 
+          className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
+        >
+          <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
+            <Star className="w-6 h-6 text-[#3554a5]" />
+          </div>
+          <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
+            {highlight}
+          </span>
+        </div>
+      ))}
+    </div>
+  </ContentCard>
+)}
+
               {showFormModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
           <div ref={modalRef} className="bg-white rounded-lg p-6 md:p-8 w-full max-w-md">

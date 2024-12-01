@@ -112,7 +112,14 @@ export const courseData = {
     duration: '52 weeks',
     deliveryMethod: 'Face to Face at Level 5, 85 Queen Street, Melbourne, VIC 3000',
     prerequisites: 'None',
-    admissionRequirements: `All students must be 18 years of age or over at the time of applying for admission at Ridge International College. Entry requires an IELTS band score of 6.0 or PTE Score of 50 or equivalent. Satisfactory completion of studies equivalent to an Australian Year 12 qualification is also required.`,
+    'admissionRequirements': [
+        'All students must be 18 years of age or over at the time of applying for admission at Ridge International College',
+        'Entry requires an IELTS band score of 6.0 or PTE Score of 50 or equivalent',
+        'Satisfactory completion of studies equivalent to an Australian Year 12 qualification is required',
+        'Students will need to complete a Pre-Training Review to determine suitability for the qualification',
+        'Completing a Language, Literacy, Numeracy (LLN) assessment, with ACSF Level 3 in learning, reading, writing, oral communication, and numeracy being desirable to participate in the course',
+        'Mature-age students will be considered without minimum education requirements if they have relevant work experience within the chosen area of study and can demonstrate the capacity to meet course requirements'
+    ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
     startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],

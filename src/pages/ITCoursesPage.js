@@ -29,7 +29,7 @@ const ITCoursesPage = () => (
         {/* ICT50220 Diploma of Information Technology */}
         <Link
           to="/course/ict50220-diploma-information-technology"
-          className="group bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]"
+          className="group block bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]"
         >
           <div className="relative">
             <div className="h-72 overflow-hidden">
@@ -41,20 +41,16 @@ const ITCoursesPage = () => (
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
-
-          <div className="p-8 relative">
+          <div className="p-8">
             <div className="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Foundational IT Skills
             </div>
-
             <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-orange-500 transition-colors">
               ICT50220 Diploma of Information Technology
             </h3>
-
             <p className="text-gray-600 mb-6">
               Gain the essential IT skills needed for a successful career in technology, covering a range of IT fundamentals.
             </p>
-
             <div className="flex flex-wrap gap-6 text-gray-600">
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-orange-500" />
@@ -62,26 +58,22 @@ const ITCoursesPage = () => (
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-orange-500" />
-                <span> CRICOS Code:
-                108709K</span>
+                <span>CRICOS Code: 108709K</span>
               </div>
             </div>
-
-            {/* Learn More Button */}
-            <Link
-              to="/course/ict50220-diploma-information-technology"
-              className="inline-flex items-center gap-2 text-orange-600 mt-6 hover:text-orange-700 transition-all duration-300"
-            >
-              Learn More
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:text-orange-700 transition-all duration-300">
+                Learn More
+                <ArrowRight className="w-5 h-5" />
+              </span>
+            </div>
           </div>
         </Link>
 
         {/* ICT60220 Advanced Diploma of Information Technology */}
         <Link
           to="/course/ict60220-advanced-diploma-of-information-technology"
-          className="group bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]"
+          className="group block bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-[1.02]"
         >
           <div className="relative">
             <div className="h-72 overflow-hidden">
@@ -93,20 +85,16 @@ const ITCoursesPage = () => (
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
-
-          <div className="p-8 relative">
+          <div className="p-8">
             <div className="inline-block bg-orange-100 text-orange-600 px-4 py-1 rounded-full text-sm font-medium mb-4">
               Advanced IT Qualification
             </div>
-
             <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-orange-500 transition-colors">
               ICT60220 Advanced Diploma of Information Technology
             </h3>
-
             <p className="text-gray-600 mb-6">
               Take your IT expertise to the next level with advanced skills in system management, network architecture, and more.
             </p>
-
             <div className="flex flex-wrap gap-6 text-gray-600">
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-orange-500" />
@@ -114,19 +102,15 @@ const ITCoursesPage = () => (
               </div>
               <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-orange-500" />
-                <span>CRICOS Code:
-                108710F</span>
+                <span>CRICOS Code: 108710F</span>
               </div>
             </div>
-
-            {/* Learn More Button */}
-            <Link
-              to="/course/ict60220-advanced-diploma-of-information-technology"
-              className="inline-flex items-center gap-2 text-orange-600 mt-6 hover:text-orange-700 transition-all duration-300"
-            >
-              Learn More
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:text-orange-700 transition-all duration-300">
+                Learn More
+                <ArrowRight className="w-5 h-5" />
+              </span>
+            </div>
           </div>
         </Link>
       </div>
