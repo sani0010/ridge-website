@@ -273,7 +273,7 @@ Best regards,
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg text-white mb-24">
+        {/* <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg text-white mb-24">
           <div className="p-12 text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey?</h2>
             <div className="flex gap-4 justify-center">
@@ -287,7 +287,7 @@ Best regards,
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Modal */}
         {isModalOpen && (
