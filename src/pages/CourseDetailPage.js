@@ -401,39 +401,44 @@ const CourseDetailPage = () => {
 
             {/* Course Structure */}
             {(coreUnits.length > 0 || electives.length > 0) && (
-              <ContentCard>
-                <SectionTitle>Course Structure</SectionTitle>
-                
-                {/* Core Units */}
-                {coreUnits.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Core Units</h3>
-                    <div className="grid gap-3">
-                      {coreUnits.map((unit, index) => (
-                        <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
-                          <BookOpen className="w-5 h-5 text-[#3554a5] flex-shrink-0" />
-                          <span className="text-gray-700">{unit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {/* Elective Units */}
-                {electives.length > 0 && (
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Elective Units</h3>
-                    <div className="grid gap-3">
-                      {electives.map((unit, index) => (
-                        <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
-                          <BookOpen className="w-5 h-5 text-[#F26722] flex-shrink-0" />
-                          <span className="text-gray-700">{unit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </ContentCard>
-            )}
+  <ContentCard>
+    <SectionTitle>Course Structure</SectionTitle>
+    
+    {/* Core Units */}
+    {coreUnits.length > 0 && (
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-800 mb-4">Core Units</h3>
+        <div className="grid gap-3">
+          {coreUnits.map((unit, index) => (
+            <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+              <div className="w-6 h-6 flex items-center justify-center bg-[#3554a5]/10 rounded-full flex-shrink-0">
+                <span className="text-[#3554a5] font-bold text-sm">{index + 1}</span>
+              </div>
+              <span className="text-gray-700">{unit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    
+    {/* Elective Units */}
+    {electives.length > 0 && (
+      <div>
+        <h3 className="text-xl font-semibold text-gray-800 mb-4">Elective Units</h3>
+        <div className="grid gap-3">
+          {electives.map((unit, index) => (
+            <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+              <div className="w-6 h-6 flex items-center justify-center bg-[#F26722]/10 rounded-full flex-shrink-0">
+                <span className="text-[#F26722] font-bold text-sm">{index + 1}</span>
+              </div>
+              <span className="text-gray-700">{unit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </ContentCard>
+)}
             {/* Work Placement */}
             {course.workPlacement && (
               <ContentCard>
