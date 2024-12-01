@@ -46,12 +46,12 @@ const Testimonials = () => {
 
   const updateTestimonial = useCallback((newIndex) => {
     setIsAnimating(true);
-    
+
     // First fade out
     setTimeout(() => {
       // Update the display index after fade out
       setDisplayIndex(newIndex);
-      
+
       // Then fade back in
       setTimeout(() => {
         setIsAnimating(false);
@@ -82,26 +82,26 @@ const Testimonials = () => {
   }, [handleNextTestimonial]);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <div className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 lg:py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             STUDENT TESTIMONIALS
           </h2>
           <div className="flex justify-center items-center gap-2">
-            <div className="h-1 w-8 sm:w-12 bg-[#f26722]"></div>
+            <div className="h-1 w-12 bg-[#f26722]"></div>
             <div className="h-2 w-2 rounded-full bg-[#f26722]"></div>
-            <div className="h-1 w-8 sm:w-12 bg-[#f26722]"></div>
+            <div className="h-1 w-12 bg-[#f26722]"></div>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="relative bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:shadow-xl">
+        <div className="relative bg-white rounded-xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
           {/* Decorative Quote Icon */}
-          <div className="absolute -top-4 sm:-top-5 left-1/2 transform -translate-x-1/2">
-            <div className="bg-[#f26722] p-2 sm:p-3 rounded-full shadow-lg">
-              <Quote className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+          <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
+            <div className="bg-[#f26722] p-3 rounded-full shadow-lg">
+              <Quote className="w-6 h-6 text-white" />
             </div>
           </div>
 
@@ -111,7 +111,7 @@ const Testimonials = () => {
             }`}
           >
             {/* Profile Image */}
-            <div className="relative mx-auto w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mb-6 sm:mb-8">
+            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-6 sm:mb-8">
               <div className="absolute inset-0 bg-gradient-to-r from-[#f26722] to-blue-500 rounded-full animate-spin-slow"></div>
               <div className="absolute inset-1 bg-white rounded-full"></div>
               <div className="absolute inset-2 rounded-full overflow-hidden">
@@ -124,9 +124,9 @@ const Testimonials = () => {
             </div>
 
             {/* Content */}
-            <div className="text-center space-y-3 sm:space-y-4">
-              <div className="space-y-1 sm:space-y-2">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+            <div className="text-center space-y-4">
+              <div className="space-y-2">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
                   {testimonials[displayIndex].name}
                 </h3>
                 <p className="text-red-500 text-sm sm:text-base font-medium">
@@ -134,33 +134,33 @@ const Testimonials = () => {
                 </p>
               </div>
 
-              <blockquote className="text-gray-700 text-base sm:text-lg leading-relaxed italic max-w-2xl mx-auto px-2 sm:px-4">
+              <blockquote className="text-gray-700 text-lg leading-relaxed italic max-w-2xl mx-auto px-4 sm:px-8">
                 "{testimonials[displayIndex].quote}"
               </blockquote>
 
-              <button className="mt-6 sm:mt-8 px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-sm sm:text-base rounded-full font-semibold transform transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
+              <button className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-base rounded-full font-semibold transform transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
                 Read More
               </button>
             </div>
           </div>
 
           {/* Navigation */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 sm:px-4 pointer-events-none">
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none">
             <button
               onClick={handlePrevTestimonial}
               disabled={isAnimating}
-              className="transform -translate-x-2 sm:-translate-x-4 transition-all duration-300 hover:scale-110 bg-white rounded-full p-1 sm:p-2 shadow-lg text-red-500 hover:text-red-600 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed"
+              className="transition-all duration-300 hover:scale-110 bg-white rounded-full p-3 shadow-lg text-red-500 hover:text-red-600 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={handleNextTestimonial}
               disabled={isAnimating}
-              className="transform translate-x-2 sm:translate-x-4 transition-all duration-300 hover:scale-110 bg-white rounded-full p-1 sm:p-2 shadow-lg text-red-500 hover:text-red-600 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed"
+              className="transition-all duration-300 hover:scale-110 bg-white rounded-full p-3 shadow-lg text-red-500 hover:text-red-600 pointer-events-auto disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </div>
