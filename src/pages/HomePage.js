@@ -13,8 +13,8 @@ const HomePage = () => {
       <Hero />
       <LandingPage />
       <NewsAndEvents />
-      <AffiliationsPartners/>
       <Testimonials />
+      <AffiliationsPartners/>
       <WhyChooseUs />
     </div>
   );
