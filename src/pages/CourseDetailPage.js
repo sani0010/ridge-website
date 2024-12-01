@@ -312,7 +312,7 @@ const CourseDetailPage = () => {
       </div>
 
       {/* Quick Stats */}
-      <div className="max-w-7xl mx-auto px-4 -mt-20 mb-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 -mt-20 mb-12 relative z-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <HighlightCard icon={Clock} title="Duration" value={course.duration} />
           <HighlightCard icon={DollarSign} title="Tuition Fee" value={course.tuitionFee} />
