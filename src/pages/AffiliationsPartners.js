@@ -44,7 +44,7 @@ const AffiliationsPartners = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 py-6 sm:py-8 md:py-12">
+    <div className="bg-white py-6 sm:py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-center text-gray-900">
           Affiliations & Partners
