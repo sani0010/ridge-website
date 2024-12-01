@@ -82,7 +82,7 @@ const Testimonials = () => {
   }, [handleNextTestimonial]);
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 lg:py-20">
+    <div className="bg-gray-50 py-12 sm:py-16 lg:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-12">
@@ -97,7 +97,7 @@ const Testimonials = () => {
         </div>
 
         {/* Main Content */}
-        <div className="relative bg-white rounded-xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
+        <div className="relative bg-gray-50 rounded-xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
           {/* Decorative Quote Icon */}
           <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
             <div className="bg-[#f26722] p-3 rounded-full shadow-lg">

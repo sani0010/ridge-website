@@ -205,17 +205,17 @@ const LandingPage = () => {
   }, [showFormModal]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
-      <div className="bg-white py-12 md:py-24 mb-8 md:mb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 items-center md:grid-cols-2">
+      <div className="bg-gray-50 py-12 md:py-24 mb-8  md:mb-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6  lg:px-8">
+          <div className="grid gap-8 items-center  md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-3xl md:text-4xl font-bold text-[#F26722] mb-4">
+              <h1 className="text-3xl  md:text-4xl font-bold text-[#F26722] mb-4">
                 Life at<br />
                 Ridge International<br />
                 College
