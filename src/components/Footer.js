@@ -45,7 +45,7 @@ const Footer = () => {
       }}
     >
       {/* Blur and Overlay Effect */}
-      <div className="absolute inset-0 bg-[#14202c] opacity-85 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-[#14202c] opacity-85 backdrop-blur-3xl"></div>
 
       <div className="container mx-auto px-6 max-w-screen-xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">

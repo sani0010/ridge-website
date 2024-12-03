@@ -106,7 +106,7 @@ const Testimonials = () => {
           </div>
 
           {/* Fixed Height Container */}
-          <div className="min-h-[500px] relative">
+          <div className="min-h-[450px] relative">
             <div 
               className={`absolute inset-0 transition-all duration-300 ease-in-out ${
                 isAnimating ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'
@@ -139,10 +139,6 @@ const Testimonials = () => {
                 <blockquote className="text-gray-700 text-lg leading-relaxed italic max-w-2xl mx-auto px-4 sm:px-8 min-h-[120px] flex items-center justify-center">
                   "{testimonials[displayIndex].quote}"
                 </blockquote>
-
-                <button className="mt-8 px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white text-base rounded-full font-semibold transform transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
-                  Read More
-                </button>
               </div>
             </div>
           </div>
