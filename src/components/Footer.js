@@ -10,6 +10,30 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  const campuses = [
+    { 
+      name: "Melbourne Campus", 
+      address: "Level 5/ 85 Queen Street, Melbourne VIC 3000",
+      phone: "+61 03 9620 7738", 
+      email: "admin@ridge.edu.au",
+      googleMapsLink: "https://maps.google.com/maps?q=85+Queen+Street,+Melbourne+VIC+3000,+Australia"
+    },
+    { 
+      name: "Fitzroy Campus", 
+      address: "97 Smith Street, Fitzroy VIC 3065", 
+      phone: "+61 03 9620 7738", 
+      email: "admin@ridge.edu.au",
+      googleMapsLink: "https://maps.google.com/maps?q=97+Smith+Street,+Fitzroy+VIC+3065,+Australia"
+    },
+    { 
+      name: "Sydney Campus", 
+      address: "Office 101, 30 Cowper Street, Parramatta, NSW 2150", 
+      phone: "+61 03 9620 7738", 
+      email: "admin@ridge.edu.au",
+      googleMapsLink: "https://maps.google.com/maps?q=30+Cowper+Street,+Parramatta,+NSW+2150,+Australia"
+    }
+  ];
+
   return (
     <footer 
       className="relative bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white py-16 overflow-hidden"
@@ -96,27 +120,38 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 border-b border-[#f26722] pb-2">Contact Us</h4>
             <div className="space-y-6">
-              {[{ name: "Melbourne Campus", address: "Level 5/ 85 Queen Street, Melbourne VIC 3000",
-                phone: "+61 03 9620 7738", email: "admin@ridge.edu.au" },
-                { name: "Fitzroy Campus", address: "97 Smith Street, Fitzroy VIC 3065", 
-                  phone: "+61 03 9620 7738", email: "admin@ridge.edu.au" },
-                { name: "Sydney Campus", address: "Office 101, 30 Cowper Street, Parramatta, NSW 2150", 
-                  phone: "+61 03 9620 7738", email: "admin@ridge.edu.au" }]
-                .map((campus) => (
-                  <div key={campus.name} className="bg-[#2c3e50]/70 rounded-lg p-4">
-                    <h5 className="font-medium text-white mb-2">{campus.name}</h5>
-                    <div className="space-y-2 text-sm text-gray-300">
-                      <p className="flex items-center">
+              {campuses.map((campus) => (
+                <div key={campus.name} className="bg-[#2c3e50]/70 rounded-lg p-4">
+                  <h5 className="font-medium text-white mb-2">{campus.name}</h5>
+                  <div className="space-y-2 text-sm text-gray-300">
+                    <p className="flex items-center">
+                      <a 
+                        href={campus.googleMapsLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center hover:text-white transition-colors"
+                      >
                         <MapPin className="mr-2 h-4 w-4 text-[#f26722]" /> {campus.address}
-                      </p>
-                      <p className="flex items-center">
+                      </a>
+                    </p>
+                    <p className="flex items-center">
+                      <a 
+                        href={`tel:${campus.phone.replace(/\s+/g, '')}`}
+                        className="flex items-center hover:text-white transition-colors"
+                      >
                         <Phone className="mr-2 h-4 w-4 text-[#f26722]" /> {campus.phone}
-                      </p>
-                      <p className="flex items-center">
+                      </a>
+                    </p>
+                    <p className="flex items-center">
+                      <a 
+                        href={`mailto:${campus.email}`}
+                        className="flex items-center hover:text-white transition-colors"
+                      >
                         <Mail className="mr-2 h-4 w-4 text-[#f26722]" /> {campus.email}
-                      </p>
-                    </div>
+                      </a>
+                    </p>
                   </div>
+                </div>
               ))}
             </div>
           </div>
