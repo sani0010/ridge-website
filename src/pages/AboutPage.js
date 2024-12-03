@@ -16,6 +16,7 @@ import campusImg6 from '../assets/campus6.jpg';
 import campusImg7 from '../assets/campus7.jpg';
 import campusImg8 from '../assets/campus8.jpg';
 
+
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);

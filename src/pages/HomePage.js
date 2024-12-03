@@ -14,8 +14,7 @@ const HomePage = () => {
       <AffiliationsPartners/>
       <LandingPage />
       <NewsAndEvents />
-      <Testimonials />
-      
+      <Testimonials /> 
       <WhyChooseUs />
     </div>
   );
