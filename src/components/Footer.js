@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../assets/white.png';
+import bridgeBackground from '../assets/bridge.jpg';
 import { 
   MapPin, 
   Phone, 
@@ -10,8 +11,19 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white py-16">
-      <div className="container mx-auto px-6 max-w-screen-xl">
+    <footer 
+      className="relative bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white py-16 overflow-hidden"
+      style={{
+        backgroundImage: `url(${bridgeBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundBlendMode: 'overlay'
+      }}
+    >
+      {/* Blur and Overlay Effect */}
+      <div className="absolute inset-0 bg-[#14202c] opacity-85 backdrop-blur-sm"></div>
+
+      <div className="container mx-auto px-6 max-w-screen-xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {/* College Logo and Description */}
           <div className="col-span-full md:col-span-1 flex flex-col items-start">
@@ -91,7 +103,7 @@ const Footer = () => {
                 { name: "Sydney Campus", address: "Office 101, 30 Cowper Street, Parramatta, NSW 2150", 
                   phone: "+61 03 9620 7738", email: "admin@ridge.edu.au" }]
                 .map((campus) => (
-                  <div key={campus.name} className="bg-[#2c3e50] rounded-lg p-4">
+                  <div key={campus.name} className="bg-[#2c3e50]/70 rounded-lg p-4">
                     <h5 className="font-medium text-white mb-2">{campus.name}</h5>
                     <div className="space-y-2 text-sm text-gray-300">
                       <p className="flex items-center">
@@ -112,9 +124,6 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="mt-12 pt-6 border-t border-[#f26722] text-center">
-          <div className="mb-4">
-          
-          </div>
           <p className="text-sm text-white">
             © {new Date().getFullYear()} Ridge International College. All Rights Reserved.
           </p>
