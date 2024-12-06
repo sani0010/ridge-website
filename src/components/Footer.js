@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/white.png';
 import bridgeBackground from '../assets/bridge.jpg';
 import { 
@@ -36,7 +37,7 @@ const Footer = () => {
 
   return (
     <footer 
-      className="relative bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white py-16 overflow-hidden"
+      className="relative bg-gradient-to-br from-[#2c3e50] to-[#34495e] text-white py-16 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${bridgeBackground})`,
         backgroundSize: 'cover',
@@ -47,16 +48,18 @@ const Footer = () => {
       {/* Blur and Overlay Effect */}
       <div className="absolute inset-0 bg-[#14202c] opacity-85 backdrop-blur-3xl"></div>
 
-      <div className="container mx-auto px-6 max-w-screen-xl relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
           {/* College Logo and Description */}
           <div className="col-span-full md:col-span-1 flex flex-col items-start">
-            <div className="flex items-center mb-6">
-              <img 
-                src={logo}
-                alt="Ridge International College Logo" 
-                className="h-32 w-auto object-contain"
-              />
+            <div className="flex items-center mb-6 w-full">
+              <Link to="/" className="block mx-auto md:mx-0">
+                <img 
+                  src={logo}
+                  alt="Ridge International College Logo" 
+                  className="max-h-32 max-w-full w-auto object-contain"
+                />
+              </Link>
             </div>
 
             <p className="text-gray-300 text-base ml-3 leading-relaxed">
