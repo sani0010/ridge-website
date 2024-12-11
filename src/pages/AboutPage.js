@@ -238,13 +238,15 @@ const AboutUsPage = () => {
       </h2>
       <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-base md:text-lg leading-relaxed mb-14">
         <p>
-          Ridge International College was established with the aim of providing high-quality training to students. We are committed to sourcing top trainers and designing exceptional training and assessment materials for students. Our team comprises professional and friendly staff who strive to provide the best training and support services.
+        Ridge International College was established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students. We have a team of professional and friendly staff and strive to provide the best training and support services to you.
         </p>
         <p>
-          We pride ourselves on our exceptional teaching team. Our trainers possess excellent academic credentials, holding PhD or Masters degrees, and bring a wealth of practical knowledge from working directly in their respective industries. They are among the best in their fields, ensuring that students receive the most current and relevant education.
+        We also have an exceptional teaching team, trainers with excellent academic skills holding PhD or Masters degrees, along with a great deal of teaching experience and practical knowledge from working in the industry, they are amongst the best in the respective field. Leadership and management  trainers also have enriched business and team leading experience and they are all very active in business. At our institute, only the most up-to-date knowledge and skills will be brought into our training and we ensure that we deliver quality outcomes for students, industry and the Australian economy.
         </p>
         <p>
-          Leadership and management trainers bring enriched business and team-leading experience, with all being actively engaged in their professional domains. At our institute, we are dedicated to bringing only the most up-to-date knowledge and skills into our training, ensuring that we deliver quality outcomes for students, industry, and the broader economy.
+        We are located in Melbourne and Sydney, and are equipped with up-to-date broadband internet-connected computers, audio-visual facilities, spacious and bright classrooms, and a comfortable and inviting study environment that is rich with resources. We are within Melbourne’s ‘Free Tram Zone’ (includes all areas of the CBD).
+
+We have our own kitchen very close to the city where we can travel by tram in Melbourne.
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-4">
