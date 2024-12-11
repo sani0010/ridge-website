@@ -67,7 +67,7 @@ const AdmissionsPage = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </button>
             <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all w-full sm:w-auto">
-              Download Prospectus
+              Download Brochure
             </button>
           </motion.div>
         </div>
