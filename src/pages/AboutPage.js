@@ -233,10 +233,10 @@ const AboutUsPage = () => {
       transition={{ duration: 0.8 }}
       className="text-center"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-900">
+      <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-700">
         About Ridge International College
       </h2>
-      <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-base md:text-lg leading-relaxed mb-14">
+      <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-base md:text-lg leading-relaxed mb-16">
         <p>
         Ridge International College was established in the aim of providing high quality training to students. We are endeavoured to sourcing top trainers and designing high quality training and assessment materials for students. We have a team of professional and friendly staff and strive to provide the best training and support services to you.
         </p>
@@ -322,7 +322,7 @@ We have our own kitchen very close to the city where we can travel by tram in Me
                 </p>
                 <p>
                   With best wishes,<br />
-                  Kishor Raj Aryal<br />
+                  <span class="font-bold">Kishor Raj Aryal</span><br />
                   Chief Executive Officer
                 </p>
               </div>
