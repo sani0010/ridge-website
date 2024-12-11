@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ScrollText, CreditCard, ChevronRight, Globe, 
-  Clock, School, Users, BookOpen, Mail, MapPin
+  Clock, School, Users, BookOpen, Mail, MapPin, Download
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -28,6 +28,16 @@ const AdmissionsPage = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleDownloadBrochure = () => {
+    // Create a link element and trigger download
+    const link = document.createElement('a');
+    link.href = '/assets/Brochure.pdf';
+    link.download = 'Ridge_International_College_Brochure.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
@@ -66,7 +76,11 @@ const AdmissionsPage = () => {
               <span className="relative z-10">Begin Application</span>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-indigo-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </button>
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all w-full sm:w-auto">
+            <button 
+              onClick={handleDownloadBrochure}
+              className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all w-full sm:w-auto flex items-center justify-center gap-2"
+            >
+              <Download size={20} className="group-hover:text-blue-900" />
               Download Brochure
             </button>
           </motion.div>
