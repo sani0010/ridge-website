@@ -4,6 +4,7 @@ import {
   Clock, School, Users, BookOpen, Mail, MapPin, Download
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import brochurePDF from '../assets/Brochure.pdf';
 
 const AdmissionsPage = () => {
   const [activeTab, setActiveTab] = useState('onshore');
@@ -29,10 +30,10 @@ const AdmissionsPage = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleDownloadBrochure = () => {
+    const handleDownloadBrochure = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = '/assets/Brochure.pdf';
+    link.href = brochurePDF;
     link.download = 'Ridge_International_College_Brochure.pdf';
     document.body.appendChild(link);
     link.click();
