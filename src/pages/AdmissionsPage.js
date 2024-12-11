@@ -73,19 +73,19 @@ const AdmissionsPage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
           >
-    <a
-      href="https://ridge.edu.au/wp-content/uploads/2024/01/Ridge-application-form-melbourne.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block w-full sm:w-auto"
-    >
-      <button
-        className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 bg-white text-blue-900 rounded-xl font-semibold hover:bg-[#3554a5] hover:text-white transition-all w-full sm:w-auto flex items-center justify-center gap-2"
-      >
-        <ScrollText size={20} className="group-hover:text-white" />
-        Begin Application
-      </button>
-    </a>
+            <a
+              href="https://ridge.edu.au/wp-content/uploads/2024/01/Ridge-application-form-melbourne.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full sm:w-auto"
+            >
+              <button
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 bg-white text-blue-900 rounded-xl font-semibold hover:bg-[#3554a5] hover:text-white transition-all w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <ScrollText size={20} className="group-hover:text-white" />
+                Begin Application
+              </button>
+            </a>
             <button 
               onClick={handleDownloadBrochure}
               className="group relative px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all w-full sm:w-auto flex items-center justify-center gap-2"
