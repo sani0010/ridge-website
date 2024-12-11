@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   MapPin, Phone, Mail, Calendar, 
   Facebook, Instagram, Linkedin,
-  Clock, User, BookOpen, MessageCircle, X
+  Clock, User, BookOpen, MessageCircle, X,
+  Youtube
 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -80,6 +81,10 @@ const ContactPage = () => {
     {
       Icon: Instagram,
       link: "https://www.instagram.com/ridgeinternationalcollege/"
+    },
+    {
+      Icon: Youtube,
+      link:"https://www.youtube.com/@RidgeInternationalCollege",
     },
     {
       Icon: Linkedin,
