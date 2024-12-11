@@ -12,7 +12,7 @@ import agedCare from '../assets/aged-care.jpg';
 import disabilityCare from '../assets/disability-care.jpg';
 import communityService from '../assets/community-service.jpg';
 import earlyChildhood from '../assets/early-childhood.jpg';
-import heroBg1 from '../assets/hero-bg1.jpg';
+import campus5 from '../assets/campus5.jpg';
 
 // Course data structure
 const courses = [
@@ -255,7 +255,7 @@ const LandingPage = () => {
               <motion.img
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                src={heroBg1}
+                src={campus5}
                 alt="Campus"
                 className="rounded-lg shadow-lg w-full object-cover h-64 md:h-96"
               />
