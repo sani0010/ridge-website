@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Globe2, Users, Award,
-  GraduationCap, Building2, ChevronRight 
+  GraduationCap, Building2, ChevronRight, BookOpen, Target, Clock 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CEO from '../assets/ceo.png';
@@ -224,6 +224,73 @@ const AboutUsPage = () => {
           </div>
         </div>
       </section>
+
+      <section id="college-overview" className="py-8 md:py-12 bg-white">
+  <div className="container mx-auto max-w-6xl px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible['college-overview'] ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
+      className="text-center"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-900">
+        About Ridge International College
+      </h2>
+      <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-base md:text-lg leading-relaxed mb-14">
+        <p>
+          Ridge International College was established with the aim of providing high-quality training to students. We are committed to sourcing top trainers and designing exceptional training and assessment materials for students. Our team comprises professional and friendly staff who strive to provide the best training and support services.
+        </p>
+        <p>
+          We pride ourselves on our exceptional teaching team. Our trainers possess excellent academic credentials, holding PhD or Masters degrees, and bring a wealth of practical knowledge from working directly in their respective industries. They are among the best in their fields, ensuring that students receive the most current and relevant education.
+        </p>
+        <p>
+          Leadership and management trainers bring enriched business and team-leading experience, with all being actively engaged in their professional domains. At our institute, we are dedicated to bringing only the most up-to-date knowledge and skills into our training, ensuring that we deliver quality outcomes for students, industry, and the broader economy.
+        </p>
+      </div>
+      <div className="grid md:grid-cols-3 gap-4">
+        <motion.div 
+          className="bg-blue-50 p-5 rounded-xl shadow-md"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <BookOpen className="w-10 h-10 text-blue-600 mx-auto mb-3" />
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Mission</h3>
+          <p className="text-sm text-gray-600">
+            Provide high-quality training and education that empowers students to achieve their academic and professional goals.
+          </p>
+        </motion.div>
+        
+        <motion.div 
+          className="bg-blue-50 p-5 rounded-xl shadow-md"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <Target className="w-10 h-10 text-green-600 mx-auto mb-3" />
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Approach</h3>
+          <p className="text-sm text-gray-600">
+            Sourcing top trainers and designing exceptional, industry-aligned training and assessment materials.
+          </p>
+        </motion.div>
+        
+        <motion.div 
+          className="bg-blue-50 p-5 rounded-xl shadow-md"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <Clock className="w-10 h-10 text-purple-600 mx-auto mb-3" />
+          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Commitment</h3>
+          <p className="text-sm text-gray-600">
+            Delivering up-to-date knowledge and skills that meet the highest industry standards.
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</section>
+
 
       {/* CEO Section */}
       <section id="ceo" className="py-16 md:py-24 bg-white">
