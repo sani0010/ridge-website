@@ -107,17 +107,22 @@ const FeesSchedule = () => {
 
   const otherFees = [
     { type: "Enrolment fee (Non-refundable)", amount: 200 },
-    { type: "Overseas Student Health Cover Deferment Fee", amount: 100 },
+    { type: "Overseas Student Health Cover", amount: null },
+    { type: "Deferment Fee", amount: 100 },
     { type: "Change of COE", amount: 100 },
     { type: "Extend of Course Duration", amount: "200 per week" },
-    { type: "Supplementary Assessment", amount: 350 },
+    { type: "Supplementary Assessment (2 free re-assessment attempts)", amount: 350 },
     { type: "Unit Repeat cost", amount: 350 },
     { type: "Replacement Student ID", amount: 15 },
+    { type: "Credit Transfer", amount: "No Charge" },
     { type: "RPL fees", amount: "150 per unit" },
     { type: "Certificate re-issue fee", amount: 50 },
-    { type: "Late payment fees", amount: "10 per day" }
-  ];
-
+    { type: "Late payment fees", amount: "10 per day" },
+    { type: "Airport pick-up", amount: 100 },
+    { type: "Accommodation Placement fee", amount: 100 },
+    { type: "Interim academic transcript", amount: "No Charge" },
+    { type: "Referral to external professional services", amount: "No Charge" }
+];
   const handleSort = (column) => {
     if (sortColumn === column) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
