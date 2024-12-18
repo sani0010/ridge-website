@@ -61,9 +61,9 @@ const Hero = () => {
       const snowflake = document.createElement('div');
       snowflake.classList.add('snowflake');
       snowflake.style.left = `${Math.random() * 100}vw`;
-      snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      snowflake.style.animationDuration = `${Math.random() * 5 + 3}s`;
       snowflake.style.opacity = Math.random();
-      snowflake.style.fontSize = `${Math.random() * 20 + 10}px`;
+      snowflake.style.fontSize = `${Math.random() * 10 + 5}px`;
 
       snowflake.textContent = '❄';
       document.body.appendChild(snowflake);
@@ -144,8 +144,8 @@ const Hero = () => {
 
       <style>{`
         @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
+          0%, 50% { opacity: 0.1; }
+          10% { opacity: 0; }
         }
         
         .animate-blink {
