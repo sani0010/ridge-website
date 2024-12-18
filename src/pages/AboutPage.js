@@ -87,7 +87,7 @@ const AboutUsPage = () => {
     { icon: Users, label: "Quality Indicator Report", value: `${students}+` },
     { icon: GraduationCap, label: "Graduates", value: `${graduates}+` },
     { icon: Award, label: "Years of Excellence", value: "5+" },
-    { icon: Globe2, label: "International Partners", value: "20+" }
+    { icon: Globe2, label: "Student survey report", value: "20+" }
   ];
 
   const facilities = [
