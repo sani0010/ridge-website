@@ -520,7 +520,6 @@ const CourseDetailPage = () => {
             Apply Now
           </button>
                 <button className="w-full bg-white text-[#3554a5] border-2 border-[#3554a5] py-4 px-6 rounded-xl font-semibold hover:bg-blue-50 transition-colors" onClick={downloadBrochure}>
-
                   Download Brochure
                 </button>
               </ContentCard>
