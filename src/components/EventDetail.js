@@ -178,10 +178,10 @@ const RegistrationModal = ({ isOpen, onClose, event, onRegister }) => {
   return (
     <div
       id="modal-overlay"
-      className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-[9999]"
+      className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
       onClick={handleOutsideClick}
     >
-      <div className="bg-white p-6 rounded-lg w-full max-w-md relative z-[10000]" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-white p-6 rounded-lg w-full max-w-md" onClick={(e) => e.stopPropagation()}>
         {isRegistered ? (
           <div className="text-center">
             <h2 className="text-xl font-bold mb-4">Successfully Registered!</h2>
