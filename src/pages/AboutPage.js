@@ -84,9 +84,9 @@ const AboutUsPage = () => {
   }, [isVisible.stats, isMobile]);
 
   const stats = [
-    { icon: Users, label: "Students", value: `${students}+` },
+    { icon: Users, label: "Quality Indicator Report", value: `${students}+` },
     { icon: GraduationCap, label: "Graduates", value: `${graduates}+` },
-    { icon: Award, label: "Years of Excellence", value: "10+" },
+    { icon: Award, label: "Years of Excellence", value: "5+" },
     { icon: Globe2, label: "International Partners", value: "20+" }
   ];
 

@@ -31,16 +31,16 @@ const Hero = () => {
 
     const type = () => {
       const currentText = successTexts[currentTextIndex];
-      
+
       if (!isDeleting) {
         setDisplayText(currentText.substring(0, displayText.length + 1));
-        
+
         if (displayText.length === currentText.length) {
           setTimeout(() => setIsDeleting(true), waitTime);
         }
       } else {
         setDisplayText(currentText.substring(0, displayText.length - 1));
-        
+
         if (displayText.length === 0) {
           setIsDeleting(false);
           setCurrentTextIndex((prevIndex) => (prevIndex + 1) % successTexts.length);
@@ -56,12 +56,32 @@ const Hero = () => {
     setIsModalOpen(false);
   };
 
+  useEffect(() => {
+    const createSnowflake = () => {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = `${Math.random() * 100}vw`;
+      snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = `${Math.random() * 20 + 10}px`;
+
+      snowflake.textContent = '❄';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    };
+
+    const interval = setInterval(createSnowflake, 100);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="h-screen relative overflow-hidden">
       {/* Video Background Container */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
-          {/* 16:9 Aspect Ratio Container */}
           <div className="absolute inset-0">
             <video
               autoPlay
@@ -81,7 +101,6 @@ const Hero = () => {
               Your browser does not support the video tag.
             </video>
           </div>
-          {/* Overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/25"></div>
         </div>
       </div>
@@ -123,7 +142,7 @@ const Hero = () => {
         </div>
       )}
 
-      <style >{`
+      <style>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -131,6 +150,24 @@ const Hero = () => {
         
         .animate-blink {
           animation: blink 1s step-end infinite;
+        }
+
+        .snowflake {
+          position: fixed;
+          top: 0;
+          color: white;
+          z-index: 1000;
+          animation: fall linear infinite;
+          pointer-events: none;
+        }
+
+        @keyframes fall {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(100vh);
+          }
         }
       `}</style>
     </section>
