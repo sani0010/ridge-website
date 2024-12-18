@@ -60,22 +60,28 @@ const Hero = () => {
     const createSnowflake = () => {
       const snowflake = document.createElement('div');
       snowflake.classList.add('snowflake');
+  
+      const isSmall = Math.random() < 0.5; // 20% chance for a small snowflake
       snowflake.style.left = `${Math.random() * 100}vw`;
-      snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      snowflake.style.animationDuration = `${Math.random() * 20 + 15}s`; // Slower and longer animation
       snowflake.style.opacity = Math.random();
-      snowflake.style.fontSize = `${Math.random() * 10 + 6}px`;
-
+      snowflake.style.fontSize = isSmall
+        ? `${Math.random() * 5 + 5}px` // Small snowflakes: 5px to 10px
+        : `${Math.random() * 15 + 20}px`; // Large snowflakes: 20px to 35px
+  
       snowflake.textContent = '❄';
       document.body.appendChild(snowflake);
-
+  
       setTimeout(() => {
         snowflake.remove();
-      }, 5000);
+      }, 15000); // Match the animation duration to avoid DOM clutter
     };
-
-    const interval = setInterval(createSnowflake, 200);
+  
+    // Control the frequency of snowflake creation
+    const interval = setInterval(createSnowflake, 1000); // Decreased frequency (every 500ms)
     return () => clearInterval(interval);
   }, []);
+  
 
   return (
     <section className="h-screen relative overflow-hidden">
@@ -145,7 +151,7 @@ const Hero = () => {
       <style>{`
         @keyframes blink {
           0%, 100% { opacity: 1; }
-          100% { opacity: 0; }
+          50% { opacity: 0; }
         }
         
         .animate-blink {
@@ -166,7 +172,7 @@ const Hero = () => {
             transform: translateY(-100%);
           }
           100% {
-            transform: translateY(100vh);
+            transform: translateY(100vh); /* Reach the bottom of the viewport */
           }
         }
       `}</style>
