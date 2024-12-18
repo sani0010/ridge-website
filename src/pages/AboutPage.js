@@ -159,10 +159,10 @@ const AboutUsPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight px-4"
+            className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight px-4 "
           >
             Shaping Future Leaders at
-            <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-200 to-indigo-200 bg-clip-text text-transparent leading-[1.4]">
               Ridge International College
             </span>
           </motion.h1>
@@ -172,7 +172,7 @@ const AboutUsPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg md:text-xl text-blue-100 mb-8 md:mb-12 px-4"
           >
-            A premier institution dedicated to delivering world-class education and fostering global excellence
+          Dedicated to delivering world-class education and fostering global excellence
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
