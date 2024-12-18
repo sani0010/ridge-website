@@ -546,7 +546,7 @@ const CourseDetailPage = () => {
 )}
 
       {showFormModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-4">
           <div ref={modalRef} className="bg-white rounded-lg p-6 md:p-8 w-full max-w-md">
             <h2 className="text-xl md:text-2xl font-semibold text-center mb-6">Application Form</h2>
             <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
@@ -613,7 +613,7 @@ const CourseDetailPage = () => {
         </div>
       )}
             {showCompletionModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 px-4">
           <div className="bg-white rounded-lg p-6 md:p-8 w-full max-w-md">
             <h2 className="text-xl md:text-2xl font-semibold text-center mb-6">Application Submitted</h2>
             <p className="text-gray-700 text-center mb-6">Thank you for your application! We will get in touch with you soon.</p>
