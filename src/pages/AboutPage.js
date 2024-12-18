@@ -393,7 +393,7 @@ We have our own kitchen very close to the city where we can travel by tram in Me
             transition={{ duration: 0.8 }}
             className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Location and Facilities</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Facilities</h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-4">
               Experience learning in our state-of-the-art facilities designed for academic excellence
             </p>
