@@ -249,46 +249,54 @@ const AboutUsPage = () => {
 We have our own kitchen very close to the city where we can travel by tram in Melbourne.
         </p>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
-        <motion.div 
-          className="bg-blue-50 p-5 rounded-xl shadow-md"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <BookOpen className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Mission</h3>
-          <p className="text-sm text-gray-600">
-            Provide high-quality training and education that empowers students to achieve their academic and professional goals.
-          </p>
-        </motion.div>
-        
-        <motion.div 
-          className="bg-blue-50 p-5 rounded-xl shadow-md"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <Target className="w-10 h-10 text-green-600 mx-auto mb-3" />
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Approach</h3>
-          <p className="text-sm text-gray-600">
-            Sourcing top trainers and designing exceptional, industry-aligned training and assessment materials.
-          </p>
-        </motion.div>
-        
-        <motion.div 
-          className="bg-blue-50 p-5 rounded-xl shadow-md"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isVisible['college-overview'] ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <Clock className="w-10 h-10 text-purple-600 mx-auto mb-3" />
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Our Commitment</h3>
-          <p className="text-sm text-gray-600">
-            Delivering up-to-date knowledge and skills that meet the highest industry standards.
-          </p>
-        </motion.div>
-      </div>
+<div className="grid md:grid-cols-3 gap-6">
+  {/* Our Mission Section */}
+  <motion.div
+    className="bg-blue-50 p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-500"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.2 }}
+  >
+    <BookOpen className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+    <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Mission</h3>
+    <p className="text-sm text-gray-600">
+      Empower students through high-quality education and training to achieve their academic and professional goals.
+    </p>
+  </motion.div>
+
+  {/* Our Approach Section */}
+  <motion.div
+    className="bg-blue-50 p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-500"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.4 }}
+  >
+    <Target className="w-12 h-12 text-green-600 mx-auto mb-4" />
+    <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Approach</h3>
+    <p className="text-sm text-gray-600">
+      Deliver top trainers and industry-aligned training materials designed to meet real-world challenges.
+    </p>
+  </motion.div>
+
+  {/* Our Commitment Section */}
+  <motion.div
+    className="bg-blue-50 p-6 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-3 transition-all duration-500"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, amount: 0.5 }}
+    transition={{ duration: 0.8, ease: "easeInOut", delay: 0.6 }}
+  >
+    <Clock className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+    <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Commitment</h3>
+    <p className="text-sm text-gray-600">
+      Providing up-to-date knowledge and skills to meet the highest industry standards.
+    </p>
+  </motion.div>
+</div>
+
+
     </motion.div>
   </div>
 </section>
