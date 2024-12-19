@@ -63,7 +63,7 @@ const Hero = () => {
   
       const isSmall = Math.random() < 0.5; // 20% chance for a small snowflake
       snowflake.style.left = `${Math.random() * 100}vw`;
-      snowflake.style.animationDuration = `${Math.random() * 10 + 15}s`; // Slower and longer animation
+      snowflake.style.animationDuration = `${Math.random() * 10 + 10}s`; // Slower and longer animation
       snowflake.style.opacity = Math.random();
       snowflake.style.fontSize = isSmall
         ? `${Math.random() * 5 + 5}px` // Small snowflakes: 5px to 10px
