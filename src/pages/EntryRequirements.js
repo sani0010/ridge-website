@@ -42,13 +42,13 @@ const EntryRequirements = () => {
           <div className={contentClass}>
             <div className="space-y-4">
               <div className="p-3 md:p-4 bg-blue-50 rounded-lg">
-                <p className="text-base md:text-lg">Applicants should have successfully completed an equivalent of Australian year 12 in their home country.</p>
+                <p className="text-base md:text-lg">Talking about the further entry requirements for this qualification, applicants should have successfully completed an equivalent of Australian year 12 in applicant’s home country.</p>
               </div>
               <div className="p-3 md:p-4 bg-purple-50 rounded-lg">
-                <p className="text-base md:text-lg">Mature-age students will be considered without the minimum education requirements but with relevant work experience within a chosen area of study and a demonstrated capacity to meet the course requirements.</p>
+                <p className="text-base md:text-lg">Mature-age students will also be considered without the minimum education requirements but with relevant work experience within a chosen area of study and a demonstrated capacity to meet the course requirements.</p>
               </div>
               <div className="p-3 md:p-4 bg-yellow-50 rounded-lg">
-                <p className="text-sm italic">* For Advanced Diploma of Leadership and Management, completion of a Diploma level business course is required.</p>
+                <p className="text-sm italic">* Note: For Advanced Diploma of Leadership and Management course, students are required to demonstrate completion of Diploma level business course. Please refer to individual entry requirements for details.</p>
               </div>
             </div>
           </div>
