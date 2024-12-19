@@ -66,7 +66,15 @@ const EntryRequirements = () => {
                 <div className="text-blue-600 font-semibold text-lg md:text-xl">PTE</div>
                 <div className="text-base md:text-lg">50 or equivalent</div>
               </div>
+              
             </div>
+            <div className="p-3 md:p-4 bg-yellow-50 rounded-lg">
+                <p className="text-sm italic">Alternatively, students can provide an evidence that:
+
+they have studied in English for at least five years in Australia, Canada, New Zealand, Republic of Ireland, South Africa, United Kingdom or United States, or
+within two years of their application, they have successfully completed a foundation course or a senior secondary certificate of education or a substantial part of a Certificate III or higher level qualification from the Australian Qualifications Framework in Australia, or
+successful completion of an English Placement Test</p>
+              </div>
           </div>
         );
       case 'lln':
@@ -108,7 +116,7 @@ const EntryRequirements = () => {
         return (
           <div className={contentClass}>
             <div className="p-4 md:p-6 bg-pink-50 rounded-lg">
-              <p className="text-base md:text-lg">All students must undertake a pre-training review before enrollment.</p>
+              <p className="text-base md:text-lg">All student must undertake pre-training review prior to the enrolment which aims to identify their training needs through questions on previous education or training, relevance of the courses to student, basic computing skills and interview conducted by Ridge International College enrolment officer. Interview also aims to identify possible CT/RPL opportunities, confirm oral communication skills. Through pre-training review, student will demonstrate that they have necessary skills to successfully complete the course.</p>
             </div>
           </div>
         );
@@ -116,28 +124,19 @@ const EntryRequirements = () => {
         return (
           <div className={contentClass}>
             <div className="p-4 md:p-6 bg-indigo-50 rounded-lg">
-              <p className="text-base md:text-lg">Basic computer skills are required, including use of a computer, internet, email, and word processing applications.</p>
+              <p className="text-base md:text-lg">All student enrolling in this course are expected to have basic computer skills including use of computer or laptop, internet, email application and a word processor.</p>
             </div>
           </div>
         );
       case 'materials':
         return (
           <div className={contentClass}>
-            <p className="text-base md:text-lg mb-4">Required materials include:</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[ 
-                { text: 'Access to a laptop or computer', icon: Laptop },
-                { text: 'An active email address', icon: Book },
-                { text: 'Contact phone number', icon: Book },
-                { text: 'Postal address', icon: Book },
-                { text: 'MS Office applications', icon: Book }
-              ].map((item, index) => (
-                <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg">
-                  <item.icon className="w-5 h-5 text-gray-600 mr-3" />
-                  <span className="text-gray-700">{item.text}</span>
-                </div>
-              ))}
-            </div>
+            <p className="text-base md:text-lg mb-4">Although Ridge International College will provide access to computers/laptops with required resources during classroom hours however to work on assignments and tasks for self-study, all leaners are expected to have access to a laptop or computer. Students must have an active email address for communication and be contactable by phone (mobile or landline) and by mail (postal address).
+
+All leaners are expected to have access to MS office application such as Microsoft Word, and an email platform.
+
+Hospitality students will require access to kitchen kit and protective personal equipment (PPE) to participate in the practical tasks in the kitchen.</p>
+
           </div>
         );
       default:
