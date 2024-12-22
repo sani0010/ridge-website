@@ -31,7 +31,7 @@ import CommunityPage from './pages/CommunityPage';
 import ChildhoodPage from './pages/ChildhoodPage';
 import BlogDetails from './pages/BlogDetails';
 import RegisteredEvents from './pages/RegisteredEvents';
-
+import CampusOverview from './pages/CampusOverview';
 
 
 
@@ -69,6 +69,8 @@ function App() {
         <Route path="/course/commercial-cookery-hospitality-management" element={<CookeryPage />} />
         <Route path="/my-events" element={<RegisteredEvents />} />
         <Route path="/blog/:title" element={<BlogDetails />} />
+        <Route path="/CampusOverview" element={<CampusOverview />} />
+        
         
 
         
