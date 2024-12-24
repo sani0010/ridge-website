@@ -157,7 +157,7 @@ const WhyChooseUs = () => {
                           value={formData.name}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          placeholder="John Doe"
+                          placeholder="Full Name"
                           required
                         />
                       </div>
@@ -173,7 +173,7 @@ const WhyChooseUs = () => {
                           value={formData.email}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          placeholder="john@example.com"
+                          placeholder="abcd@example.com"
                           required
                         />
                       </div>
@@ -189,7 +189,7 @@ const WhyChooseUs = () => {
                           value={formData.phone}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          placeholder="(123) 456-7890"
+                          placeholder="(+977) 456-7890"
                         />
                       </div>
 
@@ -204,7 +204,7 @@ const WhyChooseUs = () => {
                           value={formData.interests}
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                          placeholder="e.g., Web Development, Data Science"
+                          placeholder="e.g., Community Service, Aged Care"
                         />
                       </div>
 
