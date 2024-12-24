@@ -36,7 +36,7 @@ const CampusOverview = () => {
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [images.length]);  // Added images.length as a dependency
 
   // Get the current three small images (excluding the featured one)
   const getSmallImages = () => {
