@@ -4,10 +4,11 @@ import velgtraining from '../assets/velgtraining.jpg';
 import nrtlogo from '../assets/nrtlogo.png';
 import eduworks from '../assets/eduworks.png';
 import rtoworks from '../assets/rtoworks.png';
-import commonwealthbank from '../assets/commonwealthbank.jpg';
+import commonwealthbank from '../assets/commonwealthbank.png';
 import nswit from '../assets/nsit.png';
 import allianzlogo from '../assets/allianzlogo.png';
 import axcelerate from '../assets/axcelerate.png';
+import anz from '../assets/ANZbank.jpeg.jpg';
 
 const affiliations = [
   { id: 1, image: aqflogo, name: 'AQF' },
@@ -19,6 +20,7 @@ const affiliations = [
   { id: 8, image: nswit, name: 'NSW IT' },
   { id: 9, image: allianzlogo, name: 'Allianz' },
   { id: 10, image: axcelerate, name: 'Axcelerate' },
+  { id: 11, image: anz, name: 'anz' },
 ];
 
 const AffiliationsPartners = () => {
