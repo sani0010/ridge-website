@@ -6,6 +6,7 @@ import campusImg4 from '../assets/campus4.png';
 
 const CampusOverview = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   
   const images = [
     {
@@ -32,11 +33,15 @@ const CampusOverview = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % images.length);
+      setIsAnimating(true);
+      setTimeout(() => {
+        setActiveIndex((current) => (current + 1) % images.length);
+        setIsAnimating(false);
+      }, 500);
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [images.length]);  // Added images.length as a dependency
+  }, [images.length]);
 
   // Get the current three small images (excluding the featured one)
   const getSmallImages = () => {
@@ -69,26 +74,32 @@ const CampusOverview = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="mt-12 flex flex-col md:flex-row gap-8">
-        {/* Small Images Row */}
-        <div className="flex gap-4 w-full md:w-1/2">
-          {getSmallImages().map((image, index) => (
-            <div
-              key={`small-${activeIndex}-${index}`}
-              className="relative w-1/3 overflow-hidden transition-all duration-700"
-            >
-              <img
-                src={image.src}
-                alt={`Campus view ${index + 1}`}
-                className="w-full aspect-video object-cover rounded-lg"
-              />
-            </div>
-          ))}
+      <div className="mt-12 flex flex-row gap-8">
+        {/* Left Column with Small Images */}
+        <div className="w-1/2 flex flex-col justify-end">
+          <div className="flex gap-4">
+            {getSmallImages().map((image, index) => (
+              <div
+                key={`small-${activeIndex}-${index}`}
+                className={`relative w-1/3 overflow-hidden transition-all duration-700 transform
+                  ${isAnimating && index === 2 ? 'scale-150 opacity-0 translate-x-full' : 'scale-100 opacity-100'}`}
+              >
+                <img
+                  src={image.src}
+                  alt={`Campus view ${index + 1}`}
+                  className="w-full aspect-video object-cover rounded-lg"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Featured Image */}
-        <div className="relative w-full md:w-1/2 h-[300px] overflow-hidden rounded-lg">
-          <div className="absolute inset-0 transition-all duration-1000">
+        <div className="relative w-1/2 h-[300px] overflow-hidden rounded-lg">
+          <div 
+            className={`absolute inset-0 transition-all duration-700 transform
+              ${isAnimating ? 'scale-90 opacity-0' : 'scale-100 opacity-100'}`}
+          >
             <img
               src={getFeaturedImage().src}
               alt="Featured view"
