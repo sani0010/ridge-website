@@ -122,7 +122,7 @@ const StudentSupportServices = () => {
             </div>
             <div className="prose max-w-none text-gray-600">
               <p className="text-base leading-relaxed">
-                Ridge International College provides support to all students to ensure positive learning outcomes via a range of strategies:
+                Ridge International College  provides support to all students to ensure positive learning outcomes via a range of strategies:
               </p>
               <ul className="list-disc pl-8 mt-4 space-y-2">
                 <li>Students facing personal difficulties that may affect their learning should approach the Counsellor or PEO for personal/career advice and counsel;</li>
