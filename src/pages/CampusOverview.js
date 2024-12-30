@@ -65,7 +65,7 @@ const CampusOverview = () => {
       <div className="absolute top-0 left-12 w-0.5 h-12 bg-orange-500 transform -rotate-12" />
       
       {/* Title Section */}
-      <div className="ml-16 mb-8">
+      <div className="ml-16">
         <h1 className="text-4xl font-light text-orange-500">Campus</h1>
         <h1 className="text-4xl font-light text-orange-500">Overview</h1>
         <p className="text-gray-600 mt-4 text-lg font-light">

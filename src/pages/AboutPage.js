@@ -72,10 +72,10 @@ const AboutUsPage = () => {
 
     if (isVisible.stats) {
       if (isMobile) {
-        animateCounter(5000, setStudents, 0);
+        animateCounter(15, setStudents, 0);
         animateCounter(4000, setGraduates, 1000);
       } else {
-        animateCounter(5000, setStudents);
+        animateCounter(15, setStudents);
         animateCounter(4000, setGraduates);
       }
     }
@@ -84,9 +84,9 @@ const AboutUsPage = () => {
   }, [isVisible.stats, isMobile]);
 
   const stats = [
-    { icon: Users, label: "Quality Indicator Report", value: `${students}+` },
+    { icon: Users, label: "Student Diversity", value: `${students}+` },
     { icon: GraduationCap, label: "Graduates", value: `${graduates}+` },
-    { icon: Award, label: "Years of Excellence", value: "5+" },
+    { icon: Award, label: "Years of Excellence", value: "7+" },
     { icon: Globe2, label: "Student survey report", value: "20+" }
   ];
 
@@ -261,7 +261,7 @@ We have our own kitchen very close to the city where we can travel by tram in Me
     <BookOpen className="w-12 h-12 text-blue-600 mx-auto mb-4" />
     <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Mission</h3>
     <p className="text-sm text-gray-600">
-      Empower students through high-quality education and training to achieve their academic and professional goals.
+    To empower students with the knowledge, skills, and values necessary to lead fulfilling lives, contribute meaningfully to society, and excel in their chosen fields
     </p>
   </motion.div>
 
@@ -276,7 +276,8 @@ We have our own kitchen very close to the city where we can travel by tram in Me
     <Target className="w-12 h-12 text-green-600 mx-auto mb-4" />
     <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Approach</h3>
     <p className="text-sm text-gray-600">
-      Deliver top trainers and industry-aligned training materials designed to meet real-world challenges.
+    Providing a dynamic and interdisciplinary curriculum that integrates theoretical knowledge with practical applications and cultivating a supportive learning community that values diversity, equity, and global perspectives
+
     </p>
   </motion.div>
 
@@ -291,7 +292,7 @@ We have our own kitchen very close to the city where we can travel by tram in Me
     <Clock className="w-12 h-12 text-purple-600 mx-auto mb-4" />
     <h3 className="text-xl font-semibold mb-2 text-gray-800">Our Commitment</h3>
     <p className="text-sm text-gray-600">
-      Providing up-to-date knowledge and skills to meet the highest industry standards.
+    Upholding academic excellence and integrity and supporting lifelong learning and career success through continuous innovation and partnerships
     </p>
   </motion.div>
 </div>
