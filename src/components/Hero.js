@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import eventImage from '../assets/Scholarship.png';
 import heroVideo from '../assets/video.mp4';
 import { Link } from 'react-router-dom';
+import Chatbot from '../pages/Chatbot';
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -176,7 +177,9 @@ const Hero = () => {
           }
         }
       `}</style>
+          <Chatbot />
     </section>
+
   );
 };
 
