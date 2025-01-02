@@ -141,14 +141,19 @@ const Events = () => {
                       </div>
                       <div className="p-6 md:w-2/3 flex flex-col justify-between">
                         <div>
-                          <div className="flex flex-col sm:flex-row justify-between items-start mb-4">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2 sm:mb-0">
-                              {item.title}
-                            </h2>
-                            <span className="bg-[#3554a5] text-white px-3 py-1 rounded-full text-sm">
-                              {item.date}
-                            </span>
-                          </div>
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+  <h2 
+    className="text-2xl font-bold text-gray-900 mb-2 md:mb-0 truncate md:max-w-[60%]" 
+    title={item.title} // Tooltip for full title
+  >
+    {item.title}
+  </h2>
+  <span className="bg-[#3554a5] text-white px-3 py-1 rounded-full text-sm md:ml-4 md:mt-0 mt-2 text-center">
+    {item.date}
+  </span>
+</div>
+
+
                           <p className="text-gray-600 mb-4">
                             {item.description}
                           </p>
