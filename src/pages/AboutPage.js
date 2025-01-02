@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Globe2, Users, Award,
-  GraduationCap, Building2, ChevronRight, BookOpen, Target, Clock 
+  GraduationCap, Building2, BookOpen, Target, Clock 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CEO from '../assets/ceo.png';
@@ -93,19 +93,23 @@ const AboutUsPage = () => {
   const facilities = [
     {
       title: "Modern Classrooms",
-      description: "State-of-the-art learning spaces equipped with the latest technology"
+      description: "State-of-the-art learning spaces equipped with the latest technology",
+      image: campusImg8
     },
     {
       title: "Student Lounges",
-      description: "Comfortable spaces for study and collaboration"
+      description: "Comfortable spaces for study and collaboration",
+      image: campusImg1
     },
     {
-      title: "Computer Labs",
-      description: "High-performance computers with industry-standard software"
+      title: "Professional Training Kitchen",
+      description: "High-performance computers with industry-standard software",
+      image: campusImg5
     },
     {
       title: "Library Resources",
-      description: "Extensive digital and physical learning materials"
+      description: "Extensive digital and physical learning materials",
+      image: campusImg7
     }
   ];
 
@@ -394,41 +398,86 @@ We have our own kitchen very close to the city where we can travel by tram in Me
       </section>
 
       {/* Facilities Section */}
-      <section id="facilities" className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="container mx-auto max-w-6xl px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-8 md:mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Facilities</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base px-4">
-              Experience learning in our state-of-the-art facilities designed for academic excellence
-            </p>
-          </motion.div>
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="container mx-auto max-w-6xl px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        className="text-center mb-12"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Campus Facilities</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+          Experience learning in our state-of-the-art facilities designed for academic excellence
+        </p>
+      </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {facilities.map((facility, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible.facilities ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: idx * 0.2 }}
-                className="group bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
+      {facilities.map((facility, idx) => (
+        <motion.div 
+          key={idx} 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ 
+            duration: 0.4,
+            delay: idx * 0.1
+          }}
+          className={`flex flex-col md:flex-row items-center gap-8 mb-16 ${
+            idx % 2 === 1 ? 'md:flex-row-reverse' : ''
+          }`}
+        >
+          <motion.div 
+            className="w-full md:w-1/2 p-6"
+            initial={{ x: idx % 2 === 0 ? -30 : 30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <div className="mb-6">
+              <Building2 className="w-12 h-12 text-blue-600 mb-4" />
+              <motion.h3 
+                className="text-2xl font-semibold mb-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
-                <Building2 className="w--10 h-10 md:w-12 md:h-12 text-blue-600 mb-4 md:mb-6" />
-                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">{facility.title}</h3>
-                <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{facility.description}</p>
-                <div className="flex items-center text-blue-600 font-medium">
-                  <span className="text-sm md:text-base mr-2">Learn More</span>
-                  <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                {facility.title}
+              </motion.h3>
+              <motion.p 
+                className="text-gray-600 leading-relaxed"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
+                {facility.description}
+              </motion.p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="w-full md:w-1/2"
+            initial={{ x: idx % 2 === 0 ? 30 : -30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+          >
+            <motion.div 
+              className="rounded-2xl overflow-hidden shadow-lg"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <img
+                src={facility.image}
+                alt={facility.title}
+                className="w-full h-64 object-cover"
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+  </section>
     </div>
   );
 };
