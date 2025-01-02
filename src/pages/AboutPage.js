@@ -93,22 +93,22 @@ const AboutUsPage = () => {
   const facilities = [
     {
       title: "Modern Classrooms",
-      description: "State-of-the-art learning spaces equipped with the latest technology",
+      description: "Ridge International College is dedicated to providing a modern classroom experience that integrates technology, fosters flexibility, and promotes student-centered learning.",
       image: campusImg8
     },
     {
       title: "Student Lounges",
-      description: "Comfortable spaces for study and collaboration",
+      description: "The Student Breakout areas provide lounge areas for students with kitchenette meal preparation area which include microwave ovens, refrigerators, sink area, and hot/chilled drinking water.",
       image: campusImg1
     },
     {
-      title: "Professional Training Kitchen",
-      description: "High-performance computers with industry-standard software",
+      title: "Computer Lab",
+      description: "There are sufficient student computers networked together on campus. All computers are installed with Microsoft Office Suite software, specialized translating/interpreting software and have Broadband Internet access. Wireless Broadband Internet access is also available to students for access from personal laptop and notebook devices.",
       image: campusImg5
     },
     {
-      title: "Library Resources",
-      description: "Extensive digital and physical learning materials",
+      title: "Campus Facilities",
+      description: "Each classroom is equipped with up-to-date computer with broadband internet access, audio-visual facilities to provide students with a comfortable and inviting study environment.",
       image: campusImg7
     }
   ];
