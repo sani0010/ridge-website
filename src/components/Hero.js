@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import eventImage from '../assets/Scholarship.png';
 import heroVideo from '../assets/video.mp4';
 import { Link } from 'react-router-dom';
 import Chatbot from '../pages/Chatbot';
 
 const Hero = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
 
   const successTexts = React.useMemo(() => [
     "Your path to success starts here",
@@ -18,11 +17,10 @@ const Hero = () => {
   ], []);
 
   useEffect(() => {
-    const hasModalBeenShown = sessionStorage.getItem('modalShown');
-    if (!hasModalBeenShown) {
-      setIsModalOpen(true);
-      sessionStorage.setItem('modalShown', 'true');
-    }
+    const timer = setTimeout(() => {
+      setIsChatbotVisible(true);
+    }, 2000); // Chatbot will pop up after 2 seconds
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -53,40 +51,33 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, currentTextIndex, isDeleting, successTexts]);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   useEffect(() => {
     const createSnowflake = () => {
       const snowflake = document.createElement('div');
       snowflake.classList.add('snowflake');
-  
-      const isSmall = Math.random() < 0.5; // 20% chance for a small snowflake
+
+      const isSmall = Math.random() < 0.5;
       snowflake.style.left = `${Math.random() * 100}vw`;
-      snowflake.style.animationDuration = `${Math.random() * 10 + 10}s`; // Slower and longer animation
+      snowflake.style.animationDuration = `${Math.random() * 10 + 10}s`;
       snowflake.style.opacity = Math.random();
       snowflake.style.fontSize = isSmall
-        ? `${Math.random() * 5 + 5}px` // Small snowflakes: 5px to 10px
-        : `${Math.random() * 15 + 20}px`; // Large snowflakes: 20px to 35px
-  
+        ? `${Math.random() * 5 + 5}px`
+        : `${Math.random() * 15 + 20}px`;
+
       snowflake.textContent = '❄';
       document.body.appendChild(snowflake);
-  
+
       setTimeout(() => {
         snowflake.remove();
-      }, 15000); // Match the animation duration to avoid DOM clutter
+      }, 15000);
     };
-  
-    // Control the frequency of snowflake creation
-    const interval = setInterval(createSnowflake, 1000); // Decreased frequency (every 500ms)
+
+    const interval = setInterval(createSnowflake, 1000);
     return () => clearInterval(interval);
   }, []);
-  
 
   return (
     <section className="h-screen relative overflow-hidden">
-      {/* Video Background Container */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
           <div className="absolute inset-0">
@@ -96,15 +87,8 @@ const Hero = () => {
               loop
               playsInline
               className="absolute top-1/2 left-1/2 min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2"
-              style={{
-                width: '100%',
-                height: '100%'
-              }}
             >
-              <source 
-                src={heroVideo}
-                type="video/mp4"
-              />
+              <source src={heroVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -112,7 +96,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="relative h-full z-10">
         <div className="flex flex-col justify-center items-center h-full text-white text-center p-4 md:p-8 lg:p-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -130,22 +113,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Modal for Event Image */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
-          <div className="bg-white rounded-lg p-1 w-full max-w-lg md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
-            <button
-              onClick={closeModal}
-              className="absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-white ring-2 ring-gray-300 hover:bg-gray-100 focus:outline-none z-10"
-            >
-              <span className="text-gray-800 text-xl font-bold">×</span>
-            </button>
-            <img
-              src={eventImage}
-              alt="Event"
-              className="rounded-lg w-full h-auto object-cover mb-0"
-            />
-          </div>
+      {isChatbotVisible && (
+        <div
+          className="fixed bottom-5 right-5 z-50 p-0 bg-transparent rounded-lg shadow-none transition-transform duration-500 transform scale-0 animate-chatbot-pop"
+        >
+          <Chatbot />
         </div>
       )}
 
@@ -154,7 +126,7 @@ const Hero = () => {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
         }
-        
+
         .animate-blink {
           animation: blink 1s step-end infinite;
         }
@@ -173,13 +145,27 @@ const Hero = () => {
             transform: translateY(-100%);
           }
           100% {
-            transform: translateY(100vh); /* Reach the bottom of the viewport */
+            transform: translateY(100vh);
           }
         }
-      `}</style>
-          <Chatbot />
-    </section>
 
+        @keyframes chatbot-pop {
+          0% {
+            transform: scale(0);
+          }
+          60% {
+            transform: scale(1.2);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .animate-chatbot-pop {
+          animation: chatbot-pop 0.3s ease-out forwards;
+        }
+      `}</style>
+    </section>
   );
 };
 
