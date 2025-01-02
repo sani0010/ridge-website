@@ -27,7 +27,7 @@ export const courseData = {
           'Speaking and class activities',
           'Listening activities',
         ],
-        startDates: ['December 2024', 'April 2025', 'March 2025'],
+        startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
         highlights: [
           'No prerequisites for enrollment',
           'Face-to-face delivery at Melbourne campus',
@@ -59,7 +59,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Child Safety', 'Health and Nutrition', 'Early Education'] },
         { level: 'Diploma', duration: '52 Weeks', skills: ['Advanced Child Development', 'Family Engagement', 'Curriculum Design'] },
@@ -133,7 +133,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '52 Weeks', skills: ['Advanced Networking', 'Cyber Security', 'Data Management'] },
         { level: 'Advanced Diploma', duration: '52 Weeks', skills: ['System Administration', 'IT Strategy', 'Project Management'] },
@@ -205,7 +205,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Diploma', duration: '52 Weeks', skills: ['Leadership', 'Team Management', 'Critical Thinking'] },
     ],
@@ -272,7 +272,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Advanced Diploma', duration: '64 Weeks', skills: ['Advanced Leadership', 'Strategic Planning', 'Innovation'] },
     ],
@@ -339,7 +339,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Graduate Diploma', duration: '52 Weeks', skills: ['Strategic Leadership', 'Workforce Development', 'Innovation'] },
     ],
@@ -417,7 +417,7 @@ export const courseData = {
         
     ],
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or other related community services qualifications.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Person-Centered Care', 'Community Support', 'Health and Wellbeing'] },
     ],
@@ -490,7 +490,7 @@ export const courseData = {
         
     ],
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or related community services qualifications.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '52 Weeks', skills: ['Aged Care Support', 'Dementia Care', 'Community Service Planning'] },
     ],
@@ -569,7 +569,7 @@ export const courseData = {
         
     ],
     educationPathways: 'This qualification can lead to further studies in CHC62015 Advanced Diploma of Community Sector Management or higher education qualifications in community services.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Diploma', duration: '78 Weeks', skills: ['Case Management', 'Program Coordination', 'Community Services Supervision'] },
     ],
@@ -644,7 +644,7 @@ export const courseData = {
         
     ],
     educationPathways: 'Graduates may pursue further education in higher qualifications in early childhood education and care.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Diploma', duration: '78 Weeks', skills: ['Childhood Education', 'Curriculum Development', 'Team Management'] },
     ],
@@ -714,7 +714,7 @@ export const courseData = {
         
     ],
     educationPathways: 'Graduates may proceed to the CHC50121 Diploma of Early Childhood Education and Care or other higher qualifications in the field.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Childhood Education', 'Health & Safety', 'Inclusive Practices'] },
     ],
@@ -784,7 +784,7 @@ export const courseData = {
         
     ],
     educationPathways: 'Graduates can continue into the CHC52015 Diploma of Community Services or other community services diplomas.',
-    startDates: ['March 2025', 'June 2025', 'September 2025', 'December 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '26 Weeks', skills: ['Disability Support', 'Community Participation', 'Person-Centred Services'] },
     ],
@@ -852,7 +852,7 @@ export const courseData = {
         'SIT50422 Diploma of Hospitality Management',
         'SIT60322 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'April 2025', 'July 2025', 'October 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Cookery Skills', 'Kitchen Operations', 'Food Safety'] },
     ],
@@ -936,7 +936,7 @@ export const courseData = {
         'SIT50416 Diploma of Hospitality Management',
         'SIT60316 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'April 2025', 'July 2025', 'October 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '78 Weeks', skills: ['Supervision', 'Kitchen Management', 'Menu Design'] },
     ],
@@ -1032,7 +1032,7 @@ export const courseData = {
     educationPathways: [
         'SIT60316 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'April 2025', 'July 2025', 'October 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Diploma', duration: '104 Weeks', skills: ['Hospitality Management', 'Operations Coordination', 'Multiskilling'] },
     ],
@@ -1119,7 +1119,7 @@ export const courseData = {
     educationPathways: [
         'Bachelor of Hospitality Management (further study at other institutions)',
     ],
-    startDates: ['January 2025', 'April 2025', 'July 2025', 'October 2025'],
+    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Advanced Diploma', duration: '104 Weeks', skills: ['Strategic Management', 'Advanced Hospitality Operations'] },
     ],
