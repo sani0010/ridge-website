@@ -51,31 +51,6 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, [displayText, currentTextIndex, isDeleting, successTexts]);
 
-  useEffect(() => {
-    const createSnowflake = () => {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-
-      const isSmall = Math.random() < 0.5;
-      snowflake.style.left = `${Math.random() * 100}vw`;
-      snowflake.style.animationDuration = `${Math.random() * 10 + 10}s`;
-      snowflake.style.opacity = Math.random();
-      snowflake.style.fontSize = isSmall
-        ? `${Math.random() * 5 + 5}px`
-        : `${Math.random() * 15 + 20}px`;
-
-      snowflake.textContent = '❄';
-      document.body.appendChild(snowflake);
-
-      setTimeout(() => {
-        snowflake.remove();
-      }, 15000);
-    };
-
-    const interval = setInterval(createSnowflake, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="h-screen relative overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
@@ -129,24 +104,6 @@ const Hero = () => {
 
         .animate-blink {
           animation: blink 1s step-end infinite;
-        }
-
-        .snowflake {
-          position: fixed;
-          top: 0;
-          color: white;
-          z-index: 1000;
-          animation: fall linear infinite;
-          pointer-events: none;
-        }
-
-        @keyframes fall {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(100vh);
-          }
         }
 
         @keyframes chatbot-pop {
