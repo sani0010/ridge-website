@@ -20,7 +20,7 @@ const StudentSupportServices = () => {
         {/* Quick Access Info */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           {[
-            { icon: Phone, title: "Contact Us", desc: "+61 3 9620 7738" },
+            { icon: Phone, title: "Contact Us", desc: "+61 03 9620 7738" },
             { icon: MapPin, title: "Location", desc: "Level 5, 85 Queen St, Melbourne" },
             { icon: Mail, title: "Email Us", desc: "admin@ridge.edu.au" },
             { icon: Clock, title: "Business Hours", desc: "Monday - Friday" }
