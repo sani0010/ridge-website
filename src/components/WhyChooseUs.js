@@ -91,25 +91,7 @@ const WhyChooseUs = () => {
                   {benefit.description}
                 </p>
               </div>
-              
-              <div className="mt-6 flex justify-center">
-                <button className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#F26722] font-semibold hover:text-orange-700 flex items-center gap-2">
-                  Learn More
-                  <svg
-                    className="w-5 h-5 transform transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </button>
-              </div>
+
             </div>
           ))}
         </div>
