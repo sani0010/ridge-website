@@ -8,7 +8,7 @@ import { Calendar as CalendarIcon, MapPin, Clock } from 'lucide-react';
 const Events = () => {
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
-  const [activeTab, setActiveTab] = useState('upcoming');
+  const [activeTab, setActiveTab] = useState('past');
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
