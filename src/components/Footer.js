@@ -103,8 +103,7 @@ const Footer = () => {
                 { name: "Find an Agent", url: "/FindAgent" },
                 { name: "Become Agent", url: "/become-agent" },
                 { name: "Notice", url: "/notice" },
-                { name: "Events", url: "/events" },
-                { name: "News", url: "/news" }]
+                { name: "Events", url: "/events" },]
                 .map((resource) => (
                   <li key={resource.name}>
                     <a 
