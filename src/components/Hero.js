@@ -122,7 +122,7 @@ const Hero = () => {
             {displayText}
             <span className="animate-blink">|</span>
           </p>
-          <Link to="/about">
+          <Link to="/about#college-overview">
             <button className="bg-[#F26722] text-white px-4 py-2 md:px-6 md:py-3 rounded-full hover:bg-[#e0561b] transition duration-300">
               Learn More
             </button>
