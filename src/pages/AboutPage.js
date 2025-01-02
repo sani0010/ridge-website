@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { 
   Globe2, Users, Award,
   GraduationCap, Building2, BookOpen, Target, Clock 
@@ -17,12 +18,15 @@ import campusImg7 from '../assets/campus7.jpg';
 import campusImg8 from '../assets/campus8.jpg';
 
 
+
 const AboutUsPage = () => {
   const [students, setStudents] = useState(0);
   const [graduates, setGraduates] = useState(0);
   const [isVisible, setIsVisible] = useState({});
   const campusRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const location = useLocation();
+  const collegeOverviewRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -150,7 +154,12 @@ const AboutUsPage = () => {
       }
     }
   };
-
+  useEffect(() => {
+    if (window.location.hash === '#college-overview') {
+      document.getElementById('college-overview')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
@@ -229,7 +238,7 @@ const AboutUsPage = () => {
         </div>
       </section>
 
-      <section id="college-overview" className="py-8 md:py-12 bg-white">
+      <section id="college-overview" ref={collegeOverviewRef} className="py-8 md:py-12 bg-white">
   <div className="container mx-auto max-w-6xl px-4">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -237,7 +246,7 @@ const AboutUsPage = () => {
       transition={{ duration: 0.8 }}
       className="text-center"
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-700">
+      <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-700 mt-11">
         About Ridge International College
       </h2>
       <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-base md:text-lg leading-relaxed mb-16">
