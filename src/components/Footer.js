@@ -100,7 +100,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {[{ name: "Forms", url: "/forms" },
                 { name: "Policies", url: "/policy" },
-                { name: "Find an Agent", url: "/find-an-agent" },
+                { name: "Find an Agent", url: "/FindAgent" },
                 { name: "Become Agent", url: "/become-agent" },
                 { name: "Notice", url: "/notice" },
                 { name: "Events", url: "/events" },

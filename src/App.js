@@ -32,6 +32,7 @@ import ChildhoodPage from './pages/ChildhoodPage';
 import BlogDetails from './pages/BlogDetails';
 import RegisteredEvents from './pages/RegisteredEvents';
 import CampusOverview from './pages/CampusOverview';
+import FindAgent from './pages/FindAgent';
 
 
 
@@ -70,6 +71,7 @@ function App() {
         <Route path="/my-events" element={<RegisteredEvents />} />
         <Route path="/blog/:title" element={<BlogDetails />} />
         <Route path="/CampusOverview" element={<CampusOverview />} />
+        <Route path="/FindAgent" element={<FindAgent />} />
         
         
 
