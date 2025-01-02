@@ -105,18 +105,7 @@ const CoursePage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-[#3554a5] text-white py-16 mb-20">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
-          <p className="mb-8">
-            Join Ridge International College and take the first step towards your future career.
-          </p>
-          <button className="bg-white text-[#3554a5] px-8 py-3 rounded-lg font-semibold 
-            hover:bg-gray-100 transition-colors duration-300">
-            Apply Now
-          </button>
-        </div>
-      </div>
+
     </div>
   );
 };
