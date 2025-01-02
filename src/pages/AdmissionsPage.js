@@ -332,7 +332,7 @@ const AdmissionsPage = () => {
                   <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
                     <MapPin size={20} />
                   </div>
-                  <span className="text-gray-600">123 Ridge Street, Melbourne, Australia</span>
+                  <span className="text-gray-600">Level 5/ 85 Queen Street, Melbourne VIC 3000</span>
                 </div>
               </div>
             </div>
