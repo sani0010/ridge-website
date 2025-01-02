@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  ScrollText, CreditCard, ChevronRight, Globe, 
+  ScrollText, CreditCard, Globe, 
   Clock, School, Users, BookOpen, Mail, MapPin, Download
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -151,8 +151,6 @@ const AdmissionsPage = () => {
                   <h3 className="text-lg sm:text-xl font-semibold mb-4">{feature.title}</h3>
                   <p className="text-gray-600">{feature.desc}</p>
                   <div className="mt-6 flex items-center text-blue-600 font-medium">
-                    <span className="mr-2">Learn More</span>
-                    <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </motion.div>
@@ -214,8 +212,6 @@ const AdmissionsPage = () => {
                   <h3 className="text-lg sm:text-xl font-semibold mb-4">{step.title}</h3>
                   <p className="text-gray-600">{step.content}</p>
                   <div className="mt-6 flex items-center text-blue-600 font-medium group-hover:gap-2 transition-all">
-                    <span>View Details</span>
-                    <ChevronRight className="w-4 h-4" />
                   </div>
                 </div>
               </motion.div>
