@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, Send, X, Minimize2, Maximize2 } from 'lucide-react';
+import { MessageCircle, Send, X } from 'lucide-react';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMinimized] = useState(false);
   const [messages, setMessages] = useState([
     { type: 'bot', content: 'Hello! How can I help you today?' }
   ]);
@@ -60,34 +60,17 @@ const handleSendMessage = async () => {
       )}
 
       {/* Chat Window */}
-      {(isOpen || isMinimized) && (
-        <div
-          className={`fixed right-4 bg-white rounded-lg shadow-xl transition-all duration-300 z-50 ${
-            isMinimized 
-              ? 'bottom-4 w-auto h-auto' 
-              : 'bottom-4 w-80 sm:w-96 h-[500px]'
-          }`}
-        >
+      {isOpen && (
+        <div className="fixed right-4 bottom-4 w-80 sm:w-96 h-[500px] bg-white rounded-lg shadow-xl transition-all duration-300 z-50">
           {/* Header */}
           <div className="bg-[#F26722] text-white p-4 rounded-t-lg flex justify-between items-center">
-            {!isMinimized && <h3 className="font-semibold">Ridge College Assistant</h3>}
-            <div className="flex gap-2">
-              <button
-                onClick={() => setIsMinimized(!isMinimized)}
-                className="hover:bg-[#e0561b] p-1 rounded"
-              >
-                {isMinimized ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
-              </button>
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setIsMinimized(false);
-                }}
-                className="hover:bg-[#e0561b] p-1 rounded"
-              >
-                <X size={18} />
-              </button>
-            </div>
+            <h3 className="font-semibold">Ridge College Assistant</h3>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="hover:bg-[#e0561b] p-1 rounded"
+            >
+              <X size={18} />
+            </button>
           </div>
 
           {!isMinimized && (
