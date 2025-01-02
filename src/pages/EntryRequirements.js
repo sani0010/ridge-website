@@ -33,7 +33,7 @@ const EntryRequirements = () => {
         return (
           <div className={contentClass}>
             <p className="text-base md:text-lg leading-relaxed">
-              Ridge International College will only enroll students who are over 18 years of age at commencement of their course.
+              Ridge International College will only enroll students who are over 18-35 years of age at commencement of their course.
             </p>
           </div>
         );
