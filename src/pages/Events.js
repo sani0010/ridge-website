@@ -8,6 +8,10 @@ import { Calendar as CalendarIcon, MapPin, Clock } from 'lucide-react';
 const Events = () => {
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
+  const [activeTab, setActiveTab] = useState('upcoming');
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const handleEventClick = (eventId) => {
     navigate(`/event/${eventId}`);
@@ -17,11 +21,38 @@ const Events = () => {
     setSelectedDate(date);
   };
 
-  const eventsOnSelectedDate = selectedDate
-    ? eventData.filter(
+  // Filter events based on date and selected tab
+  const filterEvents = () => {
+    let filteredEvents = eventData;
+
+    // First apply date selection filter if a date is selected
+    if (selectedDate) {
+      filteredEvents = eventData.filter(
         (item) => new Date(item.date).toDateString() === selectedDate.toDateString()
-      )
-    : eventData;
+      );
+    } else {
+      // If no date is selected, filter based on tab
+      if (activeTab === 'upcoming') {
+        filteredEvents = eventData.filter(
+          (item) => new Date(item.date) >= today
+        );
+      } else {
+        filteredEvents = eventData.filter(
+          (item) => new Date(item.date) < today
+        );
+      }
+    }
+
+    // Sort events by date
+    return filteredEvents.sort((a, b) => {
+      if (activeTab === 'upcoming') {
+        return new Date(a.date) - new Date(b.date);
+      }
+      return new Date(b.date) - new Date(a.date);
+    });
+  };
+
+  const eventsToDisplay = filterEvents();
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen py-12">
@@ -41,15 +72,10 @@ const Events = () => {
                 onChange={handleDateChange}
                 value={selectedDate}
                 tileClassName={({ date }) => {
-                  // Check if the date is a Sunday (day of week === 0)
                   const isSunday = date.getDay() === 0;
-                  
-                  // Check if there are events on this date
                   const hasEvents = eventData.some(
                     (item) => new Date(item.date).toDateString() === date.toDateString()
                   );
-
-                  // Combine classes - Sunday will be red, events will have a different style if needed
                   return [
                     isSunday ? 'text-red-500 font-bold' : '',
                     hasEvents ? 'bg-[#3554a5] text-[#f26722] rounded-full' : ''
@@ -71,77 +97,100 @@ const Events = () => {
                 </p>
               </div>
 
-              {eventsOnSelectedDate.length > 0 ? (
-                eventsOnSelectedDate.map((item) => (
-                  <div
-                    key={item.id}
-                    onClick={() => handleEventClick(item.id)}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+              {/* Tabs */}
+              {!selectedDate && (
+                <div className="flex justify-center space-x-4 mb-6">
+                  <button
+                    className={`px-6 py-2 rounded-full font-semibold transition-all duration-200 ${
+                      activeTab === 'upcoming'
+                        ? 'bg-[#3554a5] text-white'
+                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                    }`}
+                    onClick={() => setActiveTab('upcoming')}
                   >
-                    {/* Event Image */}
-                    <div className="md:w-1/3 overflow-hidden">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-64 object-cover object-center"
-                      />
-                    </div>
+                    Upcoming Events
+                  </button>
+                  <button
+                    className={`px-6 py-2 rounded-full font-semibold transition-all duration-200 ${
+                      activeTab === 'past'
+                        ? 'bg-[#3554a5] text-white'
+                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                    }`}
+                    onClick={() => setActiveTab('past')}
+                  >
+                    Past Events
+                  </button>
+                </div>
+              )}
 
-                    {/* Event Details */}
-                    <div className="p-6 md:w-2/3 flex flex-col justify-between">
-                      <div>
-                        <div className="flex flex-col sm:flex-row justify-between items-start mb-4">
-                          <h2 className="text-2xl font-bold text-gray-900 mb-2 sm:mb-0">
-                            {item.title}
-                          </h2>
-                          <span className="bg-[#3554a5] text-white px-3 py-1 rounded-full text-sm">
-                            {item.date}
-                          </span>
-                        </div>
-
-                        <p className="text-gray-600 mb-4">
-                          {item.description}
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-gray-600 mb-4">
-                          <div className="flex items-center">
-                            <MapPin className="w-5 h-5 mr-2 text-[#3554a5]" />
-                            <span>Campus Main Hall</span>
-                          </div>
-                          <div className="flex items-center">
-                            <Clock className="w-5 h-5 mr-2 text-[#3554a5]" />
-                            <span>2:00 PM</span>
-                          </div>
-                        </div>
+              {/* Event Cards */}
+              {eventsToDisplay.length > 0 ? (
+                <div className="space-y-6">
+                  {eventsToDisplay.map((item) => (
+                    <div
+                      key={item.id}
+                      onClick={() => handleEventClick(item.id)}
+                      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+                    >
+                      <div className="md:w-1/3 overflow-hidden">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-64 object-cover object-center"
+                        />
                       </div>
-
-                      <div className="flex justify-between items-center">
-                        <button 
-                          className="text-[#3554a5] hover:text-[#f26722] font-semibold flex items-center"
-                          onClick={() => handleEventClick(item.id)}
-                        >
-                          View Event Details
-                          <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            className="h-5 w-5 ml-2" 
-                            viewBox="0 0 20 20" 
-                            fill="currentColor"
+                      <div className="p-6 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                          <div className="flex flex-col sm:flex-row justify-between items-start mb-4">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-2 sm:mb-0">
+                              {item.title}
+                            </h2>
+                            <span className="bg-[#3554a5] text-white px-3 py-1 rounded-full text-sm">
+                              {item.date}
+                            </span>
+                          </div>
+                          <p className="text-gray-600 mb-4">
+                            {item.description}
+                          </p>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 text-gray-600 mb-4">
+                            <div className="flex items-center">
+                              <MapPin className="w-5 h-5 mr-2 text-[#3554a5]" />
+                              <span>Campus Main Hall</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Clock className="w-5 h-5 mr-2 text-[#3554a5]" />
+                              <span>2:00 PM</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <button 
+                            className="text-[#3554a5] hover:text-[#f26722] font-semibold flex items-center"
+                            onClick={() => handleEventClick(item.id)}
                           >
-                            <path 
-                              fillRule="evenodd" 
-                              d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
-                              clipRule="evenodd" 
-                            />
-                          </svg>
-                        </button>
+                            View Event Details
+                            <svg 
+                              xmlns="http://www.w3.org/2000/svg" 
+                              className="h-5 w-5 ml-2" 
+                              viewBox="0 0 20 20" 
+                              fill="currentColor"
+                            >
+                              <path 
+                                fillRule="evenodd" 
+                                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" 
+                                clipRule="evenodd" 
+                              />
+                            </svg>
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
+                  ))}
+                </div>
               ) : (
                 <div className="bg-white p-8 rounded-xl shadow-lg text-center">
                   <p className="text-gray-500 text-xl">
-                    No events scheduled for the selected date.
+                    No events {selectedDate ? 'scheduled for the selected date' : activeTab === 'upcoming' ? 'scheduled for the future' : 'from the past'}.
                   </p>
                 </div>
               )}
