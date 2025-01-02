@@ -101,7 +101,7 @@ const AboutUsPage = () => {
       image: campusImg8
     },
     {
-      title: "Student Lounges",
+      title: "Student Facilites",
       description: "The Student Breakout areas provide lounge areas for students with kitchenette meal preparation area which include microwave ovens, refrigerators, sink area, and hot/chilled drinking water.",
       image: campusImg1
     },
@@ -110,11 +110,6 @@ const AboutUsPage = () => {
       description: "There are sufficient student computers networked together on campus. All computers are installed with Microsoft Office Suite software, specialized translating/interpreting software and have Broadband Internet access. Wireless Broadband Internet access is also available to students for access from personal laptop and notebook devices.",
       image: campusImg5
     },
-    {
-      title: "Campus Facilities",
-      description: "Each classroom is equipped with up-to-date computer with broadband internet access, audio-visual facilities to provide students with a comfortable and inviting study environment.",
-      image: campusImg7
-    }
   ];
 
   const campusImages = [
