@@ -19,6 +19,7 @@ const Chatbot = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
@@ -80,6 +81,8 @@ const Chatbot = () => {
       handleSendMessage();
     }
   };
+
+  
 
   return (
     <>
