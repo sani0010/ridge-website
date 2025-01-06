@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, Send, X, Loader } from 'lucide-react';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+import { MessageCircle, Send, X } from 'lucide-react';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     { type: 'bot', content: 'Hello! How can I help you today?' }
   ]);
@@ -23,26 +20,18 @@ const Chatbot = () => {
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
-    
-    const userMessage = inputMessage.trim();
-    setInputMessage('');
-    setIsLoading(true);
 
-    // Add user message immediately
-    setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
+    setMessages(prev => [...prev, { type: 'user', content: inputMessage }]);
 
     try {
-      const response = await fetch(`${API_URL}/api/chat`, {
+      const response = await fetch('http://localhost:3001/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({ message: inputMessage }),
       });
       
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
       const data = await response.json();
       setMessages(prev => [...prev, { type: 'bot', content: data.response }]);
     } catch (error) {
@@ -54,16 +43,9 @@ const Chatbot = () => {
           content: 'Sorry, I encountered an error. Please try again later.' 
         }
       ]);
-    } finally {
-      setIsLoading(false);
     }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage();
-    }
+    
+    setInputMessage('');
   };
 
   return (
@@ -73,7 +55,6 @@ const Chatbot = () => {
         <button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 bg-[#F26722] text-white p-4 rounded-full shadow-lg hover:bg-[#e0561b] transition-all duration-300 z-50"
-          aria-label="Open chat"
         >
           <MessageCircle size={24} />
         </button>
@@ -91,7 +72,6 @@ const Chatbot = () => {
           <button
             onClick={() => setIsOpen(false)}
             className="hover:bg-[#e0561b] p-1 rounded"
-            aria-label="Close chat"
           >
             <X size={18} />
           </button>
@@ -119,14 +99,6 @@ const Chatbot = () => {
                   </div>
                 </div>
               ))}
-              {isLoading && (
-                <div className="flex justify-start mb-4">
-                  <div className="bg-white shadow p-3 rounded-lg flex items-center gap-2">
-                    <Loader className="animate-spin" size={16} />
-                    <span className="text-gray-600">Typing...</span>
-                  </div>
-                </div>
-              )}
               <div ref={messagesEndRef} />
             </div>
 
@@ -137,21 +109,15 @@ const Chatbot = () => {
                   type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Type your message..."
                   className="flex-1 p-2 border rounded-lg focus:outline-none focus:border-[#F26722]"
-                  disabled={isLoading}
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="bg-[#F26722] text-white p-2 rounded-lg hover:bg-[#e0561b] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={isLoading || !inputMessage.trim()}
+                  className="bg-[#F26722] text-white p-2 rounded-lg hover:bg-[#e0561b] transition-all duration-300"
                 >
-                  {isLoading ? (
-                    <Loader className="animate-spin" size={20} />
-                  ) : (
-                    <Send size={20} />
-                  )}
+                  <Send size={20} />
                 </button>
               </div>
             </div>
