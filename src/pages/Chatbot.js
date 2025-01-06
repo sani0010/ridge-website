@@ -40,7 +40,7 @@ const Chatbot = () => {
         ...prev,
         { 
           type: 'bot', 
-          content: 'Sorry, I encountered an error. Please try again later.' 
+          content: 'Sorry, I have encountered an error. Please try again later.' 
         }
       ]);
     }
