@@ -27,7 +27,7 @@ export const courseData = {
           'Speaking and class activities',
           'Listening activities',
         ],
-        startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
         highlights: [
           'No prerequisites for enrollment',
           'Face-to-face delivery at Melbourne campus',
@@ -59,7 +59,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+    startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Child Safety', 'Health and Nutrition', 'Early Education'] },
         { level: 'Diploma', duration: '52 Weeks', skills: ['Advanced Child Development', 'Family Engagement', 'Curriculum Design'] },
@@ -77,10 +77,8 @@ export const courseData = {
     ],
     image: diploma,
     careerOutcomes: [
-        'Assistant IT manager',
-        'Systems administrator',
-        'Network support technician',
-        'Assistant system manager',
+        'General Application Support Officer',
+        'IT Office Manager',
     ],
     educationPathways: 'Further study options include ICT60220 Advanced Diploma of Information Technology.',
     courseStructure: {
@@ -133,7 +131,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '52 Weeks', skills: ['Advanced Networking', 'Cyber Security', 'Data Management'] },
         { level: 'Advanced Diploma', duration: '52 Weeks', skills: ['System Administration', 'IT Strategy', 'Project Management'] },
@@ -151,10 +149,11 @@ export const courseData = {
     ],
 
     careerOutcomes: [
-        'Software manager',
-        'ICT administrator',
-        'Senior technical officer',
-        'IT manager'
+        'Enterprise Application Integration Consultant',
+        'Enterprise Architecture Manager',
+        'Knowledge Manager',
+        'Software Manager',
+        'eLearning Manager'
         
     ],
     educationPathways: 'Further study options include a Bachelor of Information Technology.',
@@ -205,7 +204,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Diploma', duration: '52 Weeks', skills: ['Leadership', 'Team Management', 'Critical Thinking'] },
     ],
@@ -222,10 +221,18 @@ export const courseData = {
     ],
     careerOutcomes: [
         'Business manager',
-        'Human resources manager',
-        'Sales team manager',
+        'Corporate Services Manager',
+        'Distribution Centre Manager',
         'Business development manager',
-        
+        'Legal Practice Manager',
+        'Information Services Manager',
+        'Office Manager',
+        'Operations Manager',
+        'Production Manager',
+        'Public Sector Manager',
+        'Senior Manager (Public Sector)',
+        'Transport Manager',
+        'Warehouse Manager',
         
     ],
     educationPathways: 'Further study options include advanced business qualifications and higher-level management courses.',
@@ -272,7 +279,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Advanced Diploma', duration: '64 Weeks', skills: ['Advanced Leadership', 'Strategic Planning', 'Innovation'] },
     ],
@@ -288,13 +295,18 @@ export const courseData = {
         'Prepare for senior leadership and executive roles',
     ],
     careerOutcomes: [
-        'Senior executive',
-        'Branch manager',
-        'Business manager',
-        'Senior administrator',
-        'Production manager',
-        
+        'Area Manager',
+        'Business Analyst',
+        'Business Development Director',
+        'Chief Executive Officer',
+        'Department Manager',
+        'Executive Director',
+        'Manager',
+        'Managing Director',
+        'Quarry Business Manager',
+        'Senior Executive'
     ],
+    
     educationPathways: 'This qualification provides a pathway to higher education or degree courses depending on the requirements of the individual university.',
     courseStructure: {
         coreUnits: [
@@ -339,7 +351,7 @@ export const courseData = {
     ],
     applicationFee: '$200 (non-refundable)',
     resourceFee: '$300 (non-refundable)',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Graduate Diploma', duration: '52 Weeks', skills: ['Strategic Leadership', 'Workforce Development', 'Innovation'] },
     ],
@@ -355,11 +367,9 @@ export const courseData = {
         'Prepare for leadership roles across various industries',
     ],
     careerOutcomes: [
-        'Manager',
-        'Operations manager',
-        'Learning resource manager',
-        'Department manager',
-        'Business manager',
+        'Career Development Manager (Education Sector)',
+        'RTO Education Advisor',
+        'RTO Manager',
         
     ],
     educationPathways: 'This qualification provides a pathway to leadership roles in various industries, including education, workforce development, and strategic planning.',
@@ -409,15 +419,22 @@ export const courseData = {
     resourceFee: '$300',
     workPlacement: '120 hours of work placement required.',
     careerOutcomes: [
-        'Home and community care worker',
-        'Aged care worker',
-        'Support services assistant',
-        'Personal care assistant',
-        'Accommodation support worker',
-        
+        'Accommodation Support Worker',
+        'Care Service Employee',
+        'Care Worker',
+        'Care Assistant',
+        'Client Assistant',
+        'Community Access Coordinator',
+        'Community House Worker',
+        'Community Care Worker',
+        'Residential Aide',
+        'School Support Officer (Disability)',
+        'Senior Personal Care Assistant',
+        'Transport Support Worker'
     ],
+    
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or other related community services qualifications.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Person-Centered Care', 'Community Support', 'Health and Wellbeing'] },
     ],
@@ -482,15 +499,22 @@ export const courseData = {
     resourceFee: '$300',
     workPlacement: '120 hours of work placement required.',
     careerOutcomes: [
-        'Home care assistant',
-        'Community care worker',
-        'Personal care attendant',
-        'Residential care worker',
-        'Care team leader/supervisor'
-        
+        'Accommodation Support Worker',
+        'Assistant Hostel Supervisor',
+        'Care Team Leader',
+        'Care Supervisor',
+        'Community Program Coordinator',
+        'Day Activity Worker',
+        'Personal Care Assistant',
+        'Personal Care Giver',
+        'Personal Care Worker',
+        'Residential Care Worker',
+        'Residential Care Officer',
+        'Support Worker (Community Services)'
     ],
+    
     educationPathways: 'Potential progression into CHC52015 Diploma of Community Services or related community services qualifications.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025', 'September 2025', 'October 2025', 'December 2025'],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '52 Weeks', skills: ['Aged Care Support', 'Dementia Care', 'Community Service Planning'] },
     ],
@@ -561,15 +585,26 @@ export const courseData = {
     resourceFee: '$300',
     workPlacement: '200 hours of work placement required.',
     careerOutcomes: [
-        'Case worker/manager',
-        'Community services worker',
-        'Family support worker',
-        'Family services coordinator',
-        'Program coordinator'
-        
+        'Aboriginal Housing Worker',
+        'Aboriginal Neighbourhood House Coordinator',
+        'Assistant Community Services Worker',
+        'Assistant Community Worker',
+        'Care Team Leader',
+        'Case Coordinator (Community Services)',
+        'Case Coordinator (Disability)',
+        'Community Access Coordinator',
+        'Community Care Manager',
+        'Community Development Worker for Social Housing',
+        'Community Housing Resources Worker',
+        'Support Facilitator (Community Services)',
+        'Support Facilitator (Disability)',
+        'Team Leader',
+        'Welfare Support Worker',
+        'Youth Housing Support Worker'
     ],
+    
     educationPathways: 'This qualification can lead to further studies in CHC62015 Advanced Diploma of Community Sector Management or higher education qualifications in community services.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Diploma', duration: '78 Weeks', skills: ['Case Management', 'Program Coordination', 'Community Services Supervision'] },
     ],
@@ -637,14 +672,11 @@ export const courseData = {
     workPlacement: '300 hours of work placement required.',
     careerOutcomes: [
         'Early childhood coordinator',
-        'Family-daycare coordinator',
-        'Early childhood educator',
-        'Playgroup coordinator',
-        'Nanny',
+        'Child Care Worker',
         
     ],
     educationPathways: 'Graduates may pursue further education in higher qualifications in early childhood education and care.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Diploma', duration: '78 Weeks', skills: ['Childhood Education', 'Curriculum Development', 'Team Management'] },
     ],
@@ -707,14 +739,10 @@ export const courseData = {
     workPlacement: '160 hours of work placement required in a regulated childrens education and care service.',
     careerOutcomes: [
         'Early childhood educator',
-        'Playgroup supervisor',
-        'Recreation assistant',
-        'Family-daycare worker',
-        'Nanny',
-        
+        'Child Care Worker',
     ],
     educationPathways: 'Graduates may proceed to the CHC50121 Diploma of Early Childhood Education and Care or other higher qualifications in the field.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Childhood Education', 'Health & Safety', 'Inclusive Practices'] },
     ],
@@ -776,15 +804,20 @@ export const courseData = {
     resourceFee: '$300',
     workPlacement: '120 hours of work placement in the disability support sector.',
     careerOutcomes: [
-        'Behavioural support officer',
-        'Disability support worker',
-        'Residential facility coordinator',
-        'Day program coordinator',
-        'Lifestyle support worker',
-        
+        'Behavioural Support Officer',
+        'Community Development Officer',
+        'Day Support Disability Officer',
+        'Disabilities Supervisor',
+        'Disability Service Officer',
+        'Disability Support Assistant (Schools)',
+        'Disability Team Leader',
+        'Job Coordinator',
+        'Lifestyle Support Officer',
+        'Local Area Coordinator',
+        'Marketing Coordinator (Disability)'
     ],
     educationPathways: 'Graduates can continue into the CHC52015 Diploma of Community Services or other community services diplomas.',
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '26 Weeks', skills: ['Disability Support', 'Community Participation', 'Person-Centred Services'] },
     ],
@@ -852,7 +885,7 @@ export const courseData = {
         'SIT50422 Diploma of Hospitality Management',
         'SIT60322 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate III', duration: '52 Weeks', skills: ['Cookery Skills', 'Kitchen Operations', 'Food Safety'] },
     ],
@@ -925,18 +958,15 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: 'At least 240 hours of work placement required in a hospitality establishment. Students will complete a minimum of 48 food service periods covering various meal services.',
     careerOutcomes: [
-        'Commis chef',
+        'Chef',
         'Chef de partie',
-        'Sous chef de cuisine',
-        'Chef de cuisine',
-       ' Chef executive',
         
     ],
     educationPathways: [
         'SIT50416 Diploma of Hospitality Management',
         'SIT60316 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Certificate IV', duration: '78 Weeks', skills: ['Supervision', 'Kitchen Management', 'Menu Design'] },
     ],
@@ -1024,15 +1054,16 @@ export const courseData = {
     uniformFee: '$350 (non-refundable)',
     workPlacement: 'At least 48 shifts of work placement in a hospitality establishment, covering breakfast, lunch, dinner, and special functions.',
     careerOutcomes: [
-        'Chef de cuisine',
-        'Restaurant manager',
-        'Sous chef'
-        
+        'Chef Patissier',
+        'Hospitality Manager',
+        'Motel Manager',
+        'Restaurant Manager',
+        'Sous Chef'
     ],
     educationPathways: [
         'SIT60316 Advanced Diploma of Hospitality Management',
     ],
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Diploma', duration: '104 Weeks', skills: ['Hospitality Management', 'Operations Coordination', 'Multiskilling'] },
     ],
@@ -1119,7 +1150,7 @@ export const courseData = {
     educationPathways: [
         'Bachelor of Hospitality Management (further study at other institutions)',
     ],
-    startDates: ['January 2025', 'March 2025', 'April 2025', 'June 2025', 'July 2025'],
+        startDates: ['27/01/2025', '03/03/2025 ', '14/04/2025', '02/06/2025 ', '14/07/2025 ', '01/09/2025 ', '13/10/2025 ', '01/12/2025 '],
     proficiencyLevels: [
         { level: 'Advanced Diploma', duration: '104 Weeks', skills: ['Strategic Management', 'Advanced Hospitality Operations'] },
     ],

@@ -20,7 +20,7 @@ const policies = [
   },
   {
     name: 'Fees Payment and Charges Policy & Procedures',
-    url: 'https://ridge.edu.au/wp-content/uploads/2024/09/2.1.8-Fees-charges-and-refunds-Policy-Procedure_Ridge-International-College_V3.0.pdf'
+    url: 'https://ridge.edu.au/wp-content/uploads/2024/12/2.1.8-Fees-charges-and-refunds-Policy-Procedure_Ridge-International-College_V3.1-1-1.pdf'
   },
   {
     name: 'Refunds Policy & Procedures',

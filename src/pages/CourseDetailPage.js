@@ -158,20 +158,6 @@ const CourseDetailPage = () => {
         course: formData.course,
         country: formData.country,
         phone_number: formData.phoneNumber,
-        
-        message: `Hello Ridge International College,
-    
-    A new application has been received for the ${formData.course} course.
-    
-    Applicant Details:
-    Name: ${formData.fullName}
-    Email: ${formData.email}
-    Phone Number: ${formData.phoneNumber}
-    
-    Please review the application and follow up with the candidate.
-    
-    Best regards,
-    Ridge International College Application System`
       }
     
     ).then(
@@ -658,19 +644,26 @@ const CourseDetailPage = () => {
           </div>
         </div>
       )}
-              {/* Intake Dates */}
-              {startDates.length > 0 && (
-                <ContentCard>
-                  <h3 className="text-xl font-bold text-gray-800 mb-6">Upcoming Intakes</h3>
-                  <div className="space-y-4">
-                    {startDates.map((date, index) => (
-                      <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
-                        <Calendar className="w-5 h-5 text-[#3554a5]" />
-                        <span className="text-gray-700">{date}</span>
-                      </div>
-                    ))}
-                  </div>
-                </ContentCard>
+  {/* Intake Dates */}
+  {startDates.length > 0 && (
+    <ContentCard>
+      <h3 className="text-xl font-bold text-gray-800 mb-6">Upcoming Intakes</h3>
+      <div className="grid grid-cols-2 gap-4">
+        {startDates.map((date, index) => (
+          <div 
+            key={index} 
+            className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group"
+          >
+            <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors">
+              <Calendar className="w-4 h-4 text-[#3554a5]" />
+            </div>
+            <span className="text-gray-700 text-sm group-hover:text-[#3554a5] transition-colors">
+              {date}
+            </span>
+          </div>
+        ))}
+      </div>
+    </ContentCard>
               )}
             </div>
           </div>
