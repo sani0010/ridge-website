@@ -106,7 +106,12 @@ const CourseDetailPage = () => {
     email: '',
     course: '',
     phoneNumber: '',
+    country: '',
   });
+
+  const countries = [
+    "Offshore", "Onshore"
+  ];
   const modalRef = useRef();
   const formRef = useRef();
   
@@ -151,6 +156,7 @@ const CourseDetailPage = () => {
         from_name: formData.fullName,
         from_email: formData.email,
         course: formData.course,
+        country: formData.country,
         phone_number: formData.phoneNumber,
         
         message: `Hello Ridge International College,
@@ -585,6 +591,18 @@ const CourseDetailPage = () => {
                 required 
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg" 
               />
+            <select 
+            name="country"
+            value={formData.country}
+            onChange={handleInputChange}
+            required 
+            className='w-full px-4 py-2 border border-gray-300 rounded-lg'
+          >
+            <option value="">Where are you applying from?</option>
+            {countries.map(country => (
+              <option key={country} value={country}>{country}</option>
+            ))}
+          </select>
 <select 
   name="course"
   value={formData.course}
