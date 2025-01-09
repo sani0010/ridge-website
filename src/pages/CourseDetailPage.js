@@ -333,19 +333,37 @@ const CourseDetailPage = () => {
         // Function to check if text is a header
         const isHeader = (text) => {
           return index === 0 || // First item is always a header
-                 (text.endsWith(':') && !text.toLowerCase().includes('ielts')); // Headers end with : but exclude IELTS requirement
+            (text.endsWith(':') && !text.toLowerCase().includes('ielts')); // Headers end with : but exclude IELTS requirement
         };
 
         // Function to check if a point should be a sub-point
         const isSubPoint = (text) => {
           const lowercaseText = text.toLowerCase();
-          // Check if it comes after "following:" and is indented
           const previousText = index > 0 ? array[index - 1].toLowerCase() : '';
-          return previousText.includes('following:') || 
-                 (lowercaseText.startsWith('educated') ||
-                  lowercaseText.startsWith('completed') ||
-                  lowercaseText.startsWith('successful'));
+          return previousText.includes('following:') ||
+            (lowercaseText.startsWith('educated') ||
+             lowercaseText.startsWith('completed') ||
+             lowercaseText.startsWith('successful'));
         };
+
+        // Track current section's points
+        let currentSectionMainPoints = [];
+        let currentSectionSubPoints = [];
+
+        for (let i = 0; i < index; i++) {
+          const item = array[i];
+          if (!isHeader(item) && !item.toLowerCase().includes('*note')) {
+            if (isSubPoint(item)) {
+              currentSectionSubPoints.push(item);
+            } else {
+              currentSectionMainPoints.push(item);
+            }
+          } else if (isHeader(item)) {
+            // Reset counters for new section
+            currentSectionMainPoints = [];
+            currentSectionSubPoints = [];
+          }
+        }
 
         if (requirement.toLowerCase().includes('*note')) {
           // Note styling
@@ -364,30 +382,17 @@ const CourseDetailPage = () => {
             </div>
           );
         } else {
-          // Get point numbering
-          const previousPoints = array
-            .slice(0, index)
-            .filter(item => !isHeader(item) && !item.toLowerCase().includes('*note'));
-          
-          const previousMainPoints = previousPoints
-            .filter(item => !isSubPoint(item));
-          
-          const previousSubPoints = previousPoints
-            .filter(item => isSubPoint(item));
-
           const isPoint = !isSubPoint(requirement);
-          const pointNumber = isPoint 
-            ? previousMainPoints.length + 1
-            : String.fromCharCode(97 + previousSubPoints.length);
+          const mainPointNumber = currentSectionMainPoints.length + 1;
 
           acc.push(
-            <div 
+            <div
               key={`requirement-${index}`}
               className={`flex items-start gap-4 p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors group ${isSubPoint(requirement) ? 'ml-8' : 'ml-4'}`}
             >
               <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors flex-shrink-0 mt-0.5 min-w-[2rem] text-center">
                 <span className="text-[#3554a5]">
-                  {isPoint ? `${pointNumber}.` : `${pointNumber}.`}
+                  {isPoint ? `${mainPointNumber}.` : '•'}
                 </span>
               </div>
               <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
@@ -401,6 +406,7 @@ const CourseDetailPage = () => {
     </div>
   </ContentCard>
 )}
+
             {courseName === 'general-english' && course.proficiencyLevels && course.proficiencyLevels.length > 0 && (
   <ContentCard>
     <SectionTitle>Course Levels</SectionTitle>
