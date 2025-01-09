@@ -346,23 +346,14 @@ const CourseDetailPage = () => {
              lowercaseText.startsWith('successful'));
         };
 
-        // Track current section's points
-        let currentSectionMainPoints = [];
-        let currentSectionSubPoints = [];
+        // Reset counters at the start of reduce
+        if (index === 0) {
+          acc.currentSectionMainPoints = 0;
+        }
 
-        for (let i = 0; i < index; i++) {
-          const item = array[i];
-          if (!isHeader(item) && !item.toLowerCase().includes('*note')) {
-            if (isSubPoint(item)) {
-              currentSectionSubPoints.push(item);
-            } else {
-              currentSectionMainPoints.push(item);
-            }
-          } else if (isHeader(item)) {
-            // Reset counters for new section
-            currentSectionMainPoints = [];
-            currentSectionSubPoints = [];
-          }
+        // If we hit a header, reset the counter
+        if (isHeader(requirement)) {
+          acc.currentSectionMainPoints = 0;
         }
 
         if (requirement.toLowerCase().includes('*note')) {
@@ -383,7 +374,11 @@ const CourseDetailPage = () => {
           );
         } else {
           const isPoint = !isSubPoint(requirement);
-          const mainPointNumber = currentSectionMainPoints.length + 1;
+          
+          // Only increment counter for main points
+          if (isPoint) {
+            acc.currentSectionMainPoints++;
+          }
 
           acc.push(
             <div
@@ -392,7 +387,7 @@ const CourseDetailPage = () => {
             >
               <div className="p-2 bg-[#3554a5]/10 rounded-lg group-hover:bg-[#3554a5]/20 transition-colors flex-shrink-0 mt-0.5 min-w-[2rem] text-center">
                 <span className="text-[#3554a5]">
-                  {isPoint ? `${mainPointNumber}.` : '•'}
+                  {isPoint ? `${acc.currentSectionMainPoints}.` : '•'}
                 </span>
               </div>
               <span className="text-gray-700 group-hover:text-[#3554a5] transition-colors">
@@ -406,7 +401,6 @@ const CourseDetailPage = () => {
     </div>
   </ContentCard>
 )}
-
             {courseName === 'general-english' && course.proficiencyLevels && course.proficiencyLevels.length > 0 && (
   <ContentCard>
     <SectionTitle>Course Levels</SectionTitle>
