@@ -220,12 +220,7 @@ export const courseData = {
         'Focus on real-world business challenges and solutions',
     ],
     careerOutcomes: [
-        'Business manager',
         'Corporate Services Manager',
-        'Distribution Centre Manager',
-        'Business development manager',
-        'Legal Practice Manager',
-        'Information Services Manager',
         'Office Manager',
         'Operations Manager',
         'Production Manager',
@@ -425,9 +420,6 @@ export const courseData = {
         'Care Assistant',
         'Client Assistant',
         'Community Access Coordinator',
-        'Community House Worker',
-        'Community Care Worker',
-        'Residential Aide',
         'School Support Officer (Disability)',
         'Senior Personal Care Assistant',
         'Transport Support Worker'
@@ -506,10 +498,6 @@ export const courseData = {
         'Community Program Coordinator',
         'Day Activity Worker',
         'Personal Care Assistant',
-        'Personal Care Giver',
-        'Personal Care Worker',
-        'Residential Care Worker',
-        'Residential Care Officer',
         'Support Worker (Community Services)'
     ],
     
@@ -590,14 +578,6 @@ export const courseData = {
         'Assistant Community Services Worker',
         'Assistant Community Worker',
         'Care Team Leader',
-        'Case Coordinator (Community Services)',
-        'Case Coordinator (Disability)',
-        'Community Access Coordinator',
-        'Community Care Manager',
-        'Community Development Worker for Social Housing',
-        'Community Housing Resources Worker',
-        'Support Facilitator (Community Services)',
-        'Support Facilitator (Disability)',
         'Team Leader',
         'Welfare Support Worker',
         'Youth Housing Support Worker'
