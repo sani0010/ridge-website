@@ -411,7 +411,7 @@ export const courseData = {
 
       
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '120 hours of work placement required.',
     careerOutcomes: [
         'Accommodation Support Worker',
@@ -488,7 +488,7 @@ export const courseData = {
         "*Note that other English language tests such as PTE and TOEFL can be accepted. Students are required to provide their results so that it can be confirmed they are equivalent to IELTS 6.0."
     ],
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '120 hours of work placement required.',
     careerOutcomes: [
         'Accommodation Support Worker',
@@ -570,7 +570,7 @@ export const courseData = {
 ],
 
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '200 hours of work placement required.',
     careerOutcomes: [
         'Aboriginal Housing Worker',
@@ -648,7 +648,7 @@ export const courseData = {
     "*Note that other English language tests such as PTE and TOEFL can be accepted. Students are required to provide their results so that it can be confirmed they are equivalent to IELTS 6.0."
 ],
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '300 hours of work placement required.',
     careerOutcomes: [
         'Early childhood coordinator',
@@ -715,7 +715,7 @@ export const courseData = {
     "*Note that other English language tests such as PTE and TOEFL can be accepted. Students are required to provide their results so that it can be confirmed they are equivalent to IELTS 6.0."
 ],
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '160 hours of work placement required in a regulated childrens education and care service.',
     careerOutcomes: [
         'Early childhood educator',
@@ -781,7 +781,7 @@ export const courseData = {
     "*Note that other English language tests such as PTE and TOEFL can be accepted. Students are required to provide their results so that it can be confirmed they are equivalent to IELTS 6.0."
 ],
     applicationFee: '$200 (non-refundable)',
-    resourceFee: '$300',
+    resourceFee: '$300 (non-refundable)',
     workPlacement: '120 hours of work placement in the disability support sector.',
     careerOutcomes: [
         'Behavioural Support Officer',
