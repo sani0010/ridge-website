@@ -1,3 +1,4 @@
+// EventDetail.js
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { eventData } from '../data/eventData';
@@ -8,6 +9,10 @@ const EventDetail = () => {
   const location = useLocation();
 
   const event = eventData.find(item => item.id === parseInt(id));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const isEventPassed = event ? new Date(event.date) < today : false;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [registeredEvents, setRegisteredEvents] = useState(() => {
@@ -39,6 +44,39 @@ const EventDetail = () => {
 
   const isEventRegistered = registeredEvents.some(regEvent => regEvent.id === event.id);
 
+  const getRegistrationButton = () => {
+    if (isEventPassed) {
+      return (
+        <button
+          disabled
+          className="mt-6 w-full text-white py-2 px-4 rounded-md bg-gray-400 cursor-not-allowed"
+        >
+          Event Has Passed
+        </button>
+      );
+    }
+    
+    if (isEventRegistered) {
+      return (
+        <button
+          className="mt-6 w-full text-white py-2 px-4 rounded-md bg-[#F26722] hover:bg-[#F26722]"
+          onClick={() => navigate('/my-events')}
+        >
+          Go to My Events
+        </button>
+      );
+    }
+    
+    return (
+      <button
+        className="mt-6 w-full text-white py-2 px-4 rounded-md bg-[#3554a5] hover:bg-[#3554a5]"
+        onClick={() => setIsModalOpen(true)}
+      >
+        Register for Event
+      </button>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -60,7 +98,14 @@ const EventDetail = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-40" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <p className="text-lg font-semibold">{event.date}</p>
+              <div className="flex items-center space-x-4">
+                <p className="text-lg font-semibold">{event.date}</p>
+                {isEventPassed && (
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
+                    Past Event
+                  </span>
+                )}
+              </div>
               <h1 className="text-4xl font-bold mt-2">{event.title}</h1>
             </div>
           </div>
@@ -98,29 +143,14 @@ const EventDetail = () => {
                   </div>
                 </div>
 
-                <button
-                  className={`mt-6 w-full text-white py-2 px-4 rounded-md transition-colors duration-200 ${
-                    isEventRegistered
-                      ? 'bg-[#F26722] hover:bg-[#F26722]'
-                      : 'bg-[#3554a5] hover:bg-[#3554a5]'
-                  }`}
-                  onClick={() => {
-                    if (isEventRegistered) {
-                      navigate('/my-events');
-                    } else {
-                      setIsModalOpen(true);
-                    }
-                  }}
-                >
-                  {isEventRegistered ? 'Go to My Events' : 'Register for Event'}
-                </button>
+                {getRegistrationButton()}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {isModalOpen && (
+      {isModalOpen && !isEventPassed && (
         <RegistrationModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
@@ -138,7 +168,6 @@ const EventDetail = () => {
     </div>
   );
 };
-
 // RegistrationModal remains unchanged
 
 // Registration modal component
