@@ -1,63 +1,51 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Calendar, Search, Clock, Download, Share2, Printer, 
-  Bookmark, ChevronRight, FileText, AlertTriangle,
-  Calendar as CalendarIcon, AlertCircle
+  Calendar, Search, Bookmark,
+  Printer, AlertCircle
 } from 'lucide-react';
 
-// Enhanced notices data structure
 const initialNotices = [
   {
     id: 1,
-    title: 'September 2024 Intake Applications Open',
-    date: 'June 8, 2024',
+    title: 'Sydney – 2025 January Orientation 1',
+    date: 'January 15, 2025',
     category: 'Admission',
     priority: 'high',
     department: 'Student Affairs',
-    description: 'Applications now open for September 2024 intake. Early bird scholarships available.',
-    attachments: ['application_form.pdf', 'scholarship_details.pdf'],
-    deadline: '2024-08-15',
+    description: 'Ridge International College - Sydney Campus Office 101, 30 Cowper Street, Parramatta, NSW, Australia',
     isPublic: true,
     isPinned: true,
     isBookmarked: false,
-    isArchived: false,
   },
   {
     id: 2,
-    title: 'Final Examination Schedule Released',
-    date: 'June 5, 2024',
+    title: 'Melbourne – 2025 January Orientation 1',
+    date: 'January 17, 2025',
     category: 'Academic',
     priority: 'urgent',
     department: 'Examinations',
-    description: 'Final examination schedule for all departments has been released.',
-    attachments: ['exam_schedule.pdf'],
-    deadline: '2024-06-30',
+    description: 'Ridge International College - Melbourne Campus Level 5/ 85 Queen Street, Melbourne, Victoria, Australia',
     isPublic: true,
     isPinned: true,
     isBookmarked: false,
-    isArchived: false,
   },
   {
     id: 3,
-    title: 'Campus Maintenance Notice',
-    date: 'June 1, 2024',
+    title: 'Melbourne – 2025 January Orientation 2',
+    date: 'January 21, 2025',
     category: 'Facility',
     priority: 'normal',
     department: 'Maintenance',
-    description: 'Regular maintenance work scheduled for the main campus buildings.',
-    attachments: ['maintenance_schedule.pdf'],
-    deadline: '2024-06-15',
+    description: 'Ridge International College - Melbourne Campus Level 5/ 85 Queen Street, Melbourne, Victoria, Australia',
     isPublic: true,
     isPinned: false,
     isBookmarked: false,
-    isArchived: false,
   }
 ];
 
 const EnhancedNoticeBoard = () => {
   const [notices, setNotices] = useState(initialNotices);
   const [searchTerm, setSearchTerm] = useState('');
-  const [showArchive, setShowArchive] = useState(false);
   const [bookmarkedOnly, setBookmarkedOnly] = useState(false);
   const [visibleNotices, setVisibleNotices] = useState(6);
 
@@ -78,12 +66,11 @@ const EnhancedNoticeBoard = () => {
         const matchesSearch = notice.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             notice.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             notice.category.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesArchive = showArchive ? notice.isArchived : !notice.isArchived;
         const matchesBookmark = bookmarkedOnly ? notice.isBookmarked : true;
-        return matchesSearch && matchesArchive && matchesBookmark;
+        return matchesSearch && matchesBookmark;
       })
       .slice(0, visibleNotices);
-  }, [notices, searchTerm, showArchive, bookmarkedOnly, visibleNotices]);
+  }, [notices, searchTerm, bookmarkedOnly, visibleNotices]);
 
   // Handle notice interactions
   const toggleBookmark = (id) => {
@@ -92,43 +79,18 @@ const EnhancedNoticeBoard = () => {
     ));
   };
 
-  const toggleArchive = (id) => {
-    setNotices(notices.map(notice =>
-      notice.id === id ? { ...notice, isArchived: !notice.isArchived } : notice
-    ));
-  };
-
-  const handleShare = (notice) => {
-    // In a real app, this would open a share dialog
-    alert(`Sharing notice: ${notice.title}`);
-  };
-
-  const handlePrint = (notice) => {
-    // In a real app, this would open the print dialog
+  const handlePrint = () => {
     window.print();
-  };
-
-  const handleDownload = (attachment) => {
-    // In a real app, this would trigger a file download
-    alert(`Downloading: ${attachment}`);
   };
 
   const loadMore = () => {
     setVisibleNotices(prev => prev + 6);
   };
 
-  const showImportantDeadlines = () => {
-    setSearchTerm('deadline');
-  };
-
-  const showEmergencyNotices = () => {
-    setSearchTerm('urgent');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4 py-8">
-        {/* Header with Quick Actions */}
+        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Notice Board
@@ -136,29 +98,9 @@ const EnhancedNoticeBoard = () => {
           <p className="text-gray-600 max-w-2xl mx-auto mb-6">
             Stay updated with the latest announcements, events, and important information
           </p>
-          <div className="flex justify-center gap-4 flex-wrap">
-            <button 
-              onClick={showImportantDeadlines}
-              className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200"
-            >
-              <Clock className="w-4 h-4 mr-2" />
-              Important Deadlines
-            </button>
-            <button className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200">
-              <CalendarIcon className="w-4 h-4 mr-2" />
-              Academic Calendar
-            </button>
-            <button 
-              onClick={showEmergencyNotices}
-              className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200"
-            >
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              Emergency Notices
-            </button>
-          </div>
         </div>
 
-        {/* Advanced Search and Filters */}
+        {/* Search and Filters */}
         <div className="mb-8 space-y-6">
           <div className="relative max-w-xl mx-auto">
             <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -171,7 +113,7 @@ const EnhancedNoticeBoard = () => {
             />
           </div>
           <div>
-          <div className="flex justify-end gap-4">
+            <div className="flex justify-end gap-4">
               <button
                 onClick={() => setBookmarkedOnly(!bookmarkedOnly)}
                 className={`flex items-center gap-2 ${bookmarkedOnly ? 'text-blue-500' : 'text-gray-500'}`}
@@ -179,34 +121,25 @@ const EnhancedNoticeBoard = () => {
                 <Bookmark className="w-4 h-4" />
                 Bookmarked
               </button>
-              <button
-                onClick={() => setShowArchive(!showArchive)}
-                className={`flex items-center gap-2 ${showArchive ? 'text-blue-500' : 'text-gray-500'}`}
-              >
-                <FileText className="w-4 h-4" />
-                Archive
-              </button>
             </div>
           </div>
         </div>
 
         {/* Pinned Notices */}
-        {!showArchive && (
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Pinned Notices</h2>
-            <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-              {notices.filter(notice => notice.isPinned && !notice.isArchived).map((notice) => (
-                <div key={notice.id} className="flex items-center gap-4 py-2">
-                  <AlertCircle className="w-5 h-5 text-yellow-600" />
-                  <div>
-                    <h3 className="font-medium">{notice.title}</h3>
-                    <p className="text-sm text-gray-600">{notice.date}</p>
-                  </div>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold mb-4">Pinned Notices</h2>
+          <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+            {notices.filter(notice => notice.isPinned).map((notice) => (
+              <div key={notice.id} className="flex items-center gap-4 py-2">
+                <AlertCircle className="w-5 h-5 text-yellow-600" />
+                <div>
+                  <h3 className="font-medium">{notice.title}</h3>
+                  <p className="text-sm text-gray-600">{notice.date}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
+        </div>
 
         {/* Main Notice Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -233,33 +166,11 @@ const EnhancedNoticeBoard = () => {
                 <p className="text-gray-600 mb-4">
                   {notice.description}
                 </p>
-
-                {notice.attachments && notice.attachments.length > 0 && (
-                  <div className="mb-4 pt-2 border-t border-gray-100">
-                    <p className="text-sm text-gray-500 mb-2">Attachments:</p>
-                    {notice.attachments.map((attachment, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleDownload(attachment)}
-                        className="inline-flex items-center mr-3 px-3 py-1 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200"
-                      >
-                        <Download className="w-4 h-4 mr-1" />
-                        {attachment}
-                      </button>
-                    ))}
-                  </div>
-                )}
                 
                 <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                   <div className="flex gap-2">
                     <button 
-                      onClick={() => handleShare(notice)}
-                      className="p-2 hover:bg-gray-100 rounded-full"
-                    >
-                      <Share2 className="w-4 h-4 text-gray-500" />
-                    </button>
-                    <button 
-                      onClick={() => handlePrint(notice)}
+                      onClick={handlePrint}
                       className="p-2 hover:bg-gray-100 rounded-full"
                     >
                       <Printer className="w-4 h-4 text-gray-500" />
@@ -273,13 +184,6 @@ const EnhancedNoticeBoard = () => {
                       />
                     </button>
                   </div>
-                  <button 
-                    onClick={() => toggleArchive(notice.id)}
-                    className="flex items-center gap-1 text-gray-500 hover:text-gray-700"
-                  >
-                    {notice.isArchived ? 'Unarchive' : 'Archive'}
-                    <ChevronRight className="h-5 w-5" />
-                  </button>
                 </div>
               </div>
             </div>
