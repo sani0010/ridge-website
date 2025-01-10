@@ -91,7 +91,7 @@ const Header = () => {
       name: 'International Students',
       path: '/living',
       dropdownItems: [
-        { name: 'Domestic Students', path: '/'},
+        { name: 'Domestic Students', path: '/DomesticStudents'},
         { name: 'Student Support Services', path: '/services' },
         { name: 'Useful Information', path: '/info' },
       ]
