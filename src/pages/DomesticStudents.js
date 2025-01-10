@@ -80,34 +80,66 @@ const DomesticStudents = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="container mx-auto px-4 mt-8 mb-12">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            {enrollmentContent.title}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-8">
-            {enrollmentContent.description}
-          </p>
+{/* Main Content Section */}
+<div className="container mx-auto px-4 mt-8 mb-12">
+  <div className="bg-white rounded-lg shadow-lg p-8">
+    
+    <h2 className="text-3xl font-bold text-gray-800 mb-6">
+      {enrollmentContent.title}
+    </h2>
+    <p className="text-gray-600 leading-relaxed mb-8">
+      {enrollmentContent.description}
+    </p>
 
-          {enrollmentContent.features.map((feature, index) => (
-            <div key={index} className="mb-6">
-              <h3 className="text-xl font-semibold text-[#3554a5] mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 mb-4">
-                {feature.description}
-              </p>
-              {feature.items && (
-                <ul className="list-disc ml-6 text-gray-600">
-                  {feature.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
+
+
+    {/* Enrollment Steps */}
+    {enrollmentContent.features.map((feature, index) => (
+      <div key={index} className="mb-6">
+        <h3 className="text-xl font-semibold text-[#3554a5] mb-2">
+          {feature.title}
+        </h3>
+        <p className="text-gray-600 mb-4">{feature.description}</p>
+        {feature.items && (
+          <ul className="list-disc ml-6 text-gray-600">
+            {feature.items.map((item, idx) => (
+              <li key={idx}>{item}</li>
+            ))}
+          </ul>
+        )}
       </div>
+      
+    ))}
+  </div>
+      {/* Links Section */}
+      <div className="bg-gray-100 rounded-md p-6 mb-8">
+      <h3 className="text-2xl font-semibold text-[#3554a5] mb-4">Useful Links</h3>
+      <ul className="list-disc ml-6 text-gray-600">
+        <li className="mb-2">
+          <a
+            href="https://skills.education.nsw.gov.au/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Visit Smart & Skilled Website
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.nsw.gov.au/education-and-training/vocational"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Learn More About NSW Vocational Training
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+
+
     </div>
   );
 };
