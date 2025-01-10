@@ -64,7 +64,7 @@ const DomesticStudents = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[50vh] bg-gradient-to-r from-blue-500 to-blue-600 overflow-hidden">
+      <div className="relative h-[50vh] bg-[#3554a5] overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className={`max-w-2xl transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -80,7 +80,7 @@ const DomesticStudents = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="container mx-auto px-4 -mt-8 mb-12">
+      <div className="container mx-auto px-4 mt-8 mb-12">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
             {enrollmentContent.title}
@@ -91,7 +91,7 @@ const DomesticStudents = () => {
 
           {enrollmentContent.features.map((feature, index) => (
             <div key={index} className="mb-6">
-              <h3 className="text-xl font-semibold text-blue-600 mb-2">
+              <h3 className="text-xl font-semibold text-[#3554a5] mb-2">
                 {feature.title}
               </h3>
               <p className="text-gray-600 mb-4">
