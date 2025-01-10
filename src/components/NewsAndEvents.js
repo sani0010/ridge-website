@@ -9,8 +9,10 @@ const NewsAndEvents = () => {
     navigate(`/event/${eventId}`);
   };
 
-  // Get the latest 3 events
-  const latestEvents = eventData.slice(0, 3);
+  // Sort events by date in descending order and get the latest 3
+  const latestEvents = eventData
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
 
   return (
     <div className="bg-white py-16 mb-9">
