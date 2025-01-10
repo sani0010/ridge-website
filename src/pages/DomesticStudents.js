@@ -135,6 +135,16 @@ const DomesticStudents = () => {
             Learn More About NSW Vocational Training
           </a>
         </li>
+        <li>
+          <a
+            href="https://www2.education.vic.gov.au/pal/vet-delivered-school-students/policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Victoria
+          </a>
+        </li>
       </ul>
     </div>
 </div>
