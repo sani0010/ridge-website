@@ -9,6 +9,9 @@ const NewsAndEvents = () => {
     navigate(`/event/${eventId}`);
   };
 
+  // Get the latest 3 events
+  const latestEvents = eventData.slice(0, 3);
+
   return (
     <div className="bg-white py-16 mb-9">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +24,7 @@ const NewsAndEvents = () => {
           </p>
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {eventData.map((item) => (
+          {latestEvents.map((item) => (
             <div
               key={item.id}
               className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
