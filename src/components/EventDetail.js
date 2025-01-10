@@ -101,7 +101,7 @@ const EventDetail = () => {
               <div className="flex items-center space-x-4">
                 <p className="text-lg font-semibold">{event.date}</p>
                 {isEventPassed && (
-                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
+                  <span className="bg-[#f26722] text-white px-3 py-1 rounded-full text-sm">
                     Past Event
                   </span>
                 )}
