@@ -21,7 +21,7 @@ const CampusSlider = ({ images }) => {
     setTimeout(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
       setIsAnimating(false);
-    }, 1000); // Center image transition duration
+    }, 500); // Center image transition duration
   }, [isAnimating, images.length]);
 
   const handlePrev = useCallback(() => {
@@ -31,11 +31,11 @@ const CampusSlider = ({ images }) => {
     setTimeout(() => {
       setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
       setIsAnimating(false);
-    }, 1000); // Center image transition duration
+    }, 500); // Center image transition duration
   }, [isAnimating, images.length]);
 
   useEffect(() => {
-    const interval = setInterval(handleNext, 6000);
+    const interval = setInterval(handleNext, 4000);
     return () => clearInterval(interval);
   }, [handleNext]);
 
@@ -54,8 +54,8 @@ const CampusSlider = ({ images }) => {
       scale: side === 'right' ? 0.85 : 0.9,
       x: side === 'left' ? '-5%' : '5%',
       transition: {
-        delay: side === 'right' ? 1 : 0, // Stagger the right image's transition
-        duration: 1
+        delay: side === 'right' ? 0.5 : 0, // Stagger the right image's transition
+        duration: 0.3
       }
     }),
     hover: { opacity: 0.8, scale: 0.9 }
@@ -119,17 +119,13 @@ const CampusSlider = ({ images }) => {
 
       <motion.button
         onClick={handlePrev}
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all border border-white/20"
-        whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-        whileTap={{ scale: 0.95 }}
+        className="absolute left-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-black/50 transition-all border border-white/20"
       >
         <ChevronLeft className="w-6 h-6 text-white" />
       </motion.button>
       <motion.button
         onClick={handleNext}
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all border border-white/20"
-        whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
-        whileTap={{ scale: 0.95 }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full  bg-white/10 backdrop-blur-md hover:bg-black/50 transition-all border border-white/20"
       >
         <ChevronRight className="w-6 h-6 text-white" />
       </motion.button>
@@ -146,7 +142,7 @@ const CampusSlider = ({ images }) => {
               }
             }}
             className={`h-2 rounded-full transition-all duration-500 ${
-              index === currentIndex ? 'bg-white w-8' : 'bg-white/40 w-2 hover:bg-white/60'
+              index === currentIndex ? 'bg-black w-8' : 'bg-black/40 w-2 hover:bg-black/60'
             }`}
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
