@@ -16,6 +16,7 @@ import campusImg5 from '../assets/campus5.jpg';
 import campusImg6 from '../assets/campus6.jpg';
 import campusImg7 from '../assets/campus7.jpg';
 import campusImg8 from '../assets/campus8.jpg';
+import CampusSlider from '../pages/CampusSlider';
 
 
 
@@ -112,43 +113,7 @@ const AboutUsPage = () => {
     },
   ];
 
-  const campusImages = [
-    campusImg1, campusImg2, campusImg3, campusImg4,
-    campusImg5, campusImg6, campusImg7, campusImg8
-  ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const imageVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.8,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
   useEffect(() => {
     if (window.location.hash === '#college-overview') {
       document.getElementById('college-overview')?.scrollIntoView({ behavior: 'smooth' });
@@ -361,45 +326,25 @@ We have our own kitchen very close to the city where we can travel by tram in Me
         </div>
       </section>
 
-      {/* Campus Tour Section */}
-      <section id="campus" className="py-16 md:py-24 bg-gray-50" ref={campusRef}>
-        <div className="container mx-auto max-w-6xl px-4">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible.campus ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center"
-          >
-            Campus Tour
-          </motion.h2>
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isVisible.campus ? "visible" : "hidden"}
-          >
-            {campusImages.map((image, index) => (
-              <motion.div
-                key={index}
-                className="relative w-full pb-[100%] overflow-hidden rounded-lg shadow-lg cursor-pointer bg-gray-200"
-                variants={imageVariants}
-                whileHover="hover"
-              >
-                <img 
-                  src={image} 
-                  alt={`Campus${index + 1}`} 
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/placeholder-image.jpg';
-                  }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+{/* Campus Tour Section */}
+<section id="campus" className="py-16 md:py-24 bg-gray-50" ref={campusRef}>
+  <div className="container mx-auto max-w-7xl px-4">
+    <motion.h2 
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible.campus ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8 }}
+      className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center"
+    >
+      Campus Tour
+    </motion.h2>
+    <CampusSlider 
+      images={[
+        campusImg1, campusImg2, campusImg3, campusImg4,
+        campusImg5, campusImg6, campusImg7, campusImg8
+      ]} 
+    />
+  </div>
+</section>
 
       {/* Facilities Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
