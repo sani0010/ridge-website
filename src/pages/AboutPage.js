@@ -59,10 +59,13 @@ const AboutUsPage = () => {
       observer.observe(section);
     });
 
-    const animateCounter = (target, setValue, delay = 0) => {
+    const animateCounter = (target, setValue, delay = 0, isSlower = false) => {
       setTimeout(() => {
         let count = 0;
-        const increment = Math.ceil(target / 100);
+        // For slower animation, reduce the increment and increase the interval
+        const increment = isSlower ? 1 : Math.ceil(target / 100);
+        const intervalTime = isSlower ? 200 : 25;
+    
         const interval = setInterval(() => {
           count += increment;
           if (count >= target) {
@@ -71,20 +74,19 @@ const AboutUsPage = () => {
           } else {
             setValue(count);
           }
-        }, 25);
+        }, intervalTime);
       }, delay);
     };
-
+    
     if (isVisible.stats) {
       if (isMobile) {
-        animateCounter(15, setStudents, 0);
+        animateCounter(15, setStudents, 0, true); // Added isSlower parameter
         animateCounter(4000, setGraduates, 1000);
       } else {
-        animateCounter(15, setStudents);
+        animateCounter(15, setStudents, 0, true); // Added isSlower parameter
         animateCounter(4000, setGraduates);
       }
     }
-
     return () => observer.disconnect();
   }, [isVisible.stats, isMobile]);
 
