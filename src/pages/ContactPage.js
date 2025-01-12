@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   MapPin, Phone, Mail, Calendar, 
   Facebook, Instagram, Linkedin,
@@ -8,25 +8,20 @@ import {
 import DatePicker from 'react-datepicker';
 import { useLocation } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
-import melbourne from '../assets/melbourne.jpg';
-import sydney from '../assets/sydney.jpg';
-import fitzroy from '../assets/fitzroy.jpg';
-
 
 const ContactPage = () => {
   const [selectedDates, setSelectedDates] = useState([null, null, null, null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
+  // const [formStatus, setFormStatus] = useState({ message: '', isError: false });
   const location = useLocation();
   const letsconnectRef = useRef(null);
 
   useEffect(() => {
     if (window.location.hash === '#lets-connect') {
-      document.getElementById('lets-connect')?.scrollIntoView({ behavior: 'smooth' });
+      letsconnectRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [location]);
-  
-
 
   const campusLocations = [
     {
@@ -34,24 +29,24 @@ const ContactPage = () => {
       location: "Level 5/85 Queen St, Melbourne, VIC, 3000, Australia",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: melbourne,
-      mapLink: "https://www.google.com/maps/place/level+5%2F85+Queen+St,+Melbourne+VIC+3000,+Australia/@-37.816465,144.961033,15z/data=!4m6!3m5!1s0x6ad65d4b550c0001:0x7de2f73dc09aaf50!8m2!3d-37.8164646!4d144.961033!16s%2Fg%2F11rm870p09?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
+      image: '/melbourne.jpg',
+      mapLink: "https://www.google.com/maps/place/level+5%2F85+Queen+St,+Melbourne+VIC+3000"
     },
     {
       title: "Fitzroy Campus",
       location: "97 Smith Street, Fitzroy VIC 3065, Australia",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: fitzroy,
-      mapLink: "https://www.google.com/maps/place/97+Smith+St,+Fitzroy+VIC+3065,+Australia/@-37.805917,144.982949,15z/data=!4m6!3m5!1s0x6ad642ddf0f10e41:0x28e12490fe5935f1!8m2!3d-37.805917!4d144.982949!16s%2Fg%2F11c5k3jr80?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
+      image: '/fitzroy.jpg',
+      mapLink: "https://www.google.com/maps/place/97+Smith+St,+Fitzroy+VIC+3065"
     },
     {
       title: "Sydney Campus",
-      location: "Office 101, 30 Cowper Street, PARRAMATTA, New South Wales 2150",
+      location: "Office 101, 30 Cowper Street, PARRAMATTA, NSW 2150",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: sydney,
-      mapLink: "https://www.google.com/maps/place/Office+101%2F30+Cowper+St,+Parramatta+NSW+2150,+Australia/@-33.82065,151.007161,15z/data=!4m6!3m5!1s0x6b12a323c4ba11fd:0x13edfafca3af5b0c!8m2!3d-33.8206497!4d151.0071609!16s%2Fg%2F11khd5j4bh?hl=en-US&entry=ttu&g_ep=EgoyMDI0MTEwNi4wIKXMDSoASAFQAw%3D%3D"
+      image: '/sydney.jpg',
+      mapLink: "https://www.google.com/maps/place/Office+101%2F30+Cowper+St,+Parramatta+NSW+2150"
     }
   ];
 
@@ -85,6 +80,7 @@ const ContactPage = () => {
       color: "bg-orange-100"
     }
   ];
+
   const socialMediaLinks = [
     {
       Icon: Facebook,
@@ -96,14 +92,13 @@ const ContactPage = () => {
     },
     {
       Icon: Youtube,
-      link:"https://www.youtube.com/@RidgeInternationalCollege",
+      link: "https://www.youtube.com/@RidgeInternationalCollege"
     },
     {
       Icon: Linkedin,
       link: "https://www.linkedin.com/company/ridge-international-college/"
     }
   ];
-
 
   const formatDate = (date) => {
     if (!date) return null;
@@ -129,9 +124,39 @@ Best regards,
       `);
 
       window.location.href = `mailto:${department.email}?subject=${subject}&body=${body}`;
-
       setCurrentIndex(index);
       setIsModalOpen(true);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: e.target.name.value,
+          email: e.target.email.value,
+          message: e.target.message.value
+        })
+      });
+  
+      const data = await response.json();
+      
+      if (data.success) {
+        alert('Message sent successfully!');
+        // Clear form
+        e.target.reset();
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again later.');
     }
   };
 
@@ -158,9 +183,9 @@ Best regards,
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {campusLocations.map((campus, idx) => (
             <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <a href={campus.mapLink} className="h-48 bg-blue-100 relative block">
+              <a href={campus.mapLink} target="_blank" rel="noopener noreferrer" className="h-48 bg-blue-100 relative block">
                 <img
-                  src={campus.image}
+                  src="/api/placeholder/400/320"
                   alt={campus.title}
                   className="w-full h-full object-cover"
                 />
@@ -245,62 +270,56 @@ Best regards,
                   Have questions? Our team is here to help you navigate your educational journey.
                 </p>
                 <div className="space-y-6">
-                <h4 className="text-xl font-semibold">Follow us:</h4>
-                <div className="flex gap-4">
-                  {socialMediaLinks.map(({ Icon, link }, idx) => (
-                    <a
-                      key={idx}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full border border-gray-200 hover:bg-blue-50 transition-colors"
-                    >
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  ))}
+                  <h4 className="text-xl font-semibold">Follow us:</h4>
+                  <div className="flex gap-4">
+                    {socialMediaLinks.map(({ Icon, link }, idx) => (
+                      <a
+                        key={idx}
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full border border-gray-200 hover:bg-blue-50 transition-colors"
+                      >
+                        <Icon className="w-5 h-5" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
-              </div>
               <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <textarea
-                  placeholder="Your Message"
-                  rows="4"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-32"
-                />
-                <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-                  Send Message
-                </button>
+              <form onSubmit={handleSubmit} className="space-y-4">
+  <input
+    name="name"
+    type="text"
+    placeholder="Your Name"
+    required
+    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <input
+    name="email"
+    type="email"
+    placeholder="Your Email"
+    required
+    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <textarea
+    name="message"
+    placeholder="Your Message"
+    rows="4"
+    required
+    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-32"
+  />
+  <button 
+    type="submit"
+    className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+  >
+    Send Message
+  </button>
+</form>
               </div>
             </div>
           </div>
         </section>
-
-        {/* CTA Section */}
-        {/* <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg text-white mb-24">
-          <div className="p-12 text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey?</h2>
-            <div className="flex gap-4 justify-center">
-              <button className="bg-white text-blue-900 px-6 py-2 rounded-lg hover:bg-blue-50 transition-colors flex items-center gap-2">
-                Apply Now
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="border border-white px-6 py-2 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2">
-                Learn More
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div> */}
 
         {/* Modal */}
         {isModalOpen && (
