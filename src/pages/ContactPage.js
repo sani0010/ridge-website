@@ -3,17 +3,37 @@ import {
   MapPin, Phone, Mail, Calendar, 
   Facebook, Instagram, Linkedin,
   Clock, User, BookOpen, MessageCircle, X,
-  Youtube
+  Youtube, Check, AlertCircle
 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import { useLocation } from 'react-router-dom';
-import "react-datepicker/dist/react-datepicker.css";
+import melbourne from '../assets/melbourne.jpg';
+import sydney from '../assets/sydney.jpg';
+import fitzroy from '../assets/fitzroy.jpg';
+
+const CustomAlert = ({ message, isError, onClose }) => (
+  <div className={`p-4 rounded-lg mb-4 flex items-center justify-between ${
+    isError ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'
+  }`}>
+    <div className="flex items-center gap-2">
+      {isError ? (
+        <AlertCircle className="w-5 h-5" />
+      ) : (
+        <Check className="w-5 h-5" />
+      )}
+      <p>{message}</p>
+    </div>
+    <button onClick={onClose} className="p-1 hover:bg-white rounded-full transition-colors">
+      <X className="w-4 h-4" />
+    </button>
+  </div>
+);
 
 const ContactPage = () => {
   const [selectedDates, setSelectedDates] = useState([null, null, null, null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
-  // const [formStatus, setFormStatus] = useState({ message: '', isError: false });
+  const [formStatus, setFormStatus] = useState({ show: false, message: '', isError: false });
   const location = useLocation();
   const letsconnectRef = useRef(null);
 
@@ -29,7 +49,7 @@ const ContactPage = () => {
       location: "Level 5/85 Queen St, Melbourne, VIC, 3000, Australia",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: '/melbourne.jpg',
+      image: melbourne,
       mapLink: "https://www.google.com/maps/place/level+5%2F85+Queen+St,+Melbourne+VIC+3000"
     },
     {
@@ -37,7 +57,7 @@ const ContactPage = () => {
       location: "97 Smith Street, Fitzroy VIC 3065, Australia",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: '/fitzroy.jpg',
+      image: fitzroy,
       mapLink: "https://www.google.com/maps/place/97+Smith+St,+Fitzroy+VIC+3065"
     },
     {
@@ -45,7 +65,7 @@ const ContactPage = () => {
       location: "Office 101, 30 Cowper Street, PARRAMATTA, NSW 2150",
       phone: "+61 03 9620 7738",
       email: "admin@ridge.edu.au",
-      image: '/sydney.jpg',
+      image: sydney,
       mapLink: "https://www.google.com/maps/place/Office+101%2F30+Cowper+St,+Parramatta+NSW+2150"
     }
   ];
@@ -132,6 +152,13 @@ Best regards,
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Show sending message immediately
+    setFormStatus({
+      show: true,
+      message: 'Sending message, please wait...',
+      isError: false
+    });
+    
     try {
       const response = await fetch('http://localhost:5000/api/send-email', {
         method: 'POST',
@@ -148,15 +175,31 @@ Best regards,
       const data = await response.json();
       
       if (data.success) {
-        alert('Message sent successfully!');
-        // Clear form
+        setFormStatus({
+          show: true,
+          message: 'Message sent successfully! We will get back to you soon.',
+          isError: false
+        });
         e.target.reset();
       } else {
-        alert('Failed to send message. Please try again.');
+        setFormStatus({
+          show: true,
+          message: 'Failed to send message. Please try again.',
+          isError: true
+        });
       }
+  
+      // Hide the status message after 5 seconds
+      setTimeout(() => {
+        setFormStatus(prev => ({ ...prev, show: false }));
+      }, 5000);
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred. Please try again later.');
+      setFormStatus({
+        show: true,
+        message: 'An error occurred. Please try again later.',
+        isError: true
+      });
     }
   };
 
@@ -185,7 +228,7 @@ Best regards,
             <div key={idx} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <a href={campus.mapLink} target="_blank" rel="noopener noreferrer" className="h-48 bg-blue-100 relative block">
                 <img
-                  src="/api/placeholder/400/320"
+                  src={campus.image}
                   alt={campus.title}
                   className="w-full h-full object-cover"
                 />
@@ -287,35 +330,55 @@ Best regards,
                 </div>
               </div>
               <div className="space-y-4">
-              <form onSubmit={handleSubmit} className="space-y-4">
-  <input
-    name="name"
-    type="text"
-    placeholder="Your Name"
-    required
-    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <input
-    name="email"
-    type="email"
-    placeholder="Your Email"
-    required
-    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <textarea
-    name="message"
-    placeholder="Your Message"
-    rows="4"
-    required
-    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-32"
-  />
-  <button 
+                {formStatus.show && (
+                  <CustomAlert
+                    message={formStatus.message}
+                    isError={formStatus.isError}
+                    onClose={() => setFormStatus(prev => ({ ...prev, show: false }))}
+                  />
+                )}
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-4">
+                    <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full border rounded-lg p-2"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Your Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full border rounded-lg p-2"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      className="w-full border rounded-lg p-2"
+      rows="5"
+      placeholder="Type your message here"
+      required
+    ></textarea>
+  </div>
+  <button
     type="submit"
     className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
   >
     Send Message
   </button>
 </form>
+
               </div>
             </div>
           </div>
