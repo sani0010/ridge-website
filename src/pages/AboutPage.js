@@ -329,7 +329,7 @@ We have our own kitchen very close to the city where we can travel by tram in Me
       </section>
 
 {/* Campus Tour Section */}
-<section id="campus" className="py-16 md:py-24 bg-gray-50" ref={campusRef}>
+<section id="campus" className="py-16 md:py-24 bg-gradient-to-b from-gray-900/50 to-gray-900" ref={campusRef}>
   <div className="container mx-auto max-w-7xl px-4">
     <motion.h2 
       initial={{ opacity: 0, y: 20 }}
