@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import { 
   MapPin, Phone, Mail, Calendar, 
   Facebook, Instagram, Linkedin,
@@ -6,15 +6,27 @@ import {
   Youtube
 } from 'lucide-react';
 import DatePicker from 'react-datepicker';
+import { useLocation } from 'react-router-dom';
 import "react-datepicker/dist/react-datepicker.css";
 import melbourne from '../assets/melbourne.jpg';
 import sydney from '../assets/sydney.jpg';
 import fitzroy from '../assets/fitzroy.jpg';
 
+
 const ContactPage = () => {
   const [selectedDates, setSelectedDates] = useState([null, null, null, null]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
+  const location = useLocation();
+  const letsconnectRef = useRef(null);
+
+  useEffect(() => {
+    if (window.location.hash === '#lets-connect') {
+      document.getElementById('lets-connect')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [location]);
+  
+
 
   const campusLocations = [
     {
@@ -224,7 +236,7 @@ Best regards,
         </div>
 
         {/* Contact Form Section */}
-        <div className="bg-white rounded-lg shadow-lg mb-24">
+        <section id="lets-connect" ref={letsconnectRef} className="py-8 md:py-12">
           <div className="p-8">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
@@ -271,7 +283,7 @@ Best regards,
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* CTA Section */}
         {/* <div className="bg-gradient-to-r from-blue-900 to-indigo-900 rounded-lg text-white mb-24">
