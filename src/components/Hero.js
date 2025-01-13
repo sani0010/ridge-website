@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import eventImage from '../assets/Scholarship.png';
 import heroVideo from '../assets/video.mp4';
 import { Link } from 'react-router-dom';
 import Chatbot from '../pages/Chatbot';
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -15,6 +17,14 @@ const Hero = () => {
     "Shape your future today",
     "Excellence in education awaits"
   ], []);
+
+  useEffect(() => {
+    const hasModalBeenShown = sessionStorage.getItem('modalShown');
+    if (!hasModalBeenShown) {
+      setIsModalOpen(true);
+      sessionStorage.setItem('modalShown', 'true');
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,6 +60,10 @@ const Hero = () => {
     const timer = setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
     return () => clearTimeout(timer);
   }, [displayText, currentTextIndex, isDeleting, successTexts]);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <section className="h-screen relative overflow-hidden">
@@ -87,6 +101,24 @@ const Hero = () => {
           </Link>
         </div>
       </div>
+            {/* Modal for Event Image */}
+            {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
+          <div className="bg-white rounded-lg p-1 w-full max-w-lg md:w-1/2 lg:w-1/3 text-center relative shadow-lg">
+            <button
+              onClick={closeModal}
+              className="absolute -top-4 -right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white border-2 border-white ring-2 ring-gray-300 hover:bg-gray-100 focus:outline-none z-10"
+            >
+              <span className="text-gray-800 text-xl font-bold">×</span>
+            </button>
+            <img
+              src={eventImage}
+              alt="Event"
+              className="rounded-lg w-full h-auto object-cover mb-0"
+            />
+          </div>
+        </div>
+      )}
 
       {isChatbotVisible && (
         <div
