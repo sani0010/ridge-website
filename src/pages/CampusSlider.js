@@ -63,7 +63,7 @@ const CampusSlider = ({ images }) => {
 
   return (
     <div className="relative w-full h-[600px] overflow-hidden ">
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center mb-8">
         {/* Left Image */}
         <motion.div
           className="absolute left-4 md:left-12 w-1/3 h-[450px] z-10"

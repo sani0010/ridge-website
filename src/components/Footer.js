@@ -7,7 +7,11 @@ import {
   Phone, 
   Mail, 
   ExternalLink, 
-  Clipboard 
+  Clipboard,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin
 } from 'lucide-react';
 
 const Footer = () => {
@@ -32,6 +36,25 @@ const Footer = () => {
       phone: "+61 03 9620 7738", 
       email: "admin@ridge.edu.au",
       googleMapsLink: "https://maps.google.com/maps?q=30+Cowper+Street,+Parramatta,+NSW+2150,+Australia"
+    }
+  ];
+
+  const socialMediaLinks = [
+    {
+      Icon: Facebook,
+      link: "https://www.facebook.com/ridgeinternationalcollege"
+    },
+    {
+      Icon: Instagram,
+      link: "https://www.instagram.com/ridgeinternationalcollege/"
+    },
+    {
+      Icon: Youtube,
+      link: "https://www.youtube.com/@RidgeInternationalCollege"
+    },
+    {
+      Icon: Linkedin,
+      link: "https://www.linkedin.com/company/ridge-international-college/"
     }
   ];
 
@@ -67,6 +90,21 @@ const Footer = () => {
               RTO No: <span className="text-lg">{'45472'}</span><br />
               CRICOS Provider No: <span className="text-lg">{'03747K'}</span>
             </p>
+
+            {/* Social Media Links */}
+            <div className="flex space-x-4 mt-6 ml-3">
+              {socialMediaLinks.map(({ Icon, link }) => (
+                <a
+                  key={link}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-[#f26722] transition-colors"
+                >
+                  <Icon className="h-6 w-6" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
